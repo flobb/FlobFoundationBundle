@@ -1,0 +1,258 @@
+{% extends 'form_div_layout.html.twig' %}
+
+
+{# Rows #}
+
+
+{% block form_start %}
+{% spaceless %}
+  {% if attr.class is not defined %}
+    {% set attr = attr|merge({'class': 'custom'}) %}
+     {% else %}
+       {% set attr = attr|merge({'class': 'custom ' ~ attr.class }) %}
+     {% endif %}
+     {{ parent() }}
+{% endspaceless %}
+{% endblock form_start %}
+
+
+{% block form_row %}
+{% spaceless %}
+  {% if class_row is not defined %}
+    {% set class_row = ['row'] %}
+  {% else %}
+    {% set class_row = ['row']|merge(class_row) %}
+     {% endif %}
+  {% if errors|length > 0 %}
+    {% set class_row = class_row|merge(['error']) %}
+  {% endif %}
+  <div class="{{ class_row|join(' ') }}">
+    <div class="large-12 columns">
+        {% if collapse_row is defined %}<div class="row collapse">{% endif %}
+        {{ form_label(form) }}
+        {{ form_widget(form) }}
+        {{ block('form_widget_errors') }}
+        {% if collapse_row is defined %}</div>{% endif %}
+    </div>
+  </div>
+{% endspaceless %}
+{% endblock form_row %}
+
+
+{% block money_row %}
+{% spaceless %}
+  {% set collapse_row = true %}
+  {{ block('form_row') }}
+{% endspaceless %}
+{% endblock money_row %}
+
+
+{% block url_row %}
+{% spaceless %}
+  {% set collapse_row = true %}
+  {{ block('form_row') }}
+{% endspaceless %}
+{% endblock url_row %}
+
+
+{% block percent_row %}
+{% spaceless %}
+  {% set collapse_row = true %}
+  {{ block('form_row') }}
+{% endspaceless %}
+{% endblock percent_row %}
+
+
+{% block search_row %}
+{% spaceless %}
+  {% set collapse_row = true %}
+  {{ block('form_row') }}
+{% endspaceless %}
+{% endblock search_row %}
+
+
+{# Widgets #}
+
+
+{% block date_widget %}
+{% spaceless %}
+    {% if widget == 'single_text' %}
+        {{ block('form_widget_simple') }}
+    {% else %}
+      {% if attr.class is defined %}
+         {% set attr = attr|merge({'class': 'row ' ~ attr.class }) %}
+       {% else %}
+        {% set attr = attr|merge({'class': 'row'}) %}
+       {% endif %}
+        <div {{ block('widget_container_attributes') }}>
+            {{ date_pattern|replace({
+                '{{ year }}':  '<div class="large-1 columns">' ~ form_widget(form.year) ~ '</div>',
+                '{{ month }}': '<div class="large-1 columns">' ~ form_widget(form.month) ~ '</div>',
+                '{{ day }}':   '<div class="large-1 columns">' ~ form_widget(form.day) ~ '</div>'
+            })|raw }}
+            <div class="large-9 columns"></div>
+        </div>
+    {% endif %}
+{% endspaceless %}
+{% endblock date_widget %}
+
+
+{% block time_widget %}
+{% spaceless %}
+    {% if widget == 'single_text' %}
+        {{ block('form_widget_simple') }}
+    {% else %}
+        {% set vars = widget == 'text' ? { 'attr': { 'size': 1 }} : {} %}
+        {% if attr.class is defined %}
+         {% set attr = attr|merge({'class': 'row ' ~ attr.class }) %}
+       {% else %}
+          {% set attr = attr|merge({'class': 'row'}) %}
+       {% endif %}
+        {% set spacer = 11 %}
+        <div {{ block('widget_container_attributes') }}>
+            <div class="large-1 columns">{{ form_widget(form.hour, vars) }}</div>
+            {% if with_minutes %}
+              {% set spacer = spacer - 1 %}
+              <div class="large-1 columns">{{ form_widget(form.minute, vars) }}</div>
+            {% endif %}
+            {% if with_seconds %}
+              {% set spacer = spacer - 1 %}
+              <div class="large-1 columns">{{ form_widget(form.second, vars) }}</div>
+            {% endif %}
+            <div class="large-{{ spacer }} columns"></div>
+        </div>
+    {% endif %}
+{% endspaceless %}
+{% endblock time_widget %}
+
+
+{% block datetime_widget %}
+{% spaceless %}
+    {% if widget == 'single_text' %}
+        {{ block('form_widget_simple') }}
+    {% else %}
+        <div {{ block('widget_container_attributes') }}>
+            {{ form_errors(form.date) }}
+            {{ form_errors(form.time) }}
+            {{ form_widget(form.date) }}
+            {{ form_widget(form.time) }}
+        </div>
+    {% endif %}
+{% endspaceless %}
+{% endblock datetime_widget %}
+
+
+{% block money_widget %}
+{% spaceless %}
+  <div class="large-11 columns">{{ block('form_widget_simple') }}</div>
+  <div class="large-1 columns"><span class="postfix">{{ money_pattern|replace({ ' {{ widget }}': ''})|raw }}</span></div>
+{% endspaceless %}
+{% endblock money_widget %}
+
+
+{% block url_widget %}
+{% spaceless %}
+  {% set type = type|default('url') %}
+  <div class="large-1 columns"><span class="prefix">http://</span></div>
+  <div class="large-11 columns">{{ block('form_widget_simple') }}</div>
+{% endspaceless %}
+{% endblock url_widget %}
+
+
+{% block percent_widget %}
+{% spaceless %}
+    {% set type = type|default('text') %}
+    <div class="large-11 columns">{{ block('form_widget_simple') }}</div>
+    <div class="large-1 columns"><span class="postfix">%</span></div>
+{% endspaceless %}
+{% endblock percent_widget %}
+
+
+{% block search_widget %}
+{% spaceless %}
+    {% set type = type|default('search') %}
+    <div class="large-11 columns">{{ block('form_widget_simple') }}</div>
+    <div class="large-1 columns"><span class="postfix"><i class="icon-search"></i></span></div>
+{% endspaceless %}
+{% endblock search_widget %}
+
+
+{% block choice_widget_expanded %}
+{% spaceless %}
+    <div {{ block('widget_container_attributes') }}>
+    {% for child in form %}
+        {% if child.vars.label is not sameas(false) %}
+            {% set label = child.vars.label %}
+            {% set label_attr = child.vars.label_attr %}
+		        {% if not child.vars.compound %}
+		            {% set label_attr = label_attr|merge({'for': child.vars.id}) %}
+		        {% endif %}
+		        {% if child.vars.required %}
+		            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+		        {% endif %}
+		        {% if label is empty %}
+		            {% set label = child.vars.name|humanize %}
+		        {% endif %}
+		        <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ form_widget(child) }}&nbsp;{{ label|trans({}, child.vars.translation_domain) }}</label>
+		    {% else %}
+		        {{ form_widget(child) }}
+		    {% endif %}
+    {% endfor %}
+    </div>
+{% endspaceless %}
+{% endblock choice_widget_expanded %}
+
+
+{% block checkbox_widget %}
+{% spaceless %}
+		{% if attr.style is defined %}
+		    {% set attr = attr|merge({'style': 'display: none; ' ~ attr.style }) %}
+		{% else %}
+		    {% set attr = attr|merge({'style': 'display: none;'}) %}
+		{% endif %}
+    <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+{% endspaceless %}
+{% endblock checkbox_widget %}
+
+
+{% block radio_widget %}
+{% spaceless %}
+    {% if attr.style is defined %}
+		    {% set attr = attr|merge({'style': 'display: none; ' ~ attr.style }) %}
+		{% else %}
+		    {% set attr = attr|merge({'style': 'display: none;'}) %}
+		{% endif %}
+    <input type="radio" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+{% endspaceless %}
+{% endblock radio_widget %}
+
+
+
+{# Misc #}
+
+
+{% block form_errors %}
+{% spaceless %}
+  {% if errors|length > 0 %}
+    <div data-alert class="alert-box alert">    
+      <ul>
+        {% for error in errors %}
+          <li>{{ error.message }}</li>
+        {% endfor %}
+      </ul>
+      <a href="#" class="close">&times;</a>
+    </div>
+  {% endif %}
+{% endspaceless %}
+{% endblock form_errors %}
+
+
+{% block form_widget_errors %}
+{% spaceless %}
+  {% if errors|length > 0 %}
+    {% for error in errors %}
+        <small>{{ error.message }}</small>
+    {% endfor %}
+  {% endif %}
+{% endspaceless %}
+{% endblock form_widget_errors %}
