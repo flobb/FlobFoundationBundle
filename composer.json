@@ -1,5 +1,5 @@
 {
-	"name" : "florianbelhomme/foundation",
+	"name" : "florianbelhomme/foundation-bundle",
 	"description" : "Integrates Foundation, by Zurb, into Symfony2 by providing templates, Twig extensions, services and commands.",
 	"type" : "symfony-bundle",
 	"authors" : [{
