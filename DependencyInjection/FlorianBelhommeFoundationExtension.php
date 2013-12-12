@@ -2,18 +2,20 @@
 
 namespace FlorianBelhomme\Bundle\FoundationBundle\DependencyInjection;
 
+use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-use Symfony\Component\DependencyInjection\Loader;
+
 
 /**
  * This is the class that loads and manages your bundle configuration
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class FlorianBelhommeFoundationExtension extends Extension
+class FlorianBelhommeFoundationExtension extends Extension implements PrependExtensionInterface
 {
+    
     /**
      * {@inheritDoc}
      */
@@ -32,50 +34,20 @@ class FlorianBelhommeFoundationExtension extends Extension
 
         $configs = $container->getExtensionConfig($this->getAlias());
         $config = $this->processConfiguration(new Configuration(), $configs);
-
+        
         // This will change the Twig configuration if needed (template path for exemple)
-        if ((true === isset($bundles['TwigBundle'])) && (true === $config['theme']['form'])) {
-            $this->configureTwigBundle($container);
+        if ((isset($bundles['TwigBundle'])) && ($config['theme']['form'])) {
+            $container->prependExtensionConfig('twig', array('form'  => array('resources' => array($config['template']['form']))));
         }
 
         // This will change the KnpMenu configuration if needed (template path for exemple)
-        if ((true === isset($bundles['TwigBundle'])) && (true === isset($bundles['KnpMenuBundle'])) && (true === $config['theme']['knp_menu'])) {
-            $this->configureKnpMenuBundle($container);
+        if ((isset($bundles['TwigBundle'])) && (isset($bundles['KnpMenuBundle'])) && ($config['theme']['knp_menu'])) {
+            $container->prependExtensionConfig('knp_menu', array('twig' => array('template' => $config['template']['knp_menu'])));
         }
 
         // This will change the KnpPagination configuration if needed (template path for exemple)
-        if ((true === isset($bundles['TwigBundle'])) && (true === isset($bundles['KnpPaginatorBundle'])) && (true === $config['theme']['knp_paginator'])) {
-            $this->configureKnpPaginatorBundle($container);
+        if ((isset($bundles['TwigBundle'])) && (isset($bundles['KnpPaginatorBundle'])) && ($config['theme']['knp_paginator'])) {
+            $container->prependExtensionConfig('knp_paginator', array('template' => array('pagination' => $config['template']['knp_paginator'])));
         }
-    }
-
-    /**
-     * @param ContainerBuilder $container The service container
-     *
-     * @return void
-     */
-    protected function configureTwigBundle(ContainerBuilder $container)
-    {
-        $container->prependExtensionConfig('twig', array('form'  => array('resources' => array($this->formTemplate))));
-    }
-    
-    /**
-     * @param ContainerBuilder $container The service container
-     *
-     * @return void
-     */
-    protected function configureKnpMenuBundle(ContainerBuilder $container)
-    {
-        $container->prependExtensionConfig('knp_menu', array('twig' => array('template'  => $this->menuTemplate)));
-    }
-    
-    /**
-     * @param ContainerBuilder $container The service container
-     *
-     * @return void
-     */
-    protected function configureKnpPaginatorBundle(ContainerBuilder $container)
-    {
-        $container->prependExtensionConfig('knp_paginator', array('template' => array('pagination' => $this->paginationTemplate)));
     }
 }
