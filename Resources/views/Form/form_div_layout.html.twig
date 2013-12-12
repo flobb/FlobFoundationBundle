@@ -172,7 +172,7 @@
 {% spaceless %}
     {% set type = type|default('search') %}
     <div class="large-11 columns">{{ block('form_widget_simple') }}</div>
-    <div class="large-1 columns"><span class="postfix"><i class="icon-search"></i></span></div>
+    <div class="large-1 columns"><span class="postfix"><i class="fa fa-search"></i></span></div>
 {% endspaceless %}
 {% endblock search_widget %}
 
@@ -184,19 +184,20 @@
         {% if child.vars.label is not sameas(false) %}
             {% set label = child.vars.label %}
             {% set label_attr = child.vars.label_attr %}
-		        {% if not child.vars.compound %}
-		            {% set label_attr = label_attr|merge({'for': child.vars.id}) %}
-		        {% endif %}
-		        {% if child.vars.required %}
-		            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
-		        {% endif %}
-		        {% if label is empty %}
-		            {% set label = child.vars.name|humanize %}
-		        {% endif %}
-		        <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ form_widget(child) }}&nbsp;{{ label|trans({}, child.vars.translation_domain) }}</label>
-		    {% else %}
-		        {{ form_widget(child) }}
-		    {% endif %}
+            {% if not child.vars.compound %}
+                {% set label_attr = label_attr|merge({'for': child.vars.id}) %}
+            {% endif %}
+            {% if child.vars.required %}
+                {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+            {% endif %}
+            {% if label is empty %}
+                {% set label = child.vars.name|humanize %}
+            {% endif %}
+            {{ form_widget(child) }}
+            <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ label|trans({}, child.vars.translation_domain) }}</label>
+        {% else %}
+            {{ form_widget(child) }}
+        {% endif %}
     {% endfor %}
     </div>
 {% endspaceless %}
@@ -205,11 +206,6 @@
 
 {% block checkbox_widget %}
 {% spaceless %}
-		{% if attr.style is defined %}
-		    {% set attr = attr|merge({'style': 'display: none; ' ~ attr.style }) %}
-		{% else %}
-		    {% set attr = attr|merge({'style': 'display: none;'}) %}
-		{% endif %}
     <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
 {% endspaceless %}
 {% endblock checkbox_widget %}
@@ -217,15 +213,9 @@
 
 {% block radio_widget %}
 {% spaceless %}
-    {% if attr.style is defined %}
-		    {% set attr = attr|merge({'style': 'display: none; ' ~ attr.style }) %}
-		{% else %}
-		    {% set attr = attr|merge({'style': 'display: none;'}) %}
-		{% endif %}
     <input type="radio" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
 {% endspaceless %}
 {% endblock radio_widget %}
-
 
 
 {# Misc #}
@@ -233,16 +223,20 @@
 
 {% block form_errors %}
 {% spaceless %}
-  {% if errors|length > 0 %}
-    <div data-alert class="alert-box alert">    
-      <ul>
-        {% for error in errors %}
-          <li>{{ error.message }}</li>
-        {% endfor %}
-      </ul>
-      <a href="#" class="close">&times;</a>
-    </div>
-  {% endif %}
+    {% if errors|length > 0 %}
+        <div class="row">
+            <div class="large-12 columns">
+                <div data-alert class="alert-box alert">
+                    <ul>
+                        {% for error in errors %}
+                            <li>{{ error.message }}</li>
+                        {% endfor %}
+                    </ul>
+                    <a href="#" class="close">&times;</a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
 {% endspaceless %}
 {% endblock form_errors %}
 
@@ -250,9 +244,11 @@
 {% block form_widget_errors %}
 {% spaceless %}
   {% if errors|length > 0 %}
+     <small class="error">
     {% for error in errors %}
-        <small>{{ error.message }}</small>
+       {{ error.message }}{% if not loop.last %}<br />{% endif %}
     {% endfor %}
+    </small>
   {% endif %}
 {% endspaceless %}
 {% endblock form_widget_errors %}
