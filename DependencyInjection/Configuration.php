@@ -33,9 +33,9 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('template')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('form')->defaultValue('FlorianBelhommeFoundationBundle:Form:form_div_layout.html.twig')->end()
-                        ->scalarNode('knp_menu')->defaultValue('FlorianBelhommeFoundationBundle:Menu:knp_menu.html.twig')->end()
-                        ->scalarNode('knp_paginator')->defaultValue('FlorianBelhommeFoundationBundle:Pagination:sliding.html.twig')->end()
+                        ->scalarNode('form')->defaultValue('FlorianBelhommeFoundationBundle:Form:foundation_form_div_layout.html.twig')->end()
+                        ->scalarNode('knp_menu')->defaultValue('FlorianBelhommeFoundationBundle:Menu:foundation_knp_menu.html.twig')->end()
+                        ->scalarNode('knp_paginator')->defaultValue('FlorianBelhommeFoundationBundle:Pagination:foundation_sliding.html.twig')->end()
                     ->end()
                 ->end()
             ->end();
