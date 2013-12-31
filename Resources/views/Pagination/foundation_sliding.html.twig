@@ -1,40 +1,35 @@
 {# default Sliding pagination control implementation #}
 
 {% if pageCount > 1 %}
-<div class="pagination">
+<ul class="pagination">
+
     {% if first is defined and current != first %}
-        <span class="first">
-            <a href="{{ path(route, query|merge({(pageParameterName): first})) }}">&lt;&lt;</a>
-        </span>
+        <li class="first arrow">
+            <a href="{{ path(route, query|merge({(pageParameterName): first})) }}"><i class="fa fa-angle-double-left"></i></a>
+        </li>
     {% endif %}
 
     {% if previous is defined %}
-        <span class="previous">
-            <a href="{{ path(route, query|merge({(pageParameterName): previous})) }}">&lt;</a>
-        </span>
+        <li class="previous arrow">
+            <a href="{{ path(route, query|merge({(pageParameterName): previous})) }}"><i class="fa fa-angle-left"></i></a>
+        </li>
     {% endif %}
 
     {% for page in pagesInRange %}
-        {% if page != current %}
-            <span class="page">
-                <a href="{{ path(route, query|merge({(pageParameterName): page})) }}">{{ page }}</a>
-            </span>
-        {% else %}
-            <span class="current">{{ page }}</span>
-        {% endif %}
-
+        <li class="{% if page == current %}current{% endif %}"><a href="{{ path(route, query|merge({(pageParameterName): page})) }}">{{ page }}</a></li>
     {% endfor %}
 
     {% if next is defined %}
-        <span class="next">
-            <a href="{{ path(route, query|merge({(pageParameterName): next})) }}">&gt;</a>
-        </span>
+        <li class="next arrow">
+            <a href="{{ path(route, query|merge({(pageParameterName): next})) }}"><i class="fa fa-angle-right"></i></a>
+        </li>
     {% endif %}
 
     {% if last is defined and current != last %}
-        <span class="last">
-            <a href="{{ path(route, query|merge({(pageParameterName): last})) }}">&gt;&gt;</a>
-        </span>
+        <li class="last arrow">
+            <a href="{{ path(route, query|merge({(pageParameterName): last})) }}"><i class="fa fa-angle-double-right"></i></a>
+        </li>
     {% endif %}
-</div>
+
+</ul>
 {% endif %}
