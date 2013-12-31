@@ -35,17 +35,17 @@ class FlorianBelhommeFoundationExtension extends Extension implements PrependExt
         $configs = $container->getExtensionConfig($this->getAlias());
         $config = $this->processConfiguration(new Configuration(), $configs);
         
-        // This will change the Twig configuration if needed (template path for exemple)
+        // This will change the Twig configuration if needed (default template path for exemple)
         if ((isset($bundles['TwigBundle'])) && ($config['theme']['form'])) {
             $container->prependExtensionConfig('twig', array('form'  => array('resources' => array($config['template']['form']))));
         }
 
-        // This will change the KnpMenu configuration if needed (template path for exemple)
+        // This will change the KnpMenu configuration if needed (default template path for exemple)
         if ((isset($bundles['TwigBundle'])) && (isset($bundles['KnpMenuBundle'])) && ($config['theme']['knp_menu'])) {
             $container->prependExtensionConfig('knp_menu', array('twig' => array('template' => $config['template']['knp_menu'])));
         }
 
-        // This will change the KnpPagination configuration if needed (template path for exemple)
+        // This will change the KnpPagination configuration if needed (default template path for exemple)
         if ((isset($bundles['TwigBundle'])) && (isset($bundles['KnpPaginatorBundle'])) && ($config['theme']['knp_paginator'])) {
             $container->prependExtensionConfig('knp_paginator', array('template' => array('pagination' => $config['template']['knp_paginator'])));
         }
