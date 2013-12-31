@@ -27,7 +27,7 @@
     {% set class_row = class_row|merge(['error']) %}
   {% endif %}
   <div class="{{ class_row|join(' ') }}">
-    <div class="large-12 columns">
+    <div class="columns">
         {% if collapse_row is defined %}<div class="row collapse">{% endif %}
         {{ form_label(form) }}
         {{ form_widget(form) }}
@@ -86,11 +86,11 @@
        {% endif %}
         <div {{ block('widget_container_attributes') }}>
             {{ date_pattern|replace({
-                '{{ year }}':  '<div class="large-1 columns">' ~ form_widget(form.year) ~ '</div>',
-                '{{ month }}': '<div class="large-1 columns">' ~ form_widget(form.month) ~ '</div>',
-                '{{ day }}':   '<div class="large-1 columns">' ~ form_widget(form.day) ~ '</div>'
+                '{{ year }}':  '<div class="medium-2 large-1 columns">' ~ form_widget(form.year) ~ '</div>',
+                '{{ month }}': '<div class="medium-2 large-1 columns">' ~ form_widget(form.month) ~ '</div>',
+                '{{ day }}':   '<div class="medium-2 large-1 columns">' ~ form_widget(form.day) ~ '</div>'
             })|raw }}
-            <div class="large-9 columns"></div>
+            <div class="medium-3 large-9 columns"></div>
         </div>
     {% endif %}
 {% endspaceless %}
@@ -109,17 +109,20 @@
           {% set attr = attr|merge({'class': 'row'}) %}
        {% endif %}
         {% set spacer = 11 %}
+        {% set spacermedium = 10 %}
         <div {{ block('widget_container_attributes') }}>
-            <div class="large-1 columns">{{ form_widget(form.hour, vars) }}</div>
+            <div class="medium-2 large-1 columns">{{ form_widget(form.hour, vars) }}</div>
             {% if with_minutes %}
               {% set spacer = spacer - 1 %}
-              <div class="large-1 columns">{{ form_widget(form.minute, vars) }}</div>
+              {% set spacermedium = spacermedium - 2 %}
+              <div class="medium-2 large-1 columns">{{ form_widget(form.minute, vars) }}</div>
             {% endif %}
             {% if with_seconds %}
               {% set spacer = spacer - 1 %}
-              <div class="large-1 columns">{{ form_widget(form.second, vars) }}</div>
+              {% set spacermedium = spacermedium - 2 %}
+              <div class="medium-2 large-1 columns">{{ form_widget(form.second, vars) }}</div>
             {% endif %}
-            <div class="large-{{ spacer }} columns"></div>
+            <div class="medium-{{ spacermedium }} large-{{ spacer }} columns"></div>
         </div>
     {% endif %}
 {% endspaceless %}
@@ -144,8 +147,8 @@
 
 {% block money_widget %}
 {% spaceless %}
-  <div class="large-11 columns">{{ block('form_widget_simple') }}</div>
-  <div class="large-1 columns"><span class="postfix">{{ money_pattern|replace({ ' {{ widget }}': ''})|raw }}</span></div>
+  <div class="small-11 medium-11 large-11 columns">{{ block('form_widget_simple') }}</div>
+  <div class="small-1 medium-1 large-1 columns"><span class="postfix">{{ money_pattern|replace({ ' {{ widget }}': ''})|raw }}</span></div>
 {% endspaceless %}
 {% endblock money_widget %}
 
@@ -153,8 +156,8 @@
 {% block url_widget %}
 {% spaceless %}
   {% set type = type|default('url') %}
-  <div class="large-1 columns"><span class="prefix">http://</span></div>
-  <div class="large-11 columns">{{ block('form_widget_simple') }}</div>
+  <div class="small-1 medium-1 large-1 columns"><span class="prefix">http://</span></div>
+  <div class="small-11 medium-11 large-11 columns">{{ block('form_widget_simple') }}</div>
 {% endspaceless %}
 {% endblock url_widget %}
 
@@ -162,8 +165,8 @@
 {% block percent_widget %}
 {% spaceless %}
     {% set type = type|default('text') %}
-    <div class="large-11 columns">{{ block('form_widget_simple') }}</div>
-    <div class="large-1 columns"><span class="postfix">%</span></div>
+    <div class="small-11 medium-11 large-11 columns">{{ block('form_widget_simple') }}</div>
+    <div class="small-1 medium-1 large-1 columns"><span class="postfix">%</span></div>
 {% endspaceless %}
 {% endblock percent_widget %}
 
@@ -171,8 +174,8 @@
 {% block search_widget %}
 {% spaceless %}
     {% set type = type|default('search') %}
-    <div class="large-11 columns">{{ block('form_widget_simple') }}</div>
-    <div class="large-1 columns"><span class="postfix"><i class="fa fa-search"></i></span></div>
+    <div class="small-11 medium-11 large-11 columns">{{ block('form_widget_simple') }}</div>
+    <div class="small-1 medium-1 large-1 columns"><span class="postfix"><i class="fa fa-search"></i></span></div>
 {% endspaceless %}
 {% endblock search_widget %}
 
@@ -225,7 +228,7 @@
 {% spaceless %}
     {% if errors|length > 0 %}
         <div class="row">
-            <div class="large-12 columns">
+            <div class="columns">
                 <div data-alert class="alert-box alert">
                     <ul>
                         {% for error in errors %}
