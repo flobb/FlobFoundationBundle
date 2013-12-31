@@ -30,8 +30,7 @@
 	},
 	"target-dir" : "FlorianBelhomme/Bundle/FoundationBundle",
 	"suggest" : {
-		"knplabs/knp-paginator-bundle" : "FoundationBundle styles the pagination provided by KnpPaginatorBundle.",
-		"knplabs/knp-menu" : "Required to use KnpMenuBundle.",
-		"knplabs/knp-menu-bundle" : "FoundationBundle styles the menus provided by KnpMenuBundle."
+		"knplabs/knp-paginator-bundle" : "FoundationBundle can styles the pagination provided by KnpPaginatorBundle.",
+		"knplabs/knp-menu-bundle" : "FoundationBundle can styles the menus provided by KnpMenuBundle."
 	}
 }
