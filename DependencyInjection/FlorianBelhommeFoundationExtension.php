@@ -34,7 +34,7 @@ class FlorianBelhommeFoundationExtension extends Extension implements PrependExt
 
         $configs = $container->getExtensionConfig($this->getAlias());
         $config = $this->processConfiguration(new Configuration(), $configs);
-        
+        var_dump($config);die();
         // This will change the Twig configuration if needed (default template path for exemple)
         if ((isset($bundles['TwigBundle'])) && ($config['theme']['form'])) {
             $container->prependExtensionConfig('twig', array('form'  => array('resources' => array($config['template']['form']))));
