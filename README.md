@@ -4,24 +4,24 @@ By [Florian Belhomme](http://florianbelhomme.com)
 
 ## About
 
-This bundle integrates the functionnalities of the responsive framework Foundation, from Zurb (thanks guys), into Symfony2 by providing templates, Twig extensions, services and commands.
-You can quickly setup a responsive theme for a frontend, or backend, interface for your projet on top of it. It will have the "look'n'feel" and the simplicity of Foundation.
+This bundle integrates the functionnalities of the responsive framework Foundation, from Zurb (thanks guys), into Symfony2 by providing templates, Twig extensions, services and commands. You can quickly setup a responsive theme for an interface for your projet. It will have the "look'n'feel", the responsiveness and the simplicity of Foundation.
 
-**BE AWARE : THIS BUNDLE WILL NOT ADD FOUNDATION FRAMEWORK BUT FUNCTIONNALITIES TO SYMFONY TO WORK WITH**
+**BE AWARE: THIS BUNDLE WILL NOT ADD THE FOUNDATION FRAMEWORK BUT RATHER FUNCTIONNALITIES FOR SYMFONY TO WORK WITH IT**
 
-To include Foundation & Modernizer you can use the [CloudFlare CDN](http://cdnjs.com/libraries/foundation/).
-This bundle use icon from Font Awesome, to add it you can use the [bootstrapcdn](http://www.bootstrapcdn.com).
+To include Foundation, jQuery, Normalize & Modernizer you can use the [CloudFlare CDN](http://cdnjs.com/libraries/foundation/).
+This bundle uses icons from Font Awesome. To add it, you can use the [bootstrapcdn](http://www.bootstrapcdn.com).
 
 ## Requirements
 
 - [Symfony 2.3+](http://symfony.com).
-- [Foundation 5+](http://foundation.zurb.com/) and advanced reponsive frontend.
+- [jQuery 2+](http://jquery.com/) a JavaScript library.
+- [Foundation 5+](http://foundation.zurb.com/) an advanced reponsive framework.
 - [Font Awesome 4.0+](http://fontawesome.io/) which comes with 369+ icons.
 
 ## Recommended
 
-- the [KnpMenuBundle](https://github.com/KnpLabs/KnpMenuBundle) for menus, this bundle theme them for you.
-- the [KpnPaginatorBundle](https://github.com/KnpLabs/KnpPaginatorBundle) for pagination, this bundle theme them for you.
+- the [KnpMenuBundle](https://github.com/KnpLabs/KnpMenuBundle) for menus, this bundle can themes them for you.
+- the [KpnPaginatorBundle](https://github.com/KnpLabs/KnpPaginatorBundle) for pagination, this bundle can themes them for you.
 
 ## Installation and configuration
 
@@ -39,9 +39,9 @@ First, edit your `composer.json` and add :
 }
 ```
 
-Now run a `composer update` on your project. It will get you all needed files.
+Now run a `composer update` on your project. It will get all the necessary files for you.
 
-Secondly, edit your `app/AppKernel.php` and add :
+Secondly, edit your `app/AppKernel.php` and add:
 
 ```PHP
 class AppKernel extends Kernel
@@ -57,8 +57,8 @@ class AppKernel extends Kernel
 }
 ```
 
-You know need to add Foundation and Font Awesome to your project.
-There the easy way to do it (but there is other way to do so) :
+You now need to add Foundation and Font Awesome to your project.
+The easy way to do it (but there are other ways to do so):
 
 ```HTML
 <html>
@@ -87,19 +87,19 @@ Your project is ready!
 
 ## Configuration & Usage
 
-**The bundle does not theme elements by default** in case of you want to use Foundation on specific form or bundle.
+**This bundle does not theme any elements by default**, in case you want to use Foundation on a specific form or bundle.
 
-To automatically theme form or other elements by defaut, go in the `app/config/config.yml` and add at the end :
+To automatically theme forms or other elements by defaut, go into the `app/config/config.yml` and add at the end:
 
 ```YAML
 fb_foundation:
     theme: { form: true, knp_menu: true, knp_paginator: true }
 ```
 
-If you want to do specifics HTML markup that extends templates of this bundle :
-* create your template in your bundle
-* add `{% extends 'FlorianBelhommeFoundationBundle:Form:foundation_form_div_layout.html.twig' %}` at the top (for the form template by exemple)
-* edit the  `app/config/config.yml` :
+If you want to do specific HTML markup that extends templates of this bundle:
+*create your template in your bundle
+*add `{% extends 'FlorianBelhommeFoundationBundle:Form:foundation_form_div_layout.html.twig' %}` at the top (the form template, for example)
+*edit the `app/config/config.yml`:
 
 ```YAML
 fb_foundation:
@@ -107,11 +107,16 @@ fb_foundation:
     template: { form: 'YourBundle:YourFolder:formtemplate.html.twig', knp_menu: 'YourBundle:YourFolder:menutemplate.html.twig', knp_paginator: 'YourBundle:YourFolder:paginatortemplate.html.twig' }
 ```
 
-But you can theme specific elements using those way :
-```Twig
+However you can theme specific elements using one of these methods:
 
+```Twig
+{# Form #}
 {% form_theme yourform 'FlorianBelhommeFoundationBundle:Form:foundation_form_div_layout.html.twig' %}
+
+{# Menu #}
 {{ knp_menu_render('yourmenu', {'template' : 'FlorianBelhommeFoundationBundle:Menu:foundation_knp_menu.html.twig'}) }}
+
+{# Pagination #}
 {{ knp_pagination_render(yourpagination, 'FlorianBelhommeFoundationBundle:Pagination:foundation_sliding.html.twig') }}
 ```
 
@@ -119,12 +124,12 @@ But you can theme specific elements using those way :
 
 **Please provide feedback!**
 We want to make this bundle useful in as many projects as possible.
-
-Actively maintained by [Florian Belhomme](http://florianbelhomme.com).
+Maintained by [Florian Belhomme](http://florianbelhomme.com).
 
 ## License
 
-- This project is licensed under the [MIT License](http://opensource.org/licenses/MIT)
+- This bundle is licensed under the [MIT License](http://opensource.org/licenses/MIT)
+- jQuery is licensed under the [MIT License](http://opensource.org/licenses/MIT)
 - Foundation is licensed under the [MIT License](http://opensource.org/licenses/MIT)
 - The Font Awesome, by Dave Gandy, is licensed by [SIL OFL 1.1 Licence](http://scripts.sil.org/OFL) and his sources files by the [MIT License](http://opensource.org/licenses/mit-license.html)
 
