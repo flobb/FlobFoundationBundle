@@ -94,9 +94,9 @@ fb_foundation:
 ```
 
 If you want to do specific HTML markup that extends templates of this bundle:
-*create your template in your bundle
-*add `{% extends 'FlorianBelhommeFoundationBundle:Form:foundation_form_div_layout.html.twig' %}` at the top (the form template, for example)
-*edit the `app/config/config.yml`:
+* create your template in your bundle
+* add `{% extends 'FlorianBelhommeFoundationBundle:Form:foundation_form_div_layout.html.twig' %}` at the top (the form template, for example)
+* edit the `app/config/config.yml`:
 
 ```YAML
 fb_foundation:
@@ -121,6 +121,7 @@ However you can theme specific elements using one of these methods:
 
 **Please provide feedback!**
 We want to make this bundle useful in as many projects as possible.
+
 Maintained by [Florian Belhomme](http://florianbelhomme.com).
 
 ## License
