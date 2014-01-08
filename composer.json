@@ -12,10 +12,9 @@
 	"keywords" : [
 		"foundation",
 		"zurb",
-		"admin",
-		"backoffice",
-		"symfony2",
-		"responsive"
+		"responsive",
+		"symfony",
+		"bundle"
 	],
 	"license" : [
 		"MIT"
