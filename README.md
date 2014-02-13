@@ -20,8 +20,8 @@ This bundle uses icons from Font Awesome. To add it, you can use the [bootstrapc
 
 ## Recommended
 
-- the [KnpMenuBundle](https://github.com/KnpLabs/KnpMenuBundle) for menus, this bundle can themes them for you.
-- the [KpnPaginatorBundle](https://github.com/KnpLabs/KnpPaginatorBundle) for pagination, this bundle can themes them for you.
+- the [KnpMenuBundle](https://github.com/KnpLabs/KnpMenuBundle) for menus, this bundle can theme them for you.
+- the [KpnPaginatorBundle](https://github.com/KnpLabs/KnpPaginatorBundle) for pagination, this bundle can theme them for you.
 
 ## Installation and configuration
 
