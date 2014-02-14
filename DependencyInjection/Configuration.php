@@ -18,7 +18,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('fb_foundation');
+        $rootNode = $treeBuilder->root('florian_belhomme_foundation');
         
         $rootNode
             ->children()
@@ -34,6 +34,7 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('form')->defaultValue('FlorianBelhommeFoundationBundle:Form:foundation_form_div_layout.html.twig')->end()
+                        ->scalarNode('breadcrumb')->defaultValue('FlorianBelhommeFoundationBundle:Menu:foundation_breadcrumb.html.twig')->end()
                         ->scalarNode('knp_menu')->defaultValue('FlorianBelhommeFoundationBundle:Menu:foundation_knp_menu.html.twig')->end()
                         ->scalarNode('knp_paginator')->defaultValue('FlorianBelhommeFoundationBundle:Pagination:foundation_sliding.html.twig')->end()
                     ->end()
