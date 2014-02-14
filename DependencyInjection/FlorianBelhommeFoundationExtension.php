@@ -2,9 +2,11 @@
 
 namespace FlorianBelhomme\Bundle\FoundationBundle\DependencyInjection;
 
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 
@@ -23,6 +25,11 @@ class FlorianBelhommeFoundationExtension extends Extension implements PrependExt
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
+        
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.yml');
+        
+        $container->setParameter('florian_belhomme_foundation.template.breadcrumb', $config['template']['breadcrumb']);
     }
     
     /**
