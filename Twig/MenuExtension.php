@@ -34,7 +34,7 @@ class MenuExtension extends \Twig_Extension
     }
 
     /**
-     * Renders a menu as a breadcrumb
+     * Renders a KNP menu as a breadcrumb
      *
      * @param string
      * @param array $options
@@ -44,7 +44,9 @@ class MenuExtension extends \Twig_Extension
     {
         
         $knpHelper = $this->container->get('knp_menu.helper');
+        $options = array_merge(array('template' => $this->container->getParameter('florian_belhomme_foundation.template.breadcrumb')), $options);
         
+        // Look for the KNP menu
         if (!$menu instanceof ItemInterface) {
             $path = array();
             if (is_array($menu)) {
@@ -58,6 +60,7 @@ class MenuExtension extends \Twig_Extension
             $menu = $this->helper->get($menu, $path);
         }
         
+        // Build an array from the menu item (be aware : BreadcrumbsArray is deprecated on KNP 2)
         if ($menu instanceof MenuItem) {
             $breadcrumbs = $menu->getCurrentItem()->getBreadcrumbsArray();
         }
@@ -65,12 +68,12 @@ class MenuExtension extends \Twig_Extension
             $breadcrumbs = $menu;
         }
         
-        $template = ((!empty($options['template']))?$options['template']:$this->container->getParameter('florian_belhomme_foundation.template.breadcrumb'));
-        if (!$template instanceof \Twig_Template) {
-            $template = $this->container->get('twig')->loadTemplate($template);
+        // Load the template if needed
+        if (!$options['template'] instanceof \Twig_Template) {
+            $options['template'] = $this->container->get('twig')->loadTemplate($options['template']);
         }
         
-        return $template->renderBlock('root', array('breadcrumbs' => $breadcrumbs, 'options' => $options));
+        return $options['template']->renderBlock('root', array('breadcrumbs' => $breadcrumbs, 'options' => $options));
         
     }
 
