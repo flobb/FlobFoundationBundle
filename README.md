@@ -82,7 +82,7 @@ The easy way to do it (but there are other ways to do so):
 
 Your project is ready!
 
-## Configuration & Usage
+## Configuration
 
 **This bundle does not theme any elements by default**, in case you want to use Foundation on a specific form or bundle.
 
@@ -101,10 +101,13 @@ If you want to do specific HTML markup that extends templates of this bundle:
 ```YAML
 fb_foundation:
     theme: { form: true, knp_menu: true, knp_paginator: true }
-    template: { form: 'YourBundle:YourFolder:formtemplate.html.twig', knp_menu: 'YourBundle:YourFolder:menutemplate.html.twig', knp_paginator: 'YourBundle:YourFolder:paginatortemplate.html.twig' }
+    template: { form: 'YourBundle:YourFolder:formtemplate.html.twig', breadcrumb: 'YourBundle:YourFolder:breadcrumbtemplate.html.twig', knp_menu: 'YourBundle:YourFolder:menutemplate.html.twig', knp_paginator: 'YourBundle:YourFolder:paginatortemplate.html.twig' }
 ```
+## Usage
 
-However you can theme specific elements using one of these methods:
+### Theme
+
+However instead of setting it in the configuration, you can theme specific elements using one of these methods:
 
 ```Twig
 {# Form #}
@@ -115,6 +118,36 @@ However you can theme specific elements using one of these methods:
 
 {# Pagination #}
 {{ knp_pagination_render(yourpagination, 'FlorianBelhommeFoundationBundle:Pagination:foundation_sliding.html.twig') }}
+```
+
+### Breadcrumb
+
+If you want a breadcrumb generated from a KNP Menu :
+
+* Make sure that your menu builder get the current URI by adding this :
+
+```Php
+public function createMyMenu(Request $request)
+{
+	$menu = $this->factory->createItem('Home', array('route' => 'homepage')));
+
+	... Add entries here ...
+
+	$menu->setCurrentUri($request->getBaseUrl().$request->getPathInfo());
+
+	return $menu;
+}
+
+* Then add this code in your template
+
+```Twig
+{{ fbfb_breadcrumb_render('yourknpmenu') }}
+```
+
+If you want a specific template :
+
+```Twig
+{{ fbfb_breadcrumb_render('yourknpmenu', {'template' : 'YourBundle:YourFolder:breadcrumbtemplate.html.twig') }}
 ```
 
 ## Feedback
