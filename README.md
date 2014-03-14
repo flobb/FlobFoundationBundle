@@ -86,7 +86,7 @@ Your project is ready!
 
 **This bundle does not theme any elements by default**, in case you want to use Foundation on a specific form or bundle.
 
-To automatically theme forms or other elements by defaut, go into the `app/config/config.yml` and add at the end:
+To automatically theme forms or other elements by default, go into the `app/config/config.yml` and add at the end:
 
 ```YAML
 fb_foundation:
@@ -129,16 +129,17 @@ If you want a breadcrumb generated from a KNP Menu :
 ```Php
 public function createMyMenu(Request $request)
 {
-	$menu = $this->factory->createItem('Home', array('route' => 'homepage')));
+    $menu = $this->factory->createItem('Home', array('route' => 'homepage')));
 
-	... Add entries here ...
+    // ... Add entries here ...
 
-	$menu->setCurrentUri($request->getBaseUrl().$request->getPathInfo());
+    $menu->setCurrentUri($request->getBaseUrl().$request->getPathInfo());
 
-	return $menu;
+    return $menu;
 }
+```
 
-* Then add this code in your template
+* Then add this code in your template :
 
 ```Twig
 {{ fbfb_breadcrumb_render('yourknpmenu') }}
