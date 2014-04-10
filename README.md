@@ -151,6 +151,15 @@ If you want a specific template :
 {{ fbfb_breadcrumb_render('yourknpmenu', {'template' : 'YourBundle:YourFolder:breadcrumbtemplate.html.twig') }}
 ```
 
+### Slider (form field type)
+
+In your form type :
+
+```Php
+$builder->add('My text', 'text', array('label' => 'Default text'));
+$builder->add('My slider', 'slider', array('label' => 'Default text'));
+```
+
 ## Feedback
 
 **Please provide feedback!**
