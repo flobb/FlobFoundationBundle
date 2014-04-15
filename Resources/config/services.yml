@@ -1,17 +1,12 @@
+#
+# Basic services
+#
+
 parameters:
-    
-    fbfb.twig_extension.class: FlorianBelhomme\Bundle\FoundationBundle\Twig\MenuExtension
+
     fbfb.form.type.slider.class: FlorianBelhomme\Bundle\FoundationBundle\Form\Type\SliderType
 
 services:
-    
-    fbfb.twig_extension:
-        class: %fbfb.twig_extension.class%
-        arguments: 
-            - @service_container
-            - @knp_menu.helper
-        tags:
-            - { name: twig.extension }
 
     fbfb.form.type.slider:
             class: %fbfb.form.type.slider.class%
