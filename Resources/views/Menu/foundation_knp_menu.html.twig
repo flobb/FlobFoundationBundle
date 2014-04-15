@@ -16,8 +16,9 @@
             <li class="toggle-topbar menu-icon"><a href=""><span>Menu</span></a></li>
         </ul>
         <section class="top-bar-section">
-        {% set listAttributes = item.childrenAttributes %}
-        {{ block('list') }}
+            {% set listAttributes = item.childrenAttributes %}
+            {{ block('list') }}
+        </section>
     </nav>
 {% endblock %}
 
