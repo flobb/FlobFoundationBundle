@@ -88,7 +88,7 @@ Your project is ready!
 To automatically theme forms or other elements by default, go into the `app/config/config.yml` and add at the end:
 
 ```YAML
-fb_foundation:
+florian_belhomme_foundation:
     theme: { form: true, knp_menu: true, knp_paginator: true }
 ```
 
@@ -98,7 +98,7 @@ If you want to do specific HTML markup that extends templates of this bundle:
 * edit the `app/config/config.yml`:
 
 ```YAML
-fb_foundation:
+florian_belhomme_foundation:
     theme: { form: true, knp_menu: true, knp_paginator: true }
     template: { form: 'YourBundle:YourFolder:formtemplate.html.twig', breadcrumb: 'YourBundle:YourFolder:breadcrumbtemplate.html.twig', knp_menu: 'YourBundle:YourFolder:menutemplate.html.twig', knp_paginator: 'YourBundle:YourFolder:paginatortemplate.html.twig' }
 ```
