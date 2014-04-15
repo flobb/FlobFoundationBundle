@@ -6,10 +6,10 @@
 
 {% block slider_widget %}
     {% spaceless %}
-        <div class="range-slider" data-slider data-options="start: {{ start }}; end: {{ end }}; step: {{ step }};">
+        <div class="range-slider" data-slider="{{ value }}" data-options="start: {{ start }}; end: {{ end }}; step: {{ step }};" {{ block('widget_container_attributes') }}>
             <span class="range-slider-handle"></span>
             <span class="range-slider-active-segment"></span>
-            <input type="hidden" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+            <input type="hidden" {{ block('widget_attributes') }}/>
         </div>
     {% endspaceless %}
 {% endblock slider_widget %}
