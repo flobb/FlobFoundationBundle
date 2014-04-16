@@ -32,6 +32,6 @@
 	"suggest" : {
 		"knplabs/knp-paginator-bundle" : "FoundationBundle can styles the pagination provided by KnpPaginatorBundle.",
 		"knplabs/knp-menu-bundle" : "FoundationBundle can styles the menus provided by KnpMenuBundle.",
-		"florianbelhomme/foundation-demo-bundle" : "Provides you a demo and exemples of the functionnalities of this bundle."
+		"florianbelhomme/foundation-demo-bundle" : "Provides you a demo and exemples of the functionnalities of the foundation bundle."
 	}
 }

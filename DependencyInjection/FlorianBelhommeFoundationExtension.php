@@ -31,12 +31,15 @@ class FlorianBelhommeFoundationExtension extends Extension implements PrependExt
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
-        if (isset($bundles['KnpPaginatorBundle'])) {
+        // Load a Twig extension if KNP Menu is enabled
+        if (isset($bundles['KnpMenuBundle'])) {
+
             $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
             $loader->load('services_menu.yml');
-        }
 
-        $container->setParameter('florian_belhomme_foundation.template.breadcrumb', $config['template']['breadcrumb']);
+            $container->setParameter('florian_belhomme_foundation.template.breadcrumb', $config['template']['breadcrumb']);
+
+        }
     }
     
     /**
@@ -65,7 +68,7 @@ class FlorianBelhommeFoundationExtension extends Extension implements PrependExt
                 $container->prependExtensionConfig('knp_menu', array('twig' => array('template' => $config['template']['knp_menu'])));
             }
             else {
-                throw new InvalidConfigurationException('You need to enable Twig Bundle and KNP Menu Bundle to theme form or set the configuration of florian_belhomme_foundation:theme:knp_menu to false');
+                throw new InvalidConfigurationException('You need to enable Twig Bundle and KNP Menu Bundle to theme menu or set the configuration of florian_belhomme_foundation:theme:knp_menu to false');
             }
         }
 
@@ -75,7 +78,7 @@ class FlorianBelhommeFoundationExtension extends Extension implements PrependExt
                 $container->prependExtensionConfig('knp_paginator', array('template' => array('pagination' => $config['template']['knp_paginator'])));
             }
             else {
-                throw new InvalidConfigurationException('You need to enable Twig Bundle and KNP Paginator Bundle to theme form or set the configuration of florian_belhomme_foundation:theme:knp_paginator to false');
+                throw new InvalidConfigurationException('You need to enable Twig Bundle and KNP Paginator Bundle to theme pagination or set the configuration of florian_belhomme_foundation:theme:knp_paginator to false');
             }
         }
     }
