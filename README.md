@@ -31,7 +31,7 @@ First, edit your `composer.json` and add :
     ...
     "require": {
         ...
-        "florianbelhomme/foundation-bundle" : ">=1.0.3"
+        "florianbelhomme/foundation-bundle" : "1.0.*"
         ...
     }
     ...
@@ -153,11 +153,11 @@ If you want a specific template :
 
 ### Slider (form field type)
 
-In your form type :
+You can know use the slider in your forms.
+This is an exemple of the field :
 
 ```Php
-$builder->add('My text', 'text', array('label' => 'Default text'));
-$builder->add('My slider', 'slider', array('label' => 'Default text'));
+$builder->add('My slider', 'slider', array('label' => 'Slider'));
 ```
 
 ## Feedback
