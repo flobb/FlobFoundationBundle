@@ -154,10 +154,25 @@ If you want a specific template :
 ### Slider (form field type)
 
 You can know use the slider in your forms.
-This is an exemple of the field :
 
+The slider extend the [number field type](http://symfony.com/doc/current/reference/forms/types/number.html), so it have the same options.
+The additional options are :
+* start :
+type: integer / default: 0
+This specifies the starting point number.
+* end :
+type: integer / default: 100
+This specifies the highest number in the range.
+* step :
+type: integer / default: 1
+This specifies the cursor's incremental skip.
+* vertical :
+type: boolean / default: false
+If true, displays the slider vertically instead of horizontally.
+
+This is an exemple of the field :
 ```Php
-$builder->add('My slider', 'slider', array('label' => 'Slider'));
+$builder->add('My slider', 'slider', array('label' => 'Slider', 'start' => 10, 'end' => 20, 'step' => 2));
 ```
 
 ## Feedback

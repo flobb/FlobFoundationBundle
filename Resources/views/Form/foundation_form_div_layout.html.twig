@@ -6,7 +6,16 @@
 
 {% block slider_widget %}
     {% spaceless %}
-        <div class="range-slider" data-slider="{{ value }}" data-options="start: {{ start }}; end: {{ end }}; step: {{ step }};" {{ block('widget_container_attributes') }}>
+        {% set slideClass = 'range-slider' %}
+        {% if vertical is defined %}
+            {% set slideClass = slideClass ~ ' vertical-range' %}
+        {% endif %}
+        {% if attr.class is not defined %}
+            {% set attr = attr|merge({'class': slideClass}) %}
+        {% else %}
+            {% set attr = attr|merge({'class': slideClass ~ attr.class }) %}
+        {% endif %}
+        <div data-slider="{{ value }}" data-options="start: {{ start }}; end: {{ end }}; step: {{ step }};{% if vertical is defined %} vertical: true;{% endif %}" {{ block('widget_container_attributes') }}>
             <span class="range-slider-handle"></span>
             <span class="range-slider-active-segment"></span>
             <input type="hidden" {{ block('widget_attributes') }}/>

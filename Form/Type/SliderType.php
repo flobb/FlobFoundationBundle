@@ -20,28 +20,19 @@ class SliderType extends AbstractType
 
         parent::buildForm($builder, $options);
 
-        if (!isset($options['start'])) {
-            throw new LogicException('The option "start" must be set.');
+        foreach (array('start', 'end', 'step') as $o) {
+
+            if (!isset($options[$o])) {
+                throw new LogicException('The option "'.$o.'" must be set.');
+            }
+
+            if (!is_numeric($options[$o])) {
+                throw new LogicException('The option "'.$o.'" must be numeric.');
+            }
         }
 
-        if (!is_numeric($options['start'])) {
-            throw new LogicException('The option "start" must be numeric.');
-        }
-
-        if (!isset($options['end'])) {
-            throw new LogicException('The option "end" must be set.');
-        }
-
-        if (!is_numeric($options['end'])) {
-            throw new LogicException('The option "end" must be numeric.');
-        }
-
-        if (!isset($options['step'])) {
-            throw new LogicException('The option "step" must be set.');
-        }
-
-        if (!is_numeric($options['step'])) {
-            throw new LogicException('The option "step" must be numeric.');
+        if (!is_bool($options['vertical'])) {
+            throw new LogicException('The option "vertical" must be a boolean.');
         }
     }
 
@@ -50,9 +41,13 @@ class SliderType extends AbstractType
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        $view->vars['start'] = $options['start'];
-        $view->vars['end'] = $options['end'];
-        $view->vars['step'] = $options['step'];
+        foreach (array('start', 'end', 'step') as $o) {
+            $view->vars[$o] = $options[$o];
+        }
+
+        if ($options['vertical']) {
+            $view->vars['vertical'] = 1;
+        }
     }
 
     /**
@@ -61,9 +56,10 @@ class SliderType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'start' => 0,
-            'end'   => 100,
-            'step'  => 1
+            'start'    => 0,
+            'end'      => 100,
+            'step'     => 1,
+            'vertical' => false
         ));
     }
 
