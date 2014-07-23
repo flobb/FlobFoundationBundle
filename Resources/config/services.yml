@@ -1,6 +1,7 @@
 parameters:
 
     fbfb.form.type.slider.class: FlorianBelhomme\Bundle\FoundationBundle\Form\Type\SliderType
+    fbfb.form.type.switch.class: FlorianBelhomme\Bundle\FoundationBundle\Form\Type\SwitchType
 
 services:
 
@@ -8,3 +9,8 @@ services:
             class: %fbfb.form.type.slider.class%
             tags:
                 - { name: form.type, alias: slider }
+
+    fbfb.form.type.switch:
+            class: %fbfb.form.type.switch.class%
+            tags:
+                - { name: form.type, alias: switch }

@@ -175,6 +175,17 @@ This is an exemple of the field :
 $builder->add('My slider', 'slider', array('label' => 'Slider', 'start' => 10, 'end' => 20, 'step' => 2));
 ```
 
+### Switch (form field type)
+
+You can know use the switch in your forms.
+
+The switch extend the [choice field type](http://symfony.com/doc/current/reference/forms/types/number.html), so it have the same options. But you can't set the option "expanded" to false (cannot be a select).
+
+This is an exemple of the field :
+```Php
+$builder->add('switch_radio', 'switch', array('label' => 'Switch (as radio)', 'choices' => array(1 => 'Choice 1', 2 => 'Choice 2', 3 => 'Obi wan kenobi'), 'multiple' => false));
+```
+
 ## Feedback
 
 **Please provide feedback!**
