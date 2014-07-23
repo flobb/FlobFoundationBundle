@@ -1,96 +1,61 @@
 {% extends 'form_div_layout.html.twig' %}
 
 
-{# Widgets #}
-
-
-{% block slider_widget %}
-    {% spaceless %}
-        {% set slideClass = 'range-slider' %}
-        {% if vertical is defined %}
-            {% set slideClass = slideClass ~ ' vertical-range' %}
-        {% endif %}
-        {% if attr.class is not defined %}
-            {% set attr = attr|merge({'class': slideClass}) %}
-        {% else %}
-            {% set attr = attr|merge({'class': slideClass ~ attr.class }) %}
-        {% endif %}
-        <div data-slider="{{ value }}" data-options="start: {{ start }}; end: {{ end }}; step: {{ step }};{% if vertical is defined %} vertical: true;{% endif %}" {{ block('widget_container_attributes') }}>
-            <span class="range-slider-handle"></span>
-            <span class="range-slider-active-segment"></span>
-            <input type="hidden" {{ block('widget_attributes') }}/>
-        </div>
-    {% endspaceless %}
-{% endblock slider_widget %}
-
-
 {# Rows #}
 
 
 {% block form_start %}
-{% spaceless %}
-  {% if attr.class is not defined %}
-    {% set attr = attr|merge({'class': 'custom'}) %}
-  {% else %}
-     {% set attr = attr|merge({'class': 'custom ' ~ attr.class }) %}
-  {% endif %}
-  {{ parent() }}
-{% endspaceless %}
+    {% if attr.class is not defined %}
+        {% set attr = attr|merge({'class': 'custom'}) %}
+    {% else %}
+        {% set attr = attr|merge({'class': 'custom ' ~ attr.class }) %}
+    {% endif %}
+    {{ parent() }}
 {% endblock form_start %}
 
 
 {% block form_row %}
-{% spaceless %}
-  {% if class_row is not defined %}
-    {% set class_row = ['row'] %}
-  {% else %}
-    {% set class_row = ['row']|merge(class_row) %}
-     {% endif %}
-  {% if errors|length > 0 %}
-    {% set class_row = class_row|merge(['error']) %}
-  {% endif %}
-  <div class="{{ class_row|join(' ') }}">
-    <div class="columns">
-        {% if collapse_row is defined %}<div class="row collapse">{% endif %}
-        {{ form_label(form) }}
-        {{ form_widget(form) }}
-        {{ block('form_widget_errors') }}
-        {% if collapse_row is defined %}</div>{% endif %}
+    {% if class_row is not defined %}
+        {% set class_row = ['row'] %}
+    {% else %}
+        {% set class_row = ['row']|merge(class_row) %}
+    {% endif %}
+    {% if errors|length > 0 %}
+        {% set class_row = class_row|merge(['error']) %}
+    {% endif %}
+    <div class="{{ class_row|join(' ') }}">
+        <div class="columns">
+            {% if collapse_row is defined %}<div class="row collapse">{% endif %}
+                {{ form_label(form) }}
+                {{ form_widget(form) }}
+                {{ block('form_widget_errors') }}
+                {% if collapse_row is defined %}</div>{% endif %}
+        </div>
     </div>
-  </div>
-{% endspaceless %}
 {% endblock form_row %}
 
 
 {% block money_row %}
-{% spaceless %}
-  {% set collapse_row = true %}
-  {{ block('form_row') }}
-{% endspaceless %}
+    {% set collapse_row = true %}
+    {{ block('form_row') }}
 {% endblock money_row %}
 
 
 {% block url_row %}
-{% spaceless %}
-  {% set collapse_row = true %}
-  {{ block('form_row') }}
-{% endspaceless %}
+    {% set collapse_row = true %}
+    {{ block('form_row') }}
 {% endblock url_row %}
 
 
 {% block percent_row %}
-{% spaceless %}
-  {% set collapse_row = true %}
-  {{ block('form_row') }}
-{% endspaceless %}
+    {% set collapse_row = true %}
+    {{ block('form_row') }}
 {% endblock percent_row %}
 
 
 {% block search_row %}
-{% spaceless %}
-  {% set collapse_row = true %}
-  {{ block('form_row') }}
-{% endspaceless %}
+    {% set collapse_row = true %}
+    {{ block('form_row') }}
 {% endblock search_row %}
 
 
@@ -98,62 +63,54 @@
 
 
 {% block date_widget %}
-{% spaceless %}
     {% if widget == 'single_text' %}
         {{ block('form_widget_simple') }}
     {% else %}
-      {% if attr.class is defined %}
-         {% set attr = attr|merge({'class': 'row ' ~ attr.class }) %}
-       {% else %}
-        {% set attr = attr|merge({'class': 'row'}) %}
-       {% endif %}
+        {% if attr.class is defined %}
+            {% set attr = attr|merge({'class': 'row ' ~ attr.class }) %}
+        {% else %}
+            {% set attr = attr|merge({'class': 'row'}) %}
+        {% endif %}
         <div {{ block('widget_container_attributes') }}>
             {{ date_pattern|replace({
-                '{{ year }}':  '<div class="medium-2 large-1 columns">' ~ form_widget(form.year) ~ '</div>',
-                '{{ month }}': '<div class="medium-2 large-1 columns">' ~ form_widget(form.month) ~ '</div>',
-                '{{ day }}':   '<div class="medium-2 large-1 columns">' ~ form_widget(form.day) ~ '</div>'
+            '{{ year }}':  '<div class="medium-2 large-2 columns">' ~ form_widget(form.year) ~ '</div>',
+            '{{ month }}': '<div class="medium-2 large-2 columns">' ~ form_widget(form.month) ~ '</div>',
+            '{{ day }}':   '<div class="medium-2 large-2 columns">' ~ form_widget(form.day) ~ '</div>'
             })|raw }}
             <div class="medium-3 large-9 columns"></div>
         </div>
     {% endif %}
-{% endspaceless %}
 {% endblock date_widget %}
 
 
 {% block time_widget %}
-{% spaceless %}
     {% if widget == 'single_text' %}
         {{ block('form_widget_simple') }}
     {% else %}
         {% set vars = widget == 'text' ? { 'attr': { 'size': 1 }} : {} %}
         {% if attr.class is defined %}
-         {% set attr = attr|merge({'class': 'row ' ~ attr.class }) %}
-       {% else %}
-          {% set attr = attr|merge({'class': 'row'}) %}
-       {% endif %}
-        {% set spacer = 11 %}
-        {% set spacermedium = 10 %}
+            {% set attr = attr|merge({'class': 'row ' ~ attr.class }) %}
+        {% else %}
+            {% set attr = attr|merge({'class': 'row'}) %}
+        {% endif %}
+        {% set spacer = 10 %}
         <div {{ block('widget_container_attributes') }}>
-            <div class="medium-2 large-1 columns">{{ form_widget(form.hour, vars) }}</div>
+            <div class="medium-2 large-2 columns">{{ form_widget(form.hour, vars) }}</div>
             {% if with_minutes %}
-              {% set spacer = spacer - 1 %}
-              {% set spacermedium = spacermedium - 2 %}
-              <div class="medium-2 large-1 columns">{{ form_widget(form.minute, vars) }}</div>
+                {% set spacer = spacer - 2 %}
+                <div class="medium-2 large-2 columns">{{ form_widget(form.minute, vars) }}</div>
             {% endif %}
             {% if with_seconds %}
-              {% set spacer = spacer - 1 %}
-              {% set spacermedium = spacermedium - 2 %}
-              <div class="medium-2 large-1 columns">{{ form_widget(form.second, vars) }}</div>
+                {% set spacer = spacer - 2 %}
+                <div class="medium-2 large-2 columns">{{ form_widget(form.second, vars) }}</div>
             {% endif %}
-            <div class="medium-{{ spacermedium }} large-{{ spacer }} columns"></div>
+            <div class="medium-{{ spacer }} large-{{ spacer }} columns"></div>
         </div>
     {% endif %}
-{% endspaceless %}
 {% endblock time_widget %}
 
 
 {% block datetime_widget %}
-{% spaceless %}
     {% if widget == 'single_text' %}
         {{ block('form_widget_simple') }}
     {% else %}
@@ -164,91 +121,82 @@
             {{ form_widget(form.time) }}
         </div>
     {% endif %}
-{% endspaceless %}
 {% endblock datetime_widget %}
 
 
 {% block money_widget %}
-{% spaceless %}
-  <div class="small-11 medium-11 large-11 columns">{{ block('form_widget_simple') }}</div>
-  <div class="small-1 medium-1 large-1 columns"><span class="postfix">{{ money_pattern|replace({ ' {{ widget }}': ''})|raw }}</span></div>
-{% endspaceless %}
+    <div class="small-11 medium-11 large-11 columns">{{ block('form_widget_simple') }}</div>
+    <div class="small-1 medium-1 large-1 columns"><span class="postfix">{{ money_pattern|replace({ ' {{ widget }}': ''})|raw }}</span></div>
 {% endblock money_widget %}
 
 
 {% block url_widget %}
-{% spaceless %}
-  {% set type = type|default('url') %}
-  <div class="small-1 medium-1 large-1 columns"><span class="prefix">http://</span></div>
-  <div class="small-11 medium-11 large-11 columns">{{ block('form_widget_simple') }}</div>
-{% endspaceless %}
+    {% set type = type|default('url') %}
+    <div class="small-1 medium-1 large-1 columns"><span class="prefix">http://</span></div>
+    <div class="small-11 medium-11 large-11 columns">{{ block('form_widget_simple') }}</div>
 {% endblock url_widget %}
 
 
 {% block percent_widget %}
-{% spaceless %}
     {% set type = type|default('text') %}
     <div class="small-11 medium-11 large-11 columns">{{ block('form_widget_simple') }}</div>
     <div class="small-1 medium-1 large-1 columns"><span class="postfix">%</span></div>
-{% endspaceless %}
 {% endblock percent_widget %}
 
 
 {% block search_widget %}
-{% spaceless %}
     {% set type = type|default('search') %}
     <div class="small-11 medium-11 large-11 columns">{{ block('form_widget_simple') }}</div>
     <div class="small-1 medium-1 large-1 columns"><span class="postfix"><i class="fa fa-search"></i></span></div>
-{% endspaceless %}
 {% endblock search_widget %}
 
 
-{% block choice_widget_expanded %}
-{% spaceless %}
+{% block choice_widget_expanded -%}
     <div {{ block('widget_container_attributes') }}>
-    {% for child in form %}
-        {% if child.vars.label is not sameas(false) %}
-            {% set label = child.vars.label %}
-            {% set label_attr = child.vars.label_attr %}
-            {% if not child.vars.compound %}
-                {% set label_attr = label_attr|merge({'for': child.vars.id}) %}
+        {% for child in form %}
+            {% if is_switch is defined %}
+                {{ form_label(child) }}
+                <div class="switch">
+                    {{ form_widget(child) }}
+                    <label for="{{ child.vars.id }}"></label>
+                </div>
+            {% else %}
+                {{ form_widget(child) }}
+                {{ form_label(child) }}
             {% endif %}
-            {% if child.vars.required %}
-                {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
-            {% endif %}
-            {% if label is empty %}
-                {% set label = child.vars.name|humanize %}
-            {% endif %}
-            {{ form_widget(child) }}
-            <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ label|trans({}, child.vars.translation_domain) }}</label>
-        {% else %}
-            {{ form_widget(child) }}
-        {% endif %}
-    {% endfor %}
+        {% endfor %}
     </div>
-{% endspaceless %}
 {% endblock choice_widget_expanded %}
 
 
-{% block checkbox_widget %}
-{% spaceless %}
-    <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
-{% endspaceless %}
-{% endblock checkbox_widget %}
+{% block switch_widget %}
+    {% set is_switch = true %}
+    {{ block('choice_widget_expanded') }}
+{% endblock switch_widget %}
 
 
-{% block radio_widget %}
-{% spaceless %}
-    <input type="radio" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
-{% endspaceless %}
-{% endblock radio_widget %}
+{% block slider_widget %}
+    {% set slideClass = 'range-slider' %}
+    {% if vertical is defined %}
+        {% set slideClass = slideClass ~ ' vertical-range' %}
+    {% endif %}
+    {% if attr.class is not defined %}
+        {% set attr = attr|merge({'class': slideClass}) %}
+    {% else %}
+        {% set attr = attr|merge({'class': slideClass ~ attr.class }) %}
+    {% endif %}
+    <div data-slider="{{ value }}" data-options="start: {{ start }}; end: {{ end }}; step: {{ step }};{% if vertical is defined %} vertical: true;{% endif %}" {{ block('widget_container_attributes') }}>
+        <span class="range-slider-handle"></span>
+        <span class="range-slider-active-segment"></span>
+        <input type="hidden" {{ block('widget_attributes') }}/>
+    </div>
+{% endblock slider_widget %}
 
 
 {# Misc #}
 
 
 {% block form_errors %}
-{% spaceless %}
     {% if errors|length > 0 %}
         <div class="row">
             <div class="columns">
@@ -263,18 +211,15 @@
             </div>
         </div>
     {% endif %}
-{% endspaceless %}
 {% endblock form_errors %}
 
 
 {% block form_widget_errors %}
-{% spaceless %}
-  {% if errors|length > 0 %}
-     <small class="error">
-    {% for error in errors %}
-       {{ error.message }}{% if not loop.last %}<br />{% endif %}
-    {% endfor %}
-    </small>
-  {% endif %}
-{% endspaceless %}
+    {% if errors|length > 0 %}
+        <small class="error">
+            {% for error in errors %}
+                {{ error.message }}{% if not loop.last %}<br />{% endif %}
+            {% endfor %}
+        </small>
+    {% endif %}
 {% endblock form_widget_errors %}
