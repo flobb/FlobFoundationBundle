@@ -8,26 +8,28 @@ use Knp\Menu\ItemInterface;
 use Knp\Menu\MenuItem;
 use Knp\Menu\Twig\Helper;
 
-class MenuExtension extends \Twig_Extension
-{
+class MenuExtension extends \Twig_Extension {
     
     protected $container;
     protected $helper;
-    
+
     /**
      * Constructor
      *
-     * @param Symfony\Component\DependencyInjection\ContainerInterface $container
-     * @param Knp\Menu\Twig\Helper $helper
+     * @param ContainerInterface $container
+     * @param Helper $helper
      */
-    public function __construct(ContainerInterface $container, Helper $helper)
-    {
+    public function __construct(ContainerInterface $container, Helper $helper) {
         $this->container = $container;
         $this->helper = $helper;
     }
-    
-    public function getFunctions()
-    {
+
+    /**
+     * Function list of the extension
+     *
+     * @return array
+     */
+    public function getFunctions() {
         return array(
             'fbfb_breadcrumb_render' => new \Twig_Function_Method($this, 'renderBreadcrumb', array('is_safe' => array('html')))
         );
@@ -36,14 +38,13 @@ class MenuExtension extends \Twig_Extension
     /**
      * Renders a KNP menu as a breadcrumb
      *
-     * @param string
+     * @param $menu
      * @param array $options
      * @return string
+     * @throws \InvalidArgumentException
      */
-    public function renderBreadcrumb($menu, array $options = array())
-    {
-        
-        $knpHelper = $this->container->get('knp_menu.helper');
+    public function renderBreadcrumb($menu, array $options = array()) {
+
         $options = array_merge(array('template' => $this->container->getParameter('florian_belhomme_foundation.template.breadcrumb')), $options);
         
         // Look for the KNP menu
@@ -80,8 +81,7 @@ class MenuExtension extends \Twig_Extension
     /**
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return 'fbfb_menu';
     }
 }
