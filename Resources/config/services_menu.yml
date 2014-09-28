@@ -10,8 +10,8 @@ services:
     
     fbfb.twig_extension:
         class: %fbfb.twig_extension.class%
-        arguments: 
-            - @service_container
+        arguments:
             - @knp_menu.helper
+            - %florian_belhomme_foundation.template.breadcrumb%
         tags:
             - { name: twig.extension }
