@@ -9,9 +9,9 @@ use Knp\Menu\MenuItem;
 use Knp\Menu\Twig\Helper;
 
 class MenuExtension extends \Twig_Extension {
-    
-    protected $container;
+
     protected $helper;
+    protected $template;
 
     /**
      * Constructor
@@ -19,9 +19,9 @@ class MenuExtension extends \Twig_Extension {
      * @param ContainerInterface $container
      * @param Helper $helper
      */
-    public function __construct(ContainerInterface $container, Helper $helper) {
-        $this->container = $container;
+    public function __construct(Helper $helper, $template) {
         $this->helper = $helper;
+        $this->template = $template;
     }
 
     /**
@@ -45,7 +45,7 @@ class MenuExtension extends \Twig_Extension {
      */
     public function renderBreadcrumb($menu, array $options = array()) {
 
-        $options = array_merge(array('template' => $this->container->getParameter('florian_belhomme_foundation.template.breadcrumb')), $options);
+        $options = array_merge(array('template' => $this->template), $options);
         
         // Look for the KNP menu
         if (!$menu instanceof ItemInterface) {

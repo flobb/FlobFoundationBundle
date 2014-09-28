@@ -199,4 +199,3 @@ Maintained by [Florian Belhomme](http://florianbelhomme.com).
 - jQuery is licensed under the [MIT License](http://opensource.org/licenses/MIT)
 - Foundation is licensed under the [MIT License](http://opensource.org/licenses/MIT)
 - The Font Awesome, by Dave Gandy, is licensed by [SIL OFL 1.1 Licence](http://scripts.sil.org/OFL) and his sources files by the [MIT License](http://opensource.org/licenses/mit-license.html)
-
