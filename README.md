@@ -56,7 +56,7 @@ class AppKernel extends Kernel
 }
 ```
 
-You now need to add the librairies to your project.
+You now need to add the libraries to your project.
 
 The easy way to do it (but there are other ways to do so):
 
