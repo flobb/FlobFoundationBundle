@@ -32,7 +32,6 @@ class FlorianBelhommeFoundationExtension extends Extension implements PrependExt
             $loader->load('services_menu.yml');
 
             $container->setParameter('florian_belhomme_foundation.template.breadcrumb', $config['template']['breadcrumb']);
-
         }
     }
     
