@@ -12,6 +12,7 @@ services:
         class: %fbfb.twig_extension.class%
         arguments:
             - @knp_menu.helper
+            - @twig
             - %florian_belhomme_foundation.template.breadcrumb%
         tags:
             - { name: twig.extension }

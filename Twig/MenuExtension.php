@@ -2,8 +2,6 @@
 
 namespace FlorianBelhomme\Bundle\FoundationBundle\Twig;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
-
 use Knp\Menu\ItemInterface;
 use Knp\Menu\MenuItem;
 use Knp\Menu\Twig\Helper;
@@ -11,16 +9,17 @@ use Knp\Menu\Twig\Helper;
 class MenuExtension extends \Twig_Extension {
 
     protected $helper;
+    protected $twig;
     protected $template;
 
     /**
      * Constructor
      *
-     * @param ContainerInterface $container
      * @param Helper $helper
      */
-    public function __construct(Helper $helper, $template) {
+    public function __construct(Helper $helper, \Twig_Environment $twig, $template) {
         $this->helper = $helper;
+        $this->twig = $twig;
         $this->template = $template;
     }
 
@@ -71,7 +70,7 @@ class MenuExtension extends \Twig_Extension {
         
         // Load the template if needed
         if (!$options['template'] instanceof \Twig_Template) {
-            $options['template'] = $this->container->get('twig')->loadTemplate($options['template']);
+            $options['template'] = $this->twig->loadTemplate($options['template']);
         }
         
         return $options['template']->renderBlock('root', array('breadcrumbs' => $breadcrumbs, 'options' => $options));
