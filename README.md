@@ -8,7 +8,7 @@ This bundle integrates the functionnalities of the responsive framework Foundati
 
 **BE AWARE: THIS BUNDLE WILL NOT ADD THE FOUNDATION FRAMEWORK BUT RATHER FUNCTIONALITIES FOR SYMFONY TO WORK WITH IT**
 
-To include all the librairies you can use a CDN like [CloudFlare CDN](http://cdnjs.com/).
+To include all the libraries you can use a CDN like [CloudFlare CDN](http://cdnjs.com/).
 
 ## Requirements
 
