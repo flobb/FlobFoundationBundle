@@ -17,7 +17,6 @@ class SliderType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
         parent::buildForm($builder, $options);
 
         foreach (array('start', 'end', 'step') as $o) {
