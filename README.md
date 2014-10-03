@@ -2,9 +2,12 @@
 
 By [Florian Belhomme](http://florianbelhomme.com)
 
+[![knpbundles.com](http://knpbundles.com/florianbelhomme/FoundationBundle/badge-short)](http://knpbundles.com/florianbelhomme/FoundationBundle)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/6a3c1c7a-5091-40a8-a302-9b3c6f74b80a/small.png)](https://insight.sensiolabs.com/projects/6a3c1c7a-5091-40a8-a302-9b3c6f74b80a)
+
 ## About
 
-This bundle integrates the functionnalities of the responsive framework Foundation, from ZURB (thanks guys), into Symfony2 by providing templates, Twig extensions, services and commands. You can quickly setup a responsive theme for an interface for your projet. It will have the "look'n'feel", the responsiveness and the simplicity of Foundation.
+This bundle integrates the functionalities of the responsive framework Foundation, from ZURB (thanks guys), into Symfony by providing templates, Twig extensions, services and commands. You can quickly setup a responsive theme for an interface for your projet. It will have the "look'n'feel", the responsiveness and the simplicity of Foundation.
 
 **BE AWARE: THIS BUNDLE WILL NOT ADD THE FOUNDATION FRAMEWORK BUT RATHER FUNCTIONALITIES FOR SYMFONY TO WORK WITH IT**
 
@@ -31,7 +34,7 @@ First, edit your `composer.json` and add :
     ...
     "require": {
         ...
-        "florianbelhomme/foundation-bundle" : "1.0.*"
+        "florianbelhomme/foundation-bundle" : "~1.0"
         ...
     }
     ...
