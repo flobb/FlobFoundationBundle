@@ -19,7 +19,7 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('florian_belhomme_foundation');
-        
+
         $rootNode
             ->children()
                 ->arrayNode('theme')

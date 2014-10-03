@@ -3,11 +3,11 @@
 #
 
 parameters:
-    
+
     fbfb.twig_extension.class: FlorianBelhomme\Bundle\FoundationBundle\Twig\MenuExtension
 
 services:
-    
+
     fbfb.twig_extension:
         class: %fbfb.twig_extension.class%
         arguments:

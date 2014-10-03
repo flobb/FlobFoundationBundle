@@ -11,7 +11,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 class FlorianBelhommeFoundationExtension extends Extension implements PrependExtensionInterface
 {
-    
+
     /**
      * {@inheritDoc}
      */
@@ -21,7 +21,7 @@ class FlorianBelhommeFoundationExtension extends Extension implements PrependExt
 
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
-        
+
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
@@ -35,7 +35,7 @@ class FlorianBelhommeFoundationExtension extends Extension implements PrependExt
 
         }
     }
-    
+
     /**
      * {@inheritDoc}
      */
@@ -45,13 +45,12 @@ class FlorianBelhommeFoundationExtension extends Extension implements PrependExt
 
         $configs = $container->getExtensionConfig($this->getAlias());
         $config = $this->processConfiguration(new Configuration(), $configs);
-        
+
         // This will change the Twig configuration if needed (default template path for exemple)
         if ($config['theme']['form']) {
             if (isset($bundles['TwigBundle'])) {
                 $container->prependExtensionConfig('twig', array('form' => array('resources' => array($config['template']['form']))));
-            }
-            else {
+            } else {
                 throw new InvalidConfigurationException('You need to enable Twig Bundle to theme form or set the configuration of florian_belhomme_foundation:theme:form to false');
             }
         }
@@ -60,8 +59,7 @@ class FlorianBelhommeFoundationExtension extends Extension implements PrependExt
         if ($config['theme']['knp_menu']) {
             if ((isset($bundles['TwigBundle'])) && (isset($bundles['KnpMenuBundle'])) ) {
                 $container->prependExtensionConfig('knp_menu', array('twig' => array('template' => $config['template']['knp_menu'])));
-            }
-            else {
+            } else {
                 throw new InvalidConfigurationException('You need to enable Twig Bundle and KNP Menu Bundle to theme menu or set the configuration of florian_belhomme_foundation:theme:knp_menu to false');
             }
         }
@@ -70,8 +68,7 @@ class FlorianBelhommeFoundationExtension extends Extension implements PrependExt
         if ($config['theme']['knp_paginator']) {
             if ((isset($bundles['TwigBundle'])) && (isset($bundles['KnpPaginatorBundle']))) {
                 $container->prependExtensionConfig('knp_paginator', array('template' => array('pagination' => $config['template']['knp_paginator'])));
-            }
-            else {
+            } else {
                 throw new InvalidConfigurationException('You need to enable Twig Bundle and KNP Paginator Bundle to theme pagination or set the configuration of florian_belhomme_foundation:theme:knp_paginator to false');
             }
         }
