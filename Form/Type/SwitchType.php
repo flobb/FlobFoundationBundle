@@ -9,13 +9,11 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class SwitchType extends AbstractType
 {
-
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
         parent::buildForm($builder, $options);
 
         if (!$options['expanded']) {

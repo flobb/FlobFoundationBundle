@@ -6,8 +6,8 @@ use Knp\Menu\ItemInterface;
 use Knp\Menu\MenuItem;
 use Knp\Menu\Twig\Helper;
 
-class MenuExtension extends \Twig_Extension {
-
+class MenuExtension extends \Twig_Extension
+{
     protected $helper;
     protected $twig;
     protected $template;
@@ -17,7 +17,8 @@ class MenuExtension extends \Twig_Extension {
      *
      * @param Helper $helper
      */
-    public function __construct(Helper $helper, \Twig_Environment $twig, $template) {
+    public function __construct(Helper $helper, \Twig_Environment $twig, $template)
+    {
         $this->helper = $helper;
         $this->twig = $twig;
         $this->template = $template;
@@ -28,7 +29,8 @@ class MenuExtension extends \Twig_Extension {
      *
      * @return array
      */
-    public function getFunctions() {
+    public function getFunctions()
+    {
         return array(
             'fbfb_breadcrumb_render' => new \Twig_Function_Method($this, 'renderBreadcrumb', array('is_safe' => array('html')))
         );
@@ -38,14 +40,14 @@ class MenuExtension extends \Twig_Extension {
      * Renders a KNP menu as a breadcrumb
      *
      * @param $menu
-     * @param array $options
+     * @param  array                     $options
      * @return string
      * @throws \InvalidArgumentException
      */
-    public function renderBreadcrumb($menu, array $options = array()) {
-
+    public function renderBreadcrumb($menu, array $options = array())
+    {
         $options = array_merge(array('template' => $this->template), $options);
-        
+
         // Look for the KNP menu
         if (!$menu instanceof ItemInterface) {
             $path = array();
@@ -56,31 +58,31 @@ class MenuExtension extends \Twig_Extension {
                 $path = $menu;
                 $menu = array_shift($path);
             }
-        
+
             $menu = $this->helper->get($menu, $path);
         }
-        
+
         // Build an array from the menu item (be aware : BreadcrumbsArray is deprecated on KNP 2)
         if ($menu instanceof MenuItem) {
             $breadcrumbs = $menu->getCurrentItem()->getBreadcrumbsArray();
-        }
-        else {
+        } else {
             $breadcrumbs = $menu;
         }
-        
+
         // Load the template if needed
         if (!$options['template'] instanceof \Twig_Template) {
             $options['template'] = $this->twig->loadTemplate($options['template']);
         }
-        
+
         return $options['template']->renderBlock('root', array('breadcrumbs' => $breadcrumbs, 'options' => $options));
-        
+
     }
 
     /**
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return 'fbfb_menu';
     }
 }

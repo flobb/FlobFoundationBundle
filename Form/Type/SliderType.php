@@ -11,13 +11,11 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class SliderType extends AbstractType
 {
-
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
         parent::buildForm($builder, $options);
 
         foreach (array('start', 'end', 'step') as $o) {
