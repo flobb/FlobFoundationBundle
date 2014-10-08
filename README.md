@@ -3,6 +3,7 @@
 By [Florian Belhomme](http://florianbelhomme.com)
 
 [![knpbundles.com](http://knpbundles.com/florianbelhomme/FoundationBundle/badge-short)](http://knpbundles.com/florianbelhomme/FoundationBundle)
+
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/6a3c1c7a-5091-40a8-a302-9b3c6f74b80a/small.png)](https://insight.sensiolabs.com/projects/6a3c1c7a-5091-40a8-a302-9b3c6f74b80a)
 
 ## About
@@ -67,17 +68,17 @@ The easy way to do it (but there are other ways to do so):
 <html>
     <head>
         ...
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.2.2/css/normalize.min.css" type="text/css" />
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.2.2/css/foundation.min.css" type="text/css" />
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.5/css/normalize.min.css" type="text/css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.5/css/foundation.min.css" type="text/css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" type="text/css" />
         <link rel="stylesheet" href="{{ asset('bundles/florianbelhommefoundation/css/foundationtosymfony.css') }}" type="text/css" />
-        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
         ...
     </head>
     <body>
         ...
-        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.2.2/js/foundation.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.5/js/foundation.min.js"></script>
         <script type="text/javascript" src="{{ asset('bundles/florianbelhommefoundation/js/foundationtosymfony.js') }}"></script>
     </body>
 </html>
