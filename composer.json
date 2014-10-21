@@ -2,7 +2,8 @@
 	"name" : "florianbelhomme/foundation-bundle",
 	"description" : "Integrates the functionnalities of the responsive framework Foundation, from Zurb, into Symfony2 by providing templates, Twig extensions, services and commands.",
 	"type" : "symfony-bundle",
-	"authors" : [{
+	"authors" : [
+        {
 			"name" : "Florian Belhomme",
 			"email" : "contact@florianbelhomme.com",
 			"homepage" : "http://florianbelhomme.com",
@@ -24,11 +25,8 @@
 		"php" : ">=5.3.3"
 	},
 	"autoload" : {
-		"psr-0" : {
-			"FlorianBelhomme\\Bundle\\FoundationBundle" : ""
-		}
+        "psr-4": { "FlorianBelhomme\\Bundle\\FoundationBundle": "" }
 	},
-	"target-dir" : "FlorianBelhomme/Bundle/FoundationBundle",
 	"suggest" : {
 		"knplabs/knp-paginator-bundle" : "FoundationBundle can styles the pagination provided by KnpPaginatorBundle.",
 		"knplabs/knp-menu-bundle" : "FoundationBundle can styles the menus provided by KnpMenuBundle.",
