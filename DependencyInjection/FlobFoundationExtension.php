@@ -1,6 +1,6 @@
 <?php
 
-namespace FlorianBelhomme\Bundle\FoundationBundle\DependencyInjection;
+namespace Flob\Bundle\FoundationBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
@@ -9,7 +9,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class FlorianBelhommeFoundationExtension extends Extension implements PrependExtensionInterface
+class FlobFoundationExtension extends Extension implements PrependExtensionInterface
 {
 
     /**

@@ -1,5 +1,5 @@
 {
-	"name" : "florianbelhomme/foundation-bundle",
+	"name" : "flob/foundation-bundle",
 	"description" : "Integrates the functionnalities of the responsive framework Foundation, from Zurb, into Symfony2 by providing templates, Twig extensions, services and commands.",
 	"type" : "symfony-bundle",
 	"authors" : [
@@ -25,11 +25,11 @@
 		"php" : ">=5.3.3"
 	},
 	"autoload" : {
-        "psr-4": { "FlorianBelhomme\\Bundle\\FoundationBundle": "" }
+        "psr-4": { "Flob\\Bundle\\FoundationBundle\\": "" }
 	},
 	"suggest" : {
 		"knplabs/knp-paginator-bundle" : "FoundationBundle can styles the pagination provided by KnpPaginatorBundle.",
 		"knplabs/knp-menu-bundle" : "FoundationBundle can styles the menus provided by KnpMenuBundle.",
-		"florianbelhomme/foundation-demo-bundle" : "Provides you a demo and exemples of the functionnalities of the foundation bundle."
+		"Flob/foundation-demo-bundle" : "Provides you a demo and exemples of the functionnalities of the foundation bundle."
 	}
 }

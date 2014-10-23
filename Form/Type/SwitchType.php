@@ -1,6 +1,6 @@
 <?php
 
-namespace FlorianBelhomme\Bundle\FoundationBundle\Form\Type;
+namespace Flob\Bundle\FoundationBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Exception\LogicException;

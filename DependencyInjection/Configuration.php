@@ -1,6 +1,6 @@
 <?php
 
-namespace FlorianBelhomme\Bundle\FoundationBundle\DependencyInjection;
+namespace Flob\Bundle\FoundationBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -18,7 +18,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('florian_belhomme_foundation');
+        $rootNode = $treeBuilder->root('flob_foundation');
 
         $rootNode
             ->children()
@@ -33,10 +33,10 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('template')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('form')->defaultValue('FlorianBelhommeFoundationBundle:Form:foundation_form_div_layout.html.twig')->end()
-                        ->scalarNode('breadcrumb')->defaultValue('FlorianBelhommeFoundationBundle:Menu:foundation_breadcrumb.html.twig')->end()
-                        ->scalarNode('knp_menu')->defaultValue('FlorianBelhommeFoundationBundle:Menu:foundation_knp_menu.html.twig')->end()
-                        ->scalarNode('knp_paginator')->defaultValue('FlorianBelhommeFoundationBundle:Pagination:foundation_sliding.html.twig')->end()
+                        ->scalarNode('form')->defaultValue('FlobFoundationBundle:Form:foundation_form_div_layout.html.twig')->end()
+                        ->scalarNode('breadcrumb')->defaultValue('FlobFoundationBundle:Menu:foundation_breadcrumb.html.twig')->end()
+                        ->scalarNode('knp_menu')->defaultValue('FlobFoundationBundle:Menu:foundation_knp_menu.html.twig')->end()
+                        ->scalarNode('knp_paginator')->defaultValue('FlobFoundationBundle:Pagination:foundation_sliding.html.twig')->end()
                     ->end()
                 ->end()
             ->end();

@@ -1,6 +1,6 @@
 <?php
 
-namespace FlorianBelhomme\Bundle\FoundationBundle\Twig;
+namespace Flob\Bundle\FoundationBundle\Twig;
 
 use Knp\Menu\ItemInterface;
 use Knp\Menu\MenuItem;
@@ -32,7 +32,7 @@ class MenuExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'fbfb_breadcrumb_render' => new \Twig_Function_Method($this, 'renderBreadcrumb', array('is_safe' => array('html')))
+            'flob_foundation_breadcrumb_render' => new \Twig_Function_Method($this, 'renderBreadcrumb', array('is_safe' => array('html')))
         );
     }
 
@@ -83,6 +83,6 @@ class MenuExtension extends \Twig_Extension
      */
     public function getName()
     {
-        return 'fbfb_menu';
+        return 'flob_foundation_menu';
     }
 }

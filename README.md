@@ -1,8 +1,8 @@
-# [Foundation Bundle](https://github.com/florianbelhomme/FoundationBundle)
+# [Flob Foundation Bundle](https://github.com/florianbelhomme/FoundationBundle)
 
 By [Florian Belhomme](http://florianbelhomme.com)
 
-[![knpbundles.com](http://knpbundles.com/florianbelhomme/FoundationBundle/badge-short)](http://knpbundles.com/florianbelhomme/FoundationBundle)
+[![knpbundles.com](http://knpbundles.com/Flob/FoundationBundle/badge-short)](http://knpbundles.com/Flob/FoundationBundle)
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/6a3c1c7a-5091-40a8-a302-9b3c6f74b80a/small.png)](https://insight.sensiolabs.com/projects/6a3c1c7a-5091-40a8-a302-9b3c6f74b80a)
 
@@ -13,6 +13,11 @@ This bundle integrates the functionalities of the responsive framework Foundatio
 **BE AWARE: THIS BUNDLE WILL NOT ADD THE FOUNDATION FRAMEWORK BUT RATHER FUNCTIONALITIES FOR SYMFONY TO WORK WITH IT**
 
 To include all the libraries you can use a CDN like [CloudFlare CDN](http://cdnjs.com/).
+
+## Changelog
+
+v2
+- Namespace renaming
 
 ## Requirements
 
@@ -35,7 +40,7 @@ First, edit your `composer.json` and add :
     ...
     "require": {
         ...
-        "florianbelhomme/foundation-bundle" : "~1.1"
+        "flob/foundation-bundle" : "~2.0"
         ...
     }
     ...
@@ -53,7 +58,7 @@ class AppKernel extends Kernel
     {
         $bundles = array(
             ...
-            new FlorianBelhomme\Bundle\FoundationBundle\FlorianBelhommeFoundationBundle(),
+            new Flob\Bundle\FoundationBundle\FlobFoundationBundle(),
             ...
         );
     }
@@ -71,7 +76,7 @@ The easy way to do it (but there are other ways to do so):
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.5/css/normalize.min.css" type="text/css" />
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.5/css/foundation.min.css" type="text/css" />
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" type="text/css" />
-        <link rel="stylesheet" href="{{ asset('bundles/florianbelhommefoundation/css/foundationtosymfony.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('bundles/Flobfoundation/css/foundationtosymfony.css') }}" type="text/css" />
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
         ...
     </head>
@@ -79,7 +84,7 @@ The easy way to do it (but there are other ways to do so):
         ...
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.5/js/foundation.min.js"></script>
-        <script type="text/javascript" src="{{ asset('bundles/florianbelhommefoundation/js/foundationtosymfony.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/Flobfoundation/js/foundationtosymfony.js') }}"></script>
     </body>
 </html>
 ```
@@ -93,17 +98,17 @@ Your project is ready!
 To automatically theme forms or other elements by default, go into the `app/config/config.yml` and add at the end:
 
 ```YAML
-florian_belhomme_foundation:
+flob_foundation:
     theme: { form: true, knp_menu: true, knp_paginator: true }
 ```
 
 If you want to do specific HTML markup that extends templates of this bundle:
 * create your template in your bundle
-* add `{% extends 'FlorianBelhommeFoundationBundle:Form:foundation_form_div_layout.html.twig' %}` at the top (the form template, for example)
+* add `{% extends 'FlobFoundationBundle:Form:foundation_form_div_layout.html.twig' %}` at the top (the form template, for example)
 * edit the `app/config/config.yml`:
 
 ```YAML
-florian_belhomme_foundation:
+flob_foundation:
     theme: { form: true, knp_menu: true, knp_paginator: true }
     template: { form: 'YourBundle:YourFolder:formtemplate.html.twig', breadcrumb: 'YourBundle:YourFolder:breadcrumbtemplate.html.twig', knp_menu: 'YourBundle:YourFolder:menutemplate.html.twig', knp_paginator: 'YourBundle:YourFolder:paginatortemplate.html.twig' }
 ```
@@ -115,13 +120,13 @@ However instead of setting it in the configuration, you can theme specific eleme
 
 ```Twig
 {# Form #}
-{% form_theme yourform 'FlorianBelhommeFoundationBundle:Form:foundation_form_div_layout.html.twig' %}
+{% form_theme yourform 'FlobFoundationBundle:Form:foundation_form_div_layout.html.twig' %}
 
 {# Menu #}
-{{ knp_menu_render('yourmenu', {'template' : 'FlorianBelhommeFoundationBundle:Menu:foundation_knp_menu.html.twig'}) }}
+{{ knp_menu_render('yourmenu', {'template' : 'FlobFoundationBundle:Menu:foundation_knp_menu.html.twig'}) }}
 
 {# Pagination #}
-{{ knp_pagination_render(yourpagination, 'FlorianBelhommeFoundationBundle:Pagination:foundation_sliding.html.twig') }}
+{{ knp_pagination_render(yourpagination, 'FlobFoundationBundle:Pagination:foundation_sliding.html.twig') }}
 ```
 
 ### Breadcrumb
@@ -146,13 +151,13 @@ public function createMyMenu(Request $request)
 * Then add this code in your template :
 
 ```Twig
-{{ fbfb_breadcrumb_render('yourknpmenu') }}
+{{ flob_foundation_breadcrumb_render('yourknpmenu') }}
 ```
 
 If you want a specific template :
 
 ```Twig
-{{ fbfb_breadcrumb_render('yourknpmenu', {'template' : 'YourBundle:YourFolder:breadcrumbtemplate.html.twig') }}
+{{ flob_foundation_breadcrumb_render('yourknpmenu', {'template' : 'YourBundle:YourFolder:breadcrumbtemplate.html.twig') }}
 ```
 
 ### Slider (form field type)
@@ -200,6 +205,3 @@ Maintained by [Florian Belhomme](http://florianbelhomme.com).
 ## License
 
 - This bundle is licensed under the [MIT License](http://opensource.org/licenses/MIT)
-- jQuery is licensed under the [MIT License](http://opensource.org/licenses/MIT)
-- Foundation is licensed under the [MIT License](http://opensource.org/licenses/MIT)
-- The Font Awesome, by Dave Gandy, is licensed by [SIL OFL 1.1 Licence](http://scripts.sil.org/OFL) and his sources files by the [MIT License](http://opensource.org/licenses/mit-license.html)

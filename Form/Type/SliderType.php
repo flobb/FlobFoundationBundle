@@ -1,6 +1,6 @@
 <?php
 
-namespace FlorianBelhomme\Bundle\FoundationBundle\Form\Type;
+namespace Flob\Bundle\FoundationBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,11 +19,6 @@ class SliderType extends AbstractType
         parent::buildForm($builder, $options);
 
         foreach (array('start', 'end', 'step') as $o) {
-
-            if (!isset($options[$o])) {
-                throw new LogicException('The option "'.$o.'" must be set.');
-            }
-
             if (!is_numeric($options[$o])) {
                 throw new LogicException('The option "'.$o.'" must be numeric.');
             }
@@ -53,6 +48,12 @@ class SliderType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
+        $resolver->setRequired(array(
+            'start',
+            'end',
+            'step',
+            'vertical'
+        ));
         $resolver->setDefaults(array(
             'start'    => 0,
             'end'      => 100,
