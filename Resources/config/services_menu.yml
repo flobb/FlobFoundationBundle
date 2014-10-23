@@ -4,15 +4,15 @@
 
 parameters:
 
-    fbfb.twig_extension.class: FlorianBelhomme\Bundle\FoundationBundle\Twig\MenuExtension
+    flob.foundation.twig_extension.class: Flob\Bundle\FoundationBundle\Twig\MenuExtension
 
 services:
 
     fbfb.twig_extension:
-        class: %fbfb.twig_extension.class%
+        class: %flob.foundation.twig_extension.class%
         arguments:
             - @knp_menu.helper
             - @twig
-            - %florian_belhomme_foundation.template.breadcrumb%
+            - %flob.foundation.template.breadcrumb%
         tags:
             - { name: twig.extension }

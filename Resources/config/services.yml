@@ -1,16 +1,16 @@
 parameters:
 
-    fbfb.form.type.slider.class: FlorianBelhomme\Bundle\FoundationBundle\Form\Type\SliderType
-    fbfb.form.type.switch.class: FlorianBelhomme\Bundle\FoundationBundle\Form\Type\SwitchType
+    flob_foundation.form.type.slider.class: Flob\Bundle\FoundationBundle\Form\Type\SliderType
+    flob_foundation.form.type.switch.class: Flob\Bundle\FoundationBundle\Form\Type\SwitchType
 
 services:
 
-    fbfb.form.type.slider:
-            class: %fbfb.form.type.slider.class%
+    flob_foundation.form.type.slider:
+            class: %flob_foundation.form.type.slider.class%
             tags:
                 - { name: form.type, alias: slider }
 
-    fbfb.form.type.switch:
-            class: %fbfb.form.type.switch.class%
+    flob_foundation.form.type.switch:
+            class: %flob_foundation.form.type.switch.class%
             tags:
                 - { name: form.type, alias: switch }
