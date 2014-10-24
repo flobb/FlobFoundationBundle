@@ -2,9 +2,7 @@
 
 By [Florian Belhomme](http://florianbelhomme.com)
 
-[![knpbundles.com](http://knpbundles.com/Flob/FoundationBundle/badge-short)](http://knpbundles.com/Flob/FoundationBundle)
-
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/6a3c1c7a-5091-40a8-a302-9b3c6f74b80a/small.png)](https://insight.sensiolabs.com/projects/6a3c1c7a-5091-40a8-a302-9b3c6f74b80a)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/4ffe439b-5a0c-4caa-914e-005d21591c3d/mini.png)](https://insight.sensiolabs.com/projects/4ffe439b-5a0c-4caa-914e-005d21591c3d)
 
 ## About
 
@@ -40,7 +38,7 @@ First, edit your `composer.json` and add :
     ...
     "require": {
         ...
-        "flob/foundation-bundle" : "~2.0"
+        "florianbelhomme/flob-foundation-bundle" : "~2.0"
         ...
     }
     ...
