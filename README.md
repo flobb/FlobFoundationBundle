@@ -1,7 +1,8 @@
-# [Flob Foundation Bundle](https://github.com/florianbelhomme/FoundationBundle)
+# [Flob Foundation Bundle](https://github.com/florianbelhomme/FlobFoundationBundle)
 
 By [Florian Belhomme](http://florianbelhomme.com)
 
+[![Total Downloads](https://poser.pugx.org/florianbelhomme/flob-foundation-bundle/downloads.svg)](https://packagist.org/packages/florianbelhomme/flob-foundation-bundle)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/4ffe439b-5a0c-4caa-914e-005d21591c3d/mini.png)](https://insight.sensiolabs.com/projects/4ffe439b-5a0c-4caa-914e-005d21591c3d)
 
 ## About
@@ -74,7 +75,7 @@ The easy way to do it (but there are other ways to do so):
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.5/css/normalize.min.css" type="text/css" />
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.5/css/foundation.min.css" type="text/css" />
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" type="text/css" />
-        <link rel="stylesheet" href="{{ asset('bundles/Flobfoundation/css/foundationtosymfony.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('bundles/flobfoundation/css/foundationtosymfony.css') }}" type="text/css" />
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
         ...
     </head>
@@ -82,7 +83,7 @@ The easy way to do it (but there are other ways to do so):
         ...
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.5/js/foundation.min.js"></script>
-        <script type="text/javascript" src="{{ asset('bundles/Flobfoundation/js/foundationtosymfony.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/flobfoundation/js/foundationtosymfony.js') }}"></script>
     </body>
 </html>
 ```
