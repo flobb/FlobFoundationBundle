@@ -1,16 +1,16 @@
 parameters:
 
-    flob_foundation.form.type.slider.class: Flob\Bundle\FoundationBundle\Form\Type\SliderType
-    flob_foundation.form.type.switch.class: Flob\Bundle\FoundationBundle\Form\Type\SwitchType
+    flob_foundation.form.slider.class: Flob\Bundle\FoundationBundle\Form\Type\SliderType
+    flob_foundation.form.switch.class: Flob\Bundle\FoundationBundle\Form\Type\SwitchType
 
 services:
 
-    flob_foundation.form.type.slider:
-            class: %flob_foundation.form.type.slider.class%
+    flob_foundation.form.slider:
+            class: %flob_foundation.form.slider.class%
             tags:
                 - { name: form.type, alias: slider }
 
-    flob_foundation.form.type.switch:
-            class: %flob_foundation.form.type.switch.class%
+    flob_foundation.form.switch:
+            class: %flob_foundation.form.switch.class%
             tags:
                 - { name: form.type, alias: switch }
