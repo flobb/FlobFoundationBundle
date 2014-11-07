@@ -31,7 +31,7 @@ class FlobFoundationExtension extends Extension implements PrependExtensionInter
             $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
             $loader->load('services_menu.yml');
 
-            $container->setParameter('florian_belhomme_foundation.template.breadcrumb', $config['template']['breadcrumb']);
+            $container->setParameter('flob_foundation.template.breadcrumb', $config['template']['breadcrumb']);
         }
     }
 
