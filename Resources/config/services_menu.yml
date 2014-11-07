@@ -4,15 +4,15 @@
 
 parameters:
 
-    flob.foundation.twig_extension.class: Flob\Bundle\FoundationBundle\Twig\MenuExtension
+    flob_foundation.twig_extension.class: Flob\Bundle\FoundationBundle\Twig\MenuExtension
 
 services:
 
     fbfb.twig_extension:
-        class: %flob.foundation.twig_extension.class%
+        class: %flob_foundation.twig_extension.class%
         arguments:
             - @knp_menu.helper
             - @twig
-            - %flob.foundation.template.breadcrumb%
+            - %flob_foundation.template.breadcrumb%
         tags:
             - { name: twig.extension }
