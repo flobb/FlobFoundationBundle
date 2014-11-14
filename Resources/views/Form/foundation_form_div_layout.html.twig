@@ -25,10 +25,52 @@
     <div class="small-1 columns"><span class="postfix"><i class="fa fa-search"></i></span></div>
 {%- endblock search_widget %}
 
+{% block date_widget -%}
+    {% if widget == 'single_text' %}
+        {{- block('form_widget_simple') -}}
+    {% else -%}
+        {%- if attr.class is defined -%}
+            {% set attr = attr|merge({'class': 'row ' ~ attr.class }) %}
+        {%- else -%}
+            {% set attr = attr|merge({'class': 'row'}) %}
+        {%- endif -%}
+        <div {{ block('widget_container_attributes') }}>
+            {{- date_pattern|replace({
+            '{{ year }}':  '<div class="small-4 medium-2 columns">' ~ form_widget(form.year) ~ '</div>',
+            '{{ month }}': '<div class="small-4 medium-2 columns">' ~ form_widget(form.month) ~ '</div>',
+            '{{ day }}':   '<div class="small-4 medium-2 columns">' ~ form_widget(form.day) ~ '</div>',
+            })|raw -}}
+            <div class="columns end"></div>
+        </div>
+    {%- endif %}
+{%- endblock date_widget %}
+
+{% block time_widget -%}
+    {% if widget == 'single_text' %}
+        {{- block('form_widget_simple') -}}
+    {% else -%}
+        {% set vars = widget == 'text' ? { 'attr': { 'size': 1 }} : {} %}
+        {%- if attr.class is defined -%}
+            {% set attr = attr|merge({'class': 'row ' ~ attr.class }) %}
+        {%- else -%}
+            {% set attr = attr|merge({'class': 'row'}) %}
+        {%- endif -%}
+        <div {{ block('widget_container_attributes') }}>
+            <div class="small-2 columns">{{ form_widget(form.hour, vars) }}</div>
+            {% if with_minutes -%}
+                <div class="small-2 columns">{{ form_widget(form.minute, vars) }}</div>
+            {%- endif %}
+            {% if with_seconds -%}
+                <div class="small-2 columns">: {{ form_widget(form.second, vars) }}</div>
+            {%- endif %}
+            <div class="columns end"></div>
+    </div>
+    {%- endif %}
+{%- endblock time_widget %}
+
 {# Rows #}
 
 {% block form_row -%}
-    {{ dump(form) }}
     <div class="row">
         <div class="small-12 columns">
             {%- if collapse_row is defined %}<div class="row collapse">{% endif -%}

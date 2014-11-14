@@ -13,11 +13,6 @@ This bundle integrates the functionalities of the responsive framework Foundatio
 
 To include all the libraries you can use a CDN like [CloudFlare CDN](http://cdnjs.com/).
 
-## Changelog
-
-v2
-- Namespace renaming
-
 ## Requirements
 
 - [Symfony 2.3+](http://symfony.com).
@@ -193,6 +188,27 @@ This is an exemple of the field :
 ```Php
 $builder->add('switch_radio', 'switch', array('label' => 'Switch (as radio)', 'choices' => array(1 => 'Choice 1', 2 => 'Choice 2', 3 => 'Obi wan kenobi'), 'multiple' => false));
 ```
+
+## Changelog
+
+v2
+- namespace renaming
+- rework the twig form template
+
+## TODO
+
+[ ] better file upload fields
+[ ] be abide validation compliant
+[ ] buttonmania
+[ ] alerts (via embed)
+[ ] tabs (via ... that a good question)
+[ ] equalizer
+[ ] thumbnails
+
+Maybe :
+[ ] progress bar
+[ ] clearing lightbox
+[ ] be aria compliant
 
 ## Feedback
 
