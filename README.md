@@ -197,18 +197,18 @@ v2
 
 ## TODO
 
-[ ] better file upload fields
-[ ] be abide validation compliant
-[ ] buttonmania
-[ ] alerts (via embed)
-[ ] tabs (via ... that a good question)
-[ ] equalizer
-[ ] thumbnails
+- [ ] better file upload fields
+- [ ] be abide validation compliant
+- [ ] buttonmania
+- [ ] alerts (via embed)
+- [ ] tabs (via ... that a good question)
+- [ ] equalizer
+- [ ] thumbnails
 
 Maybe :
-[ ] progress bar
-[ ] clearing lightbox
-[ ] be aria compliant
+- [ ] progress bar
+- [ ] clearing lightbox
+- [ ] be aria compliant
 
 ## Feedback
 
