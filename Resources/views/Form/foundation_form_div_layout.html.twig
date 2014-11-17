@@ -83,6 +83,45 @@
     {% endfor %}
 {%- endblock %}
 
+{% block slider_widget -%}
+    {% set slideClass = 'range-slider' %}
+    {% if vertical is defined %}
+        {% set slideClass = slideClass ~ ' vertical-range' %}
+    {% endif %}
+    {% if attr.class is not defined %}
+        {% set attr = attr|merge({'class': slideClass}) %}
+    {% else %}
+        {% set attr = attr|merge({'class': slideClass ~ attr.class }) %}
+    {% endif %}
+    <div data-slider="{{ value }}" data-options="start: {{ start }}; end: {{ end }}; step: {{ step }};{% if vertical is defined %} vertical: true;{% endif %}" {{ block('widget_container_attributes') }}>
+        <span class="range-slider-handle"></span>
+        <span class="range-slider-active-segment"></span>
+        <input type="hidden" {{ block('widget_attributes') }}/>
+    </div>
+{%- endblock slider_widget %}
+
+{% block switch_widget -%}
+    {% set is_switch = true %}
+    {{ block('choice_widget_expanded') }}
+{%- endblock switch_widget %}
+
+{% block choice_widget_expanded -%}
+    <div {{ block('widget_container_attributes') }}>
+        {%- for child in form %}
+            {%- if is_switch is defined -%}
+                {{- form_label(child) -}}
+                <div class="switch">
+                    {{- form_widget(child) -}}
+                    <label for="{{ child.vars.id }}"></label>
+                </div>
+            {%- else -%}
+                {{- form_widget(child) -}}
+                {{- form_label(child) -}}
+            {%- endif -%}
+        {% endfor -%}
+    </div>
+{% endblock choice_widget_expanded %}
+
 {# Rows #}
 
 {% block form_row -%}
