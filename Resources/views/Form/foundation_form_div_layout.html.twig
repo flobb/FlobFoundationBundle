@@ -122,6 +122,21 @@
     </div>
 {% endblock choice_widget_expanded %}
 
+{% block button_group_widget -%}
+    {% for button in form.children %}
+        <li>{{- form_widget(button) -}}</li>
+    {% endfor %}
+{%- endblock %}
+
+{% block button_bar_widget -%}
+    {% for button_group in form.children %}
+        {% set attr = button_group.vars.attr %}
+        <ul class="button-group {%- if attr.class is defined %} {{ attr.class }}{% endif -%}">
+            {{- form_widget(button_group) -}}
+        </ul>
+    {% endfor %}
+{%- endblock %}
+
 {# Rows #}
 
 {% block form_row -%}
