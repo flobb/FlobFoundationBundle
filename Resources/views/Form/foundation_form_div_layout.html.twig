@@ -51,19 +51,19 @@
     {% else -%}
         {% set vars = widget == 'text' ? { 'attr': { 'size': 1 }} : {} %}
         {%- if attr.class is defined -%}
-            {% set attr = attr|merge({'class': 'row ' ~ attr.class }) %}
-        {%- else -%}
-            {% set attr = attr|merge({'class': 'row'}) %}
-        {%- endif -%}
-        <div {{ block('widget_container_attributes') }}>
-            <div class="small-2 columns">{{ form_widget(form.hour, vars) }}</div>
-            {% if with_minutes -%}
-                <div class="small-2 columns">{{ form_widget(form.minute, vars) }}</div>
-            {%- endif %}
-            {% if with_seconds -%}
-                <div class="small-2 columns">: {{ form_widget(form.second, vars) }}</div>
-            {%- endif %}
-            <div class="columns end"></div>
+        {% set attr = attr|merge({'class': 'row ' ~ attr.class }) %}
+    {%- else -%}
+        {% set attr = attr|merge({'class': 'row'}) %}
+    {%- endif -%}
+    <div {{ block('widget_container_attributes') }}>
+        <div class="small-2 columns">{{ form_widget(form.hour, vars) }}</div>
+        {% if with_minutes -%}
+            <div class="small-2 columns">{{ form_widget(form.minute, vars) }}</div>
+        {%- endif %}
+        {% if with_seconds -%}
+            <div class="small-2 columns">: {{ form_widget(form.second, vars) }}</div>
+        {%- endif %}
+        <div class="columns end"></div>
     </div>
     {%- endif %}
 {%- endblock time_widget %}
@@ -119,10 +119,10 @@
     <div class="row">
         <div class="small-12 columns">
             {%- if collapse_row is defined %}<div class="row collapse">{% endif -%}
-            {{- form_label(form) -}}
-            {{- form_errors(form) -}}
-            {{- form_widget(form) -}}
-            {%- if collapse_row is defined %}</div>{% endif -%}
+                {{- form_label(form) -}}
+                {{- form_errors(form) -}}
+                {{- form_widget(form) -}}
+                {%- if collapse_row is defined %}</div>{% endif -%}
         </div>
     </div>
 {%- endblock form_row %}
@@ -151,8 +151,8 @@
     <div class="row">
         <div class="small-12 columns">
             {%- if collapse_row is defined %}<div class="row collapse">{% endif -%}
-            {{- form_widget(form) -}}
-            {%- if collapse_row is defined %}</div>{% endif -%}
+                {{- form_widget(form) -}}
+                {%- if collapse_row is defined %}</div>{% endif -%}
         </div>
     </div>
 {%- endblock button_row %}
@@ -161,18 +161,10 @@
     <div class="row">
         <div class="small-12 columns">
             {%- if collapse_row is defined %}<div class="row collapse">{% endif -%}
-            <ul class="button-group {{ attr.class }}">
-                {{- form_widget(form) -}}
-            </ul>
-            {%- if collapse_row is defined %}</div>{% endif -%}
+                <ul class="button-group {%- if attr.class is defined %} {{ attr.class }}{% endif -%}">
+                    {{- form_widget(form) -}}
+                </ul>
+                {%- if collapse_row is defined %}</div>{% endif -%}
         </div>
     </div>
 {%- endblock button_group_row %}
-
-
-
-
-
-
-
-
