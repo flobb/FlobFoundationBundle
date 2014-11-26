@@ -17,7 +17,7 @@ To include all the libraries you can use a CDN like [CloudFlare CDN](http://cdnj
 
 - [Symfony 2.3+](http://symfony.com).
 - [jQuery 2+](http://jquery.com/) a JavaScript library.
-- [Foundation 5+](http://foundation.zurb.com/) an advanced reponsive framework.
+- [Foundation 5+](http://foundation.zurb.com/) an advanced responsive framework.
 - [Font Awesome 4+](http://fontawesome.io/) which comes with 369+ icons.
 
 ## Recommended
@@ -156,9 +156,9 @@ If you want a specific template :
 
 ### Slider (form field type)
 
-You can know use the slider in your forms.
+You can now use the slider in your forms.
 
-The slider extend the [number field type](http://symfony.com/doc/current/reference/forms/types/number.html), so it have the same options.
+The slider extend the [number field type](http://symfony.com/doc/current/reference/forms/types/number.html), so it has the same options.
 The additional options are :
 * start :
 type: integer / default: 0
@@ -173,21 +173,60 @@ This specifies the cursor's incremental skip.
 type: boolean / default: false
 If true, displays the slider vertically instead of horizontally.
 
-This is an exemple of the field :
+This is an example of the field :
 ```Php
 $builder->add('My slider', 'slider', array('label' => 'Slider', 'start' => 10, 'end' => 20, 'step' => 2));
 ```
 
 ### Switch (form field type)
 
-You can know use the switch in your forms.
+You can now use the switch in your forms.
 
 The switch extend the [choice field type](http://symfony.com/doc/current/reference/forms/types/number.html), so it have the same options. But you can't set the option "expanded" to false (cannot be a select).
 
-This is an exemple of the field :
+This is an example of the field :
 ```Php
 $builder->add('switch_radio', 'switch', array('label' => 'Switch (as radio)', 'choices' => array(1 => 'Choice 1', 2 => 'Choice 2', 3 => 'Obi wan kenobi'), 'multiple' => false));
 ```
+
+### Button Groups (form field type)
+
+You can now use button groups in your forms.
+
+Button groups are button, grouped together by [Foundation](http://foundation.zurb.com/docs/components/button_groups.html). This way they are rendered on the same line, instead of all on a different row.
+
+This is an example of the field :
+```Php
+$builder->add(
+    'buttons',
+    'button_group',
+    array(
+        'buttons' => array(
+            'save' => array(
+                'type'    => 'submit',
+                'options' => array(
+                    'label' => 'Submit',
+                ),
+            ),
+            'back' => array(
+                'type'    => 'button',
+                'options' => array(
+                    'label' => 'Cancel',
+                    'attr' => array(
+                        'class' => 'secondary',
+                    ),
+                ),
+            ),
+        ),
+        options => array(
+            'class' => 'radius',
+        ),
+    )
+);
+```
+
+In the `buttons` array, you define the buttons that need to be rendered. All the button should be of FormType `ButtonType`.
+
 
 ## Changelog
 
