@@ -66,6 +66,23 @@
     </div>
 {% endblock button_row %}
 
+{% block button_group_row -%}
+    {% if class_row is not defined %}
+        {% set class_row = ['row'] %}
+    {% else %}
+        {% set class_row = ['row']|merge(class_row) %}
+    {% endif %}
+    <div class="{{ class_row|join(' ') }}">
+        <div class="columns">
+            {% if collapse_row is defined %}<div class="row collapse">{% endif %}
+            <ul class="button-group {{ attr.class }}">
+                {{- form_widget(form) -}}
+            </ul>
+            {% if collapse_row is defined %}</div>{% endif %}
+        </div>
+    </div>
+{%- endblock button_group_row %}
+
 {# Widgets #}
 
 {% block date_widget %}
@@ -113,6 +130,12 @@
         </div>
     {% endif %}
 {% endblock time_widget %}
+
+{% block button_group_widget %}
+    {% for button in form.children %}
+        <li>{{ form_widget(button) }}</li>
+    {% endfor %}
+{% endblock %}
 
 {% block datetime_widget %}
     {% if widget == 'single_text' %}
