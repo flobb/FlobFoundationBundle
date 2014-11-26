@@ -68,6 +68,12 @@
     {%- endif %}
 {%- endblock time_widget %}
 
+{% block button_group_widget -%}
+    {% for button in form.children %}
+        <li>{{- form_widget(button) -}}</li>
+    {% endfor %}
+{%- endblock %}
+
 {# Rows #}
 
 {% block form_row -%}
@@ -111,3 +117,23 @@
         </div>
     </div>
 {%- endblock button_row %}
+
+{% block button_group_row -%}
+    <div class="row">
+        <div class="small-12 columns">
+            {%- if collapse_row is defined %}<div class="row collapse">{% endif -%}
+            <ul class="button-group {{ attr.class }}">
+                {{- form_widget(form) -}}
+            </ul>
+            {%- if collapse_row is defined %}</div>{% endif -%}
+        </div>
+    </div>
+{%- endblock button_group_row %}
+
+
+
+
+
+
+
+

@@ -2,6 +2,7 @@ parameters:
 
     flob_foundation.form.slider.class: Flob\Bundle\FoundationBundle\Form\Type\SliderType
     flob_foundation.form.switch.class: Flob\Bundle\FoundationBundle\Form\Type\SwitchType
+    flob_foundation.form.button_group.class: Flob\Bundle\FoundationBundle\Form\Type\ButtonGroupType
 
 services:
 
@@ -14,3 +15,8 @@ services:
             class: %flob_foundation.form.switch.class%
             tags:
                 - { name: form.type, alias: switch }
+
+    flob_foundation.form.button_group:
+            class: %flob_foundation.form.button_group.class%
+            tags:
+                - { name: form.type, alias: button_group }
