@@ -51,38 +51,6 @@
     {{ block('form_row') }}
 {% endblock search_row %}
 
-{% block button_row %}
-    {% if class_row is not defined %}
-        {% set class_row = ['row'] %}
-    {% else %}
-        {% set class_row = ['row']|merge(class_row) %}
-    {% endif %}
-    <div class="{{ class_row|join(' ') }}">
-        <div class="columns">
-            {% if collapse_row is defined %}<div class="row collapse">{% endif %}
-                {{ form_widget(form) }}
-                {% if collapse_row is defined %}</div>{% endif %}
-        </div>
-    </div>
-{% endblock button_row %}
-
-{% block button_group_row -%}
-    {% if class_row is not defined %}
-        {% set class_row = ['row'] %}
-    {% else %}
-        {% set class_row = ['row']|merge(class_row) %}
-    {% endif %}
-    <div class="{{ class_row|join(' ') }}">
-        <div class="columns">
-            {% if collapse_row is defined %}<div class="row collapse">{% endif %}
-                <ul class="button-group {% if attr.class is defined %} {{ attr.class }}{% endif %}">
-                    {{ form_widget(form) }}
-                </ul>
-                {% if collapse_row is defined %}</div>{% endif %}
-        </div>
-    </div>
-{%- endblock button_group_row %}
-
 {# Widgets #}
 
 {% block date_widget %}
@@ -111,31 +79,25 @@
     {% else %}
         {% set vars = widget == 'text' ? { 'attr': { 'size': 1 }} : {} %}
         {% if attr.class is defined %}
-        {% set attr = attr|merge({'class': 'row ' ~ attr.class }) %}
-    {% else %}
-        {% set attr = attr|merge({'class': 'row'}) %}
-    {% endif %}
-    {% set spacer = 10 %}
-    <div {{ block('widget_container_attributes') }}>
-        <div class="medium-2 large-2 columns">{{ form_widget(form.hour, vars) }}</div>
-        {% if with_minutes %}
-            {% set spacer = spacer - 2 %}
-            <div class="medium-2 large-2 columns">{{ form_widget(form.minute, vars) }}</div>
+            {% set attr = attr|merge({'class': 'row ' ~ attr.class }) %}
+        {% else %}
+            {% set attr = attr|merge({'class': 'row'}) %}
         {% endif %}
-        {% if with_seconds %}
-            {% set spacer = spacer - 2 %}
-            <div class="medium-2 large-2 columns">{{ form_widget(form.second, vars) }}</div>
-        {% endif %}
-        <div class="medium-{{ spacer }} large-{{ spacer }} columns"></div>
-    </div>
+        {% set spacer = 10 %}
+        <div {{ block('widget_container_attributes') }}>
+            <div class="medium-2 large-2 columns">{{ form_widget(form.hour, vars) }}</div>
+            {% if with_minutes %}
+                {% set spacer = spacer - 2 %}
+                <div class="medium-2 large-2 columns">{{ form_widget(form.minute, vars) }}</div>
+            {% endif %}
+            {% if with_seconds %}
+                {% set spacer = spacer - 2 %}
+                <div class="medium-2 large-2 columns">{{ form_widget(form.second, vars) }}</div>
+            {% endif %}
+            <div class="medium-{{ spacer }} large-{{ spacer }} columns"></div>
+        </div>
     {% endif %}
 {% endblock time_widget %}
-
-{% block button_group_widget %}
-    {% for button in form.children %}
-        <li>{{ form_widget(button) }}</li>
-    {% endfor %}
-{% endblock %}
 
 {% block datetime_widget %}
     {% if widget == 'single_text' %}
