@@ -225,7 +225,13 @@ $builder->add(
 );
 ```
 
-In the `buttons` array, you define the buttons that need to be rendered. All the button should be of FormType `ButtonType`.
+In the `buttons` array, you define the buttons that need to be rendered. All the buttons should be of FormType `ButtonType`.
+For the `ButtonType`, you cannot specify behavior in [Symfony](http://symfony.com/doc/current/reference/forms/types/button.html).
+You can change the type to `reset` , to render a button with `type="reset"`, (a `ResetType`) but cannot add links.
+
+However, you have various options:
+* add an `onClick` tag to the `attr` array
+* add a class `link`, a tag `data-url` to the `attr` array and let JavaScript handle it
 
 
 ## Changelog
