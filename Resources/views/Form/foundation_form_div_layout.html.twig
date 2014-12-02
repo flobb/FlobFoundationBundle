@@ -119,10 +119,10 @@
     <div class="row">
         <div class="small-12 columns">
             {%- if collapse_row is defined %}<div class="row collapse">{% endif -%}
-                {{- form_label(form) -}}
-                {{- form_errors(form) -}}
-                {{- form_widget(form) -}}
-                {%- if collapse_row is defined %}</div>{% endif -%}
+            {{- form_label(form) -}}
+            {{- form_errors(form) -}}
+            {{- form_widget(form) -}}
+            {%- if collapse_row is defined %}</div>{% endif -%}
         </div>
     </div>
 {%- endblock form_row %}
@@ -151,8 +151,8 @@
     <div class="row">
         <div class="small-12 columns">
             {%- if collapse_row is defined %}<div class="row collapse">{% endif -%}
-                {{- form_widget(form) -}}
-                {%- if collapse_row is defined %}</div>{% endif -%}
+            {{- form_widget(form) -}}
+            {%- if collapse_row is defined %}</div>{% endif -%}
         </div>
     </div>
 {%- endblock button_row %}
