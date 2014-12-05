@@ -189,11 +189,11 @@ This is an example of the field :
 $builder->add('switch_radio', 'switch', array('label' => 'Switch (as radio)', 'choices' => array(1 => 'Choice 1', 2 => 'Choice 2', 3 => 'Obi wan kenobi'), 'multiple' => false));
 ```
 
-### Button Groups (form field type)
+### Button Group (form field type)
 
-You can now use button groups in your forms.
+You can now use [button groups](http://foundation.zurb.com/docs/components/button_groups.html) in your forms.
 
-Button groups are button, grouped together by [Foundation](http://foundation.zurb.com/docs/components/button_groups.html). This way they are rendered on the same line, instead of all on a different row.
+Button groups are button, grouped together by Foundation. This way they are rendered on the same line, instead of all on a different row.
 
 This is an example of the field :
 ```Php
@@ -233,6 +233,64 @@ However, you have various options:
 * add an `onClick` tag to the `attr` array
 * add a class `link`, a tag `data-url` to the `attr` array and let JavaScript handle it
 
+### Button Bar (form field type)
+A button bar is a group of button groups, perfect for situations where you want groups of actions that are all related to a similar element or page.
+
+This is an example of the field :
+```Php
+$builder->add(
+    'buttons',
+    'button_bar',
+    array(
+        'button_groups' => array(
+            button_group_first => array(
+                'buttons' => array(
+                    'save' => array(
+                        'type'    => 'submit',
+                        'options' => array(
+                            'label' => 'Submit',
+                        ),
+                    ),
+                    'back' => array(
+                        'type'    => 'button',
+                        'options' => array(
+                            'label' => 'Cancel',
+                            'attr' => array(
+                                'class' => 'secondary',
+                            ),
+                        ),
+                    ),
+                ),
+                options => array(
+                    'class' => 'radius',
+                ),
+            ),
+            button_group_second => array(
+                'buttons' => array(
+                    'savetwo' => array(
+                        'type'    => 'submit',
+                        'options' => array(
+                            'label' => 'Submit',
+                        ),
+                    ),
+                    'backtwo' => array(
+                        'type'    => 'button',
+                        'options' => array(
+                            'label' => 'Cancel',
+                            'attr' => array(
+                                'class' => 'secondary',
+                            ),
+                        ),
+                    ),
+                ),
+                options => array(
+                    'class' => 'round',
+                ),
+            ),
+        )
+    )
+);
+```
 
 ## Changelog
 
