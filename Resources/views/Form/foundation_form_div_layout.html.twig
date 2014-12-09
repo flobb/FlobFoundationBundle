@@ -51,20 +51,20 @@
     {% else -%}
         {% set vars = widget == 'text' ? { 'attr': { 'size': 1 }} : {} %}
         {%- if attr.class is defined -%}
-        {% set attr = attr|merge({'class': 'row ' ~ attr.class }) %}
-    {%- else -%}
-        {% set attr = attr|merge({'class': 'row'}) %}
-    {%- endif -%}
-    <div {{ block('widget_container_attributes') }}>
-        <div class="small-2 columns">{{ form_widget(form.hour, vars) }}</div>
-        {% if with_minutes -%}
-            <div class="small-2 columns">{{ form_widget(form.minute, vars) }}</div>
-        {%- endif %}
-        {% if with_seconds -%}
-            <div class="small-2 columns">: {{ form_widget(form.second, vars) }}</div>
-        {%- endif %}
-        <div class="columns end"></div>
-    </div>
+            {% set attr = attr|merge({'class': 'row ' ~ attr.class }) %}
+        {%- else -%}
+            {% set attr = attr|merge({'class': 'row'}) %}
+        {%- endif -%}
+        <div {{ block('widget_container_attributes') }}>
+            <div class="small-2 columns">{{ form_widget(form.hour, vars) }}</div>
+            {% if with_minutes -%}
+                <div class="small-2 columns">{{ form_widget(form.minute, vars) }}</div>
+            {%- endif %}
+            {% if with_seconds -%}
+                <div class="small-2 columns">: {{ form_widget(form.second, vars) }}</div>
+            {%- endif %}
+            <div class="columns end"></div>
+        </div>
     {%- endif %}
 {%- endblock time_widget %}
 
