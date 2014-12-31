@@ -27,7 +27,7 @@ class SwitchType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'expanded'    => true
+            'expanded' => true
         ));
     }
 

@@ -218,7 +218,7 @@ $builder->add(
                 ),
             ),
         ),
-        options => array(
+        'options' => array(
             'class' => 'radius',
         ),
     )
