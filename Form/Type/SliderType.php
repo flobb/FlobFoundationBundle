@@ -52,13 +52,13 @@ class SliderType extends AbstractType
             'start',
             'end',
             'step',
-            'vertical'
+            'vertical',
         ));
         $resolver->setDefaults(array(
             'start'    => 0,
             'end'      => 100,
             'step'     => 1,
-            'vertical' => false
+            'vertical' => false,
         ));
     }
 

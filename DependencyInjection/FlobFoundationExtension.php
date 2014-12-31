@@ -11,7 +11,6 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 class FlobFoundationExtension extends Extension implements PrependExtensionInterface
 {
-
     /**
      * {@inheritDoc}
      */
@@ -27,7 +26,6 @@ class FlobFoundationExtension extends Extension implements PrependExtensionInter
 
         // Load a Twig extension if KNP Menu is enabled
         if (isset($bundles['KnpMenuBundle'])) {
-
             $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
             $loader->load('services_menu.yml');
 
@@ -56,7 +54,7 @@ class FlobFoundationExtension extends Extension implements PrependExtensionInter
 
         // This will change the KnpMenu configuration if needed (default template path for exemple)
         if ($config['theme']['knp_menu']) {
-            if ((isset($bundles['TwigBundle'])) && (isset($bundles['KnpMenuBundle'])) ) {
+            if ((isset($bundles['TwigBundle'])) && (isset($bundles['KnpMenuBundle']))) {
                 $container->prependExtensionConfig('knp_menu', array('twig' => array('template' => $config['template']['knp_menu'])));
             } else {
                 throw new InvalidConfigurationException('You need to enable Twig Bundle and KNP Menu Bundle to theme menu or set the configuration of florian_belhomme_foundation:theme:knp_menu to false');

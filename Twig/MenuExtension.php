@@ -32,7 +32,7 @@ class MenuExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'flob_foundation_breadcrumb_render' => new \Twig_Function_Method($this, 'renderBreadcrumb', array('is_safe' => array('html')))
+            'flob_foundation_breadcrumb_render' => new \Twig_Function_Method($this, 'renderBreadcrumb', array('is_safe' => array('html'))),
         );
     }
 
@@ -75,7 +75,6 @@ class MenuExtension extends \Twig_Extension
         }
 
         return $options['template']->renderBlock('root', array('breadcrumbs' => $breadcrumbs, 'options' => $options));
-
     }
 
     /**
