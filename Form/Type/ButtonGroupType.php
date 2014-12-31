@@ -58,6 +58,7 @@ class ButtonGroupType extends AbstractType
     protected function addButton($builder, $name, $config)
     {
         $options = isset($config['options']) ? $config['options'] : array();
+
         return $builder->add($name, $config['type'], $options);
     }
 

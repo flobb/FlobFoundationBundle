@@ -1,3 +1,8 @@
 form .alert-box ul {
-    margin-bottom: 0px;
+    margin-bottom: 0;
+}
+
+.switchWrapper > label {
+    margin-left: 4.5rem;
+    line-height: 2.5;
 }

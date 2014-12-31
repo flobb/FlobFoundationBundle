@@ -76,7 +76,7 @@
     {% if attr.class is not defined %}
         {% set attr = attr|merge({'class': slideClass}) %}
     {% else %}
-        {% set attr = attr|merge({'class': slideClass ~ attr.class }) %}
+        {% set attr = attr|merge({'class': slideClass ~ ' ' ~ attr.class }) %}
     {% endif %}
     <div data-slider="{{ value }}" data-options="start: {{ start }}; end: {{ end }}; step: {{ step }};{% if vertical is defined %} vertical: true;{% endif %}" {{ block('widget_container_attributes') }}>
         <span class="range-slider-handle"></span>
@@ -94,10 +94,13 @@
     <div {{ block('widget_container_attributes') }}>
         {%- for child in form %}
             {%- if is_switch is defined -%}
-                {{- form_label(child) -}}
-                <div class="switch">
-                    {{- form_widget(child) -}}
-                    <label for="{{ child.vars.id }}"></label>
+                <div class="switchWrapper">
+                    <div class="switch left">
+                        {{- form_widget(child) -}}
+                        <label for="{{ child.vars.id }}"></label>
+                    </div>
+                    {{- form_label(child) -}}
+                    <div class="clearfix"></div>
                 </div>
             {%- else -%}
                 {{- form_widget(child) -}}
