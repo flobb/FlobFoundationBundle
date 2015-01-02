@@ -2,7 +2,19 @@ form .alert-box ul {
     margin-bottom: 0;
 }
 
+/* Fix the label position on switch */
+
 .switchWrapper > label {
     margin-left: 4.5rem;
     line-height: 2.5;
+}
+
+/* Fix the height of select (multiple & size) */
+
+select {
+    height: auto;
+}
+
+select[size], select[multiple] {
+    background-image: none;
 }
