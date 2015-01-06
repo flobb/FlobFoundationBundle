@@ -16,11 +16,12 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class ButtonBarType extends AbstractType
 {
     /**
+     * Pull all group of button into the form
+     *
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        // add all the child button groups
         foreach ($options['button_groups'] as $name => $config) {
             $builder->add($name, 'button_group', $config);
         }

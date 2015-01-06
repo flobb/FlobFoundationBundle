@@ -21,6 +21,8 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class ButtonGroupType extends AbstractType
 {
     /**
+     * Pull all button into the form
+     *
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
