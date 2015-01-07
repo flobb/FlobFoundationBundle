@@ -29,11 +29,7 @@
     {% if widget == 'single_text' %}
         {{- block('form_widget_simple') -}}
     {% else -%}
-        {%- if attr.class is defined -%}
-            {% set attr = attr|merge({'class': 'row ' ~ attr.class }) %}
-        {%- else -%}
-            {% set attr = attr|merge({'class': 'row'}) %}
-        {%- endif -%}
+        {% set attr = attr|merge({'class': ('row ' ~ attr.class|default(''))|trim }) %}
         <div {{ block('widget_container_attributes') }}>
             {{- date_pattern|replace({
             '{{ year }}':  '<div class="small-4 medium-2 columns">' ~ form_widget(form.year) ~ '</div>',
@@ -50,11 +46,7 @@
         {{- block('form_widget_simple') -}}
     {% else -%}
         {% set vars = widget == 'text' ? { 'attr': { 'size': 1 }} : {} %}
-        {%- if attr.class is defined -%}
-            {% set attr = attr|merge({'class': 'row ' ~ attr.class }) %}
-        {%- else -%}
-            {% set attr = attr|merge({'class': 'row'}) %}
-        {%- endif -%}
+        {% set attr = attr|merge({'class': ('row ' ~ attr.class|default(''))|trim }) %}
         <div {{ block('widget_container_attributes') }}>
             <div class="small-2 columns">{{ form_widget(form.hour, vars) }}</div>
             {% if with_minutes -%}
@@ -73,11 +65,7 @@
     {% if vertical is defined %}
         {% set slideClass = slideClass ~ ' vertical-range' %}
     {% endif %}
-    {% if attr.class is not defined %}
-        {% set attr = attr|merge({'class': slideClass}) %}
-    {% else %}
-        {% set attr = attr|merge({'class': slideClass ~ ' ' ~ attr.class }) %}
-    {% endif %}
+    {% set attr = attr|merge({'class': (slideClass ~ ' ' ~ attr.class|default(''))|trim }) %}
     <div data-slider="{{ value }}" data-options="start: {{ start }}; end: {{ end }}; step: {{ step }};{% if vertical is defined %} vertical: true;{% endif %}" {{ block('widget_container_attributes') }}>
         <span class="range-slider-handle"></span>
         <span class="range-slider-active-segment"></span>
@@ -94,7 +82,7 @@
     <div {{ block('widget_container_attributes') }}>
         {%- for child in form %}
             {%- if is_switch is defined -%}
-                <div class="switchWrapper">
+                <div class="switch-wrapper">
                     <div class="switch left">
                         {{- form_widget(child) -}}
                         <label for="{{ child.vars.id }}"></label>
@@ -111,11 +99,7 @@
 {% endblock choice_widget_expanded %}
 
 {% block button_group_widget -%}
-    {%- if attr.class is defined -%}
-        {% set attr = attr|merge({'class': 'button-group ' ~ attr.class }) %}
-    {%- else -%}
-        {% set attr = attr|merge({'class': 'button-group'}) %}
-    {%- endif -%}
+    {% set attr = attr|merge({'class': ('button-group ' ~ attr.class|default(''))|trim }) %}
     <ul{% for attrname, attrvalue in attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
         {% for button in form.children %}
             <li>{{- form_widget(button) -}}</li>
@@ -124,11 +108,7 @@
 {%- endblock %}
 
 {% block button_bar_widget -%}
-    {%- if attr.class is defined -%}
-        {% set attr = attr|merge({'class': 'button-bar ' ~ attr.class }) %}
-    {%- else -%}
-        {% set attr = attr|merge({'class': 'button-bar'}) %}
-    {%- endif -%}
+    {% set attr = attr|merge({'class': ('button-bar ' ~ attr.class|default(''))|trim }) %}
     <div{% for attrname, attrvalue in attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
         {% for button_group in form.children %}
             {{- form_widget(button_group) -}}
@@ -138,6 +118,13 @@
 
 {# Labels #}
 
+{% block form_label -%}
+    {% if errors|length > 0 -%}
+        {% set label_attr = label_attr|merge({'class': ('error ' ~ label_attr.class|default(''))|trim}) %}
+    {% endif %}
+    {{ parent() }}
+{%- endblock form_label %}
+
 {% block button_group_label -%}{%- endblock %}
 
 {% block button_bar_label -%}{%- endblock %}
@@ -145,12 +132,16 @@
 {# Rows #}
 
 {% block form_row -%}
-    <div class="row">
+    {% set class_row = ['row']|merge(class_row|default([])) %}
+    {% if errors|length > 0 -%}
+        {% set class_row = ['error']|merge(class_row) %}
+    {% endif %}
+    <div class="{{ class_row|join(' ') }}">
         <div class="small-12 columns">
             {%- if collapse_row is defined %}<div class="row collapse">{% endif -%}
             {{- form_label(form) -}}
-            {{- form_errors(form) -}}
             {{- form_widget(form) -}}
+            {{- form_errors(form) -}}
             {%- if collapse_row is defined %}</div>{% endif -%}
         </div>
     </div>
@@ -175,3 +166,23 @@
     {%- set collapse_row = true -%}
     {{ block('form_row') }}
 {%- endblock search_row %}
+
+{% block form_errors -%}
+    {% if errors|length > 0 -%}
+        {%- if form.parent is empty -%}
+            <div data-alert class="alert-box alert form-global-error">
+                <ul>
+                    {%- for error in errors -%}
+                        <li>{{ error.message }}</li>
+                    {%- endfor -%}
+                </ul>
+            </div>
+        {% else %}
+            <small class="error">
+                {%- for error in errors -%}
+                    {{ error.message }}
+                {%- endfor -%}
+            </small>
+        {%- endif %}
+    {%- endif %}
+{%- endblock form_errors %}
