@@ -1,10 +1,13 @@
-form .alert-box ul {
+/* Global form errors */
+
+.form-global-error ul {
     margin-bottom: 0;
+    font-size: 0.75rem;
 }
 
 /* Fix the label position on switch */
 
-.switchWrapper > label {
+.switch-wrapper > label {
     margin-left: 4.5rem;
     line-height: 2.5;
 }
