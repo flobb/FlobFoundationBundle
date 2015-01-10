@@ -25,14 +25,35 @@ To include all the libraries you can use a CDN like [CloudFlare CDN](http://cdnj
 - the [KnpMenuBundle](https://github.com/KnpLabs/KnpMenuBundle) for menus, this bundle can theme them for you.
 - the [KpnPaginatorBundle](https://github.com/KnpLabs/KnpPaginatorBundle) for pagination, this bundle can theme them for you.
 
-
 ## Changelog
 
 v2
 - namespace renaming
 - new form types : button_group and button_bar
 - rework the twig form template
-- rework the KNP menu template and make it compatible with KNP menu 2.0
+- rework the KnpMenu template and make it compatible with KnpMenu 2.0
+- fixes to support Foundation 5.5.0
+
+## TODO for stable
+
+[ ] Pagination with PagerFanta + Configuration + Doc
+[ ] Breadcrumb with KnpMenu
+[ ] Sidebar with KnpMenu
+[ ] Refactor the doc and update it
+[ ] Provide the demo
+[ ] Setup & writes tests
+[ ] Tarvis
+
+## TODO
+
+[ ] Thumbnails + Clearing Lightbox
+[ ] Icon Bar
+[ ] Support for off-canvas
+[ ] Modal
+[ ] Icon with labels
+[ ] Accordion
+[ ] Tabs
+[ ] Abide Validation
 
 ## Installation and configuration
 
@@ -76,8 +97,8 @@ The easy way to do it (but there are other ways to do so):
 <html>
     <head>
         ...
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.5/css/normalize.min.css" type="text/css" />
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.5/css/foundation.min.css" type="text/css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/css/normalize.min.css" type="text/css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/css/foundation.min.css" type="text/css" />
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" type="text/css" />
         <link rel="stylesheet" href="{{ asset('bundles/flobfoundation/css/foundationtosymfony.css') }}" type="text/css" />
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
@@ -85,8 +106,8 @@ The easy way to do it (but there are other ways to do so):
     </head>
     <body>
         ...
-        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.5/js/foundation.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/js/foundation.min.js"></script>
         <script type="text/javascript" src="{{ asset('bundles/flobfoundation/js/foundationtosymfony.js') }}"></script>
     </body>
 </html>
@@ -211,13 +232,8 @@ $builder->add(
     'buttons',
     'button_group',
     array(
+        'label' => 'Buttons group',
         'buttons' => array(
-            'save' => array(
-                'type'    => 'submit',
-                'options' => array(
-                    'label' => 'Submit',
-                ),
-            ),
             'back' => array(
                 'type'    => 'button',
                 'options' => array(
@@ -227,9 +243,15 @@ $builder->add(
                     ),
                 ),
             ),
+            'save' => array(
+                'type'    => 'submit',
+                'options' => array(
+                    'label' => 'Submit',
+                ),
+            ),
         ),
-        'options' => array(
-            'class' => 'radius',
+        'attr' => array(
+            'class' => 'right',
         ),
     )
 );
@@ -247,60 +269,82 @@ However, you have various options:
 
 A button bar is a group of button groups, perfect for situations where you want groups of actions that are all related to a similar element or page.
 
-This is an example of the field :
+This is an (long :D) example of the field :
 ```Php
 $builder->add(
-    'buttons',
+    'button_bar',
     'button_bar',
     array(
         'button_groups' => array(
-            button_group_first => array(
+            'button_group_first' => array(
+                'label' => 'Buttons group',
                 'buttons' => array(
-                    'save' => array(
+                    'one' => array(
                         'type'    => 'submit',
                         'options' => array(
-                            'label' => 'Submit',
+                            'label' => 'one',
                         ),
                     ),
-                    'back' => array(
+                    'two' => array(
                         'type'    => 'button',
                         'options' => array(
-                            'label' => 'Cancel',
+                            'label' => 'two',
                             'attr' => array(
-                                'class' => 'secondary',
+                                'class' => 'success',
+                            ),
+                        ),
+                    ),
+                    'three' => array(
+                        'type'    => 'button',
+                        'options' => array(
+                            'label' => 'three',
+                            'attr' => array(
+                                'class' => 'alert',
                             ),
                         ),
                     ),
                 ),
-                options => array(
-                    'class' => 'radius',
-                ),
-            ),
-            button_group_second => array(
-                'buttons' => array(
-                    'savetwo' => array(
-                        'type'    => 'submit',
-                        'options' => array(
-                            'label' => 'Submit',
-                        ),
-                    ),
-                    'backtwo' => array(
-                        'type'    => 'button',
-                        'options' => array(
-                            'label' => 'Cancel',
-                            'attr' => array(
-                                'class' => 'secondary',
-                            ),
-                        ),
-                    ),
-                ),
-                options => array(
+                'attr' => array(
                     'class' => 'round',
                 ),
             ),
-        )
-    )
-);
+            'button_group_second' => array(
+                'label' => 'Buttons group',
+                'buttons' => array(
+                    'four' => array(
+                        'type'    => 'button',
+                        'options' => array(
+                            'label' => 'four',
+                            'attr' => array(
+                                'class' => 'disabled',
+                            ),
+                        ),
+                    ),
+                    'five' => array(
+                        'type'    => 'button',
+                        'options' => array(
+                            'label' => 'five',
+                            'attr' => array(
+                                'class' => 'secondary',
+                            ),
+                        ),
+                    ),
+                    'six' => array(
+                        'type'    => 'button',
+                        'options' => array(
+                            'label' => 'six',
+                            'attr' => array(
+                                'class' => 'secondary',
+                            ),
+                        ),
+                    ),
+                ),
+                'attr' => array(
+                    'class' => 'radius',
+                ),
+            ),
+        ),
+    );
 ```
 
 ## Feedback
