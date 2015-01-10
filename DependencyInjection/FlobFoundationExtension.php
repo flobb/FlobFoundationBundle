@@ -23,14 +23,6 @@ class FlobFoundationExtension extends Extension implements PrependExtensionInter
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
-
-        // Load a Twig extension if KNP Menu is enabled
-        if (isset($bundles['KnpMenuBundle'])) {
-            $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-            $loader->load('services_menu.yml');
-
-            $container->setParameter('flob_foundation.template.breadcrumb', $config['template']['breadcrumb']);
-        }
     }
 
     /**
