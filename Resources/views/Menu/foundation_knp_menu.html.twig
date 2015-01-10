@@ -1,96 +1,87 @@
 {% extends 'knp_menu.html.twig' %}
 
 {% block root %}
-    {% if item.extra('menu_type') == 'topmenu' %}
-        {{ block('rootTopMenu') }}
-    {% else %}
-        {% set listAttributes = item.childrenAttributes %}
-        {{ block('list') }}
+    {% set isTopMenu = true %}{# ('topmenu' === item.extra('menu_type')) %} #}
+    {% if isTopMenu %}
+        <nav class="top-bar" data-topbar>
+            <ul class="title-area">
+                <li class="name"></li>
+                <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+            </ul>
+            <section class="top-bar-section">
     {% endif %}
-{% endblock %}
-
-{% block rootTopMenu %}
-    <nav class="top-bar" data-topbar>
-        <ul class="title-area">
-            <li class="name"></li>
-            <li class="toggle-topbar menu-icon"><a href=""><span>Menu</span></a></li>
-        </ul>
-        <section class="top-bar-section">
-            {% set listAttributes = item.childrenAttributes %}
-            {{ block('list') }}
-        </section>
-    </nav>
+    {{ parent() }}
+    {% if isTopMenu %}
+            </section>
+        </nav>
+    {% endif %}
 {% endblock %}
 
 {% block list %}
     {% if item.hasChildren and options.depth is not sameas(0) and item.displayChildren %}
-        {% import 'knp_menu.html.twig' as knp_menu %}
         {% if item.level > 0 %}
-           {% set listAttributes = listAttributes|merge({'class': (listAttributes.class|default('') ~ ' dropdown')|trim}) %}
+            {% set listAttributes = listAttributes|merge({'class': (listAttributes.class|default('') ~ ' dropdown')|trim}) %}
         {% endif %}
         {% if item.extra('menu_type') == 'sidebar' %}
-           {% set listAttributes = listAttributes|merge({'class': (listAttributes.class|default('') ~ ' side-nav')|trim}) %}
+            {% set listAttributes = listAttributes|merge({'class': (listAttributes.class|default('') ~ ' side-nav')|trim}) %}
         {% endif %}
-        <ul{{ knp_menu.attributes(listAttributes) }}>
-            {{ block('children') }}
-        </ul>
     {% endif %}
+    {{ parent() }}
 {% endblock %}
 
 {% block item %}
     {% if item.displayed %}
+        {# Building the class of the item #}
         {%- set classes = item.attribute('class') is not empty ? [item.attribute('class')] : [] %}
-        {% if matcher is defined  %}
-	        {%- if matcher.isCurrent(item) %}
-	            {%- set classes = classes|merge([options.currentClass]) %}
-	        {%- elseif matcher.isAncestor(item, options.depth) %}
-	            {%- set classes = classes|merge([options.ancestorClass]) %}
-	        {%- endif %}
-	    {%- endif %}
+        {%- if matcher.isCurrent(item) %}
+            {%- set classes = classes|merge([options.currentClass]) %}
+        {%- elseif matcher.isAncestor(item, options.matchingDepth) %}
+            {%- set classes = classes|merge([options.ancestorClass]) %}
+        {%- endif %}
         {%- if item.actsLikeFirst %}
             {%- set classes = classes|merge([options.firstClass]) %}
         {%- endif %}
         {%- if item.actsLikeLast %}
             {%- set classes = classes|merge([options.lastClass]) %}
         {%- endif %}
+
+        {# Mark item as "leaf" (no children) or as "branch" (has children that are displayed) #}
+        {% if item.hasChildren and options.depth is not sameas(0) %}
+            {% set options = options|merge({'branch_class': ('has-dropdown ' ~ options.branch_class|default(''))|trim }) %}
+            {% if options.branch_class is not empty and item.displayChildren %}
+                {%- set classes = classes|merge([options.branch_class]) %}
+            {% endif %}
+        {% elseif options.leaf_class is not empty %}
+            {%- set classes = classes|merge([options.leaf_class]) %}
+        {%- endif %}
+
         {%- set attributes = item.attributes %}
-        {% if item.hasChildren and options.depth is not sameas(0) and item.displayChildren %}
-            {%- set classes = classes|merge(['has-dropdown', 'not-click']) %}
-        {% endif %}
         {%- if classes is not empty %}
             {%- set attributes = attributes|merge({'class': classes|join(' ')}) %}
         {%- endif %}
+        {# Displaying the item #}
         {% import 'knp_menu.html.twig' as knp_menu %}
-        {% if item.extra('divider_prepend') %}
+        {%- if item.extra('divider_prepend') -%}
             {{ block('divider') }}
-        {% endif %}
+        {%- endif -%}
         <li{{ knp_menu.attributes(attributes) }}>
-            {%- if (item.uri is not empty or (item.hasChildren and item.displayChildren)) %}
-                {{ block('linkElement') }}
-            {%- else %}
+            {% if item.uri is empty and not item.hasChildren %}
                 {{ block('labelElement') }}
+            {%- else %}
+                {{ block('linkElement') }}
             {%- endif %}
+            {# render the list of children #}
             {%- set childrenClasses = item.childrenAttribute('class') is not empty ? [item.childrenAttribute('class')] : [] %}
             {%- set childrenClasses = childrenClasses|merge(['menu_level_' ~ item.level]) %}
             {%- set listAttributes = item.childrenAttributes|merge({'class': childrenClasses|join(' ') }) %}
             {{ block('list') }}
         </li>
-        {% if item.extra('divider_append') %}
+        {%- if item.extra('divider_append') -%}
             {{ block('divider') }}
-        {% endif %}
+        {%- endif -%}
     {% endif %}
 {% endblock %}
 
-{% block linkElement %}
-    {% import 'knp_menu.html.twig' as knp_menu %}
-    <a {% if item.uri is not empty %}href="{{ item.uri }}"{% endif %}{{ knp_menu.attributes(item.linkAttributes) }}>{{ block('label') }}</a>
-{% endblock %}
+{% block labelElement %}{% import 'knp_menu.html.twig' as knp_menu %}<label{{ knp_menu.attributes(item.labelAttributes) }}>{{ block('label') }}</label>{% endblock %}
 
-{% block labelElement %}
-    {% import 'knp_menu.html.twig' as knp_menu %}
-    <label{{ knp_menu.attributes(item.labelAttributes) }}>{{ block('label') }}</label>
-{% endblock %}
-
-{% block divider %}
-    <li class="divider"></li>
-{% endblock %}
+{% block divider %}<li class="divider"></li>{% endblock %}

@@ -1,3 +1,23 @@
-form .alert-box ul {
-    margin-bottom: 0px;
+/* Global form errors */
+
+.form-global-error ul {
+    margin-bottom: 0;
+    font-size: 0.75rem;
+}
+
+/* Fix the label position on switch */
+
+.switch-wrapper > label {
+    margin-left: 4.5rem;
+    line-height: 2.5;
+}
+
+/* Fix the height of select (multiple & size) */
+
+select {
+    height: auto;
+}
+
+select[size], select[multiple] {
+    background-image: none;
 }
