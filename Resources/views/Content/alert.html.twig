@@ -1,0 +1,5 @@
+{% set class = ('alert-box ' ~ (class|default('')))|trim %}
+<div data-alert class="{{ class }}">
+    {% block body %}{% endblock %}
+    <a href="#" class="close">&times;</a>
+</div>

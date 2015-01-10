@@ -21,11 +21,13 @@
 		"MIT"
 	],
 	"require" : {
-		"symfony/symfony" : ">=2.3",
-		"php" : ">=5.3.3"
+        "php" : ">=5.3.3",
+        "symfony/symfony" : ">=2.3"
 	},
 	"autoload" : {
-        "psr-4": { "Flob\\Bundle\\FoundationBundle\\": "" }
+        "psr-4": {
+            "Flob\\Bundle\\FoundationBundle\\": ""
+        }
 	},
 	"suggest" : {
 		"knplabs/knp-paginator-bundle" : "FoundationBundle can styles the pagination provided by KnpPaginatorBundle.",
