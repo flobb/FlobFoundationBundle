@@ -7,6 +7,8 @@ parameters:
 
 services:
 
+    # Form
+
     flob_foundation.form.slider:
             class: %flob_foundation.form.slider.class%
             tags:

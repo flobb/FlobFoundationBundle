@@ -25,6 +25,15 @@ To include all the libraries you can use a CDN like [CloudFlare CDN](http://cdnj
 - the [KnpMenuBundle](https://github.com/KnpLabs/KnpMenuBundle) for menus, this bundle can theme them for you.
 - the [KpnPaginatorBundle](https://github.com/KnpLabs/KnpPaginatorBundle) for pagination, this bundle can theme them for you.
 
+
+## Changelog
+
+v2
+- namespace renaming
+- new form types : button_group and button_bar
+- rework the twig form template
+- rework the KNP menu template and make it compatible with KNP menu 2.0
+
 ## Installation and configuration
 
 First, edit your `composer.json` and add :
@@ -106,6 +115,7 @@ flob_foundation:
     theme: { form: true, knp_menu: true, knp_paginator: true }
     template: { form: 'YourBundle:YourFolder:formtemplate.html.twig', breadcrumb: 'YourBundle:YourFolder:breadcrumbtemplate.html.twig', knp_menu: 'YourBundle:YourFolder:menutemplate.html.twig', knp_paginator: 'YourBundle:YourFolder:paginatortemplate.html.twig' }
 ```
+
 ## Usage
 
 ### Theme
@@ -234,6 +244,7 @@ However, you have various options:
 * add a class `link`, a tag `data-url` to the `attr` array and let JavaScript handle it
 
 ### Button Bar (form field type)
+
 A button bar is a group of button groups, perfect for situations where you want groups of actions that are all related to a similar element or page.
 
 This is an example of the field :
@@ -291,27 +302,6 @@ $builder->add(
     )
 );
 ```
-
-## Changelog
-
-v2
-- namespace renaming
-- rework the twig form template
-
-## TODO
-
-- [ ] better file upload fields
-- [ ] be abide validation compliant
-- [ ] buttonmania
-- [ ] alerts (via embed)
-- [ ] tabs (via ... that a good question)
-- [ ] equalizer
-- [ ] thumbnails
-
-Maybe :
-- [ ] progress bar
-- [ ] clearing lightbox
-- [ ] be aria compliant
 
 ## Feedback
 
