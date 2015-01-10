@@ -36,24 +36,24 @@ v2
 
 ## TODO for stable
 
-[ ] Pagination with PagerFanta + Configuration + Doc
-[ ] Breadcrumb with KnpMenu
-[ ] Sidebar with KnpMenu
-[ ] Refactor the doc and update it
-[ ] Provide the demo
-[ ] Setup & writes tests
-[ ] Tarvis
+- [ ] Pagination with PagerFanta + Configuration + Doc
+- [ ] Breadcrumb with KnpMenu
+- [ ] Sidebar with KnpMenu
+- [ ] Refactor the doc and update it
+- [ ] Provide the demo
+- [ ] Setup & writes tests
+- [ ] Tarvis
 
 ## TODO
 
-[ ] Thumbnails + Clearing Lightbox
-[ ] Icon Bar
-[ ] Support for off-canvas
-[ ] Modal
-[ ] Icon with labels
-[ ] Accordion
-[ ] Tabs
-[ ] Abide Validation
+- [ ] Thumbnails + Clearing Lightbox
+- [ ] Icon Bar
+- [ ] Support for off-canvas
+- [ ] Modal
+- [ ] Icon with labels
+- [ ] Accordion
+- [ ] Tabs
+- [ ] Abide Validation
 
 ## Installation and configuration
 
