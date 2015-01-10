@@ -35,9 +35,9 @@ class ButtonGroupType extends AbstractType
     /**
      * {@inheritdoc}
      *
-     * @param FormView $view
+     * @param FormView      $view
      * @param FormInterface $form
-     * @param array $options
+     * @param array         $options
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
@@ -51,7 +51,7 @@ class ButtonGroupType extends AbstractType
     /**
      * Adds a button
      *
-     * @param FormBuilderInterface $builder
+     * @param  FormBuilderInterface      $builder
      * @param $name
      * @param $config
      * @throws \InvalidArgumentException
@@ -67,7 +67,7 @@ class ButtonGroupType extends AbstractType
     /**
      * Validates if child is a Button
      *
-     * @param FormInterface $field
+     * @param  FormInterface             $field
      * @throws \InvalidArgumentException
      */
     protected function validateButton(FormInterface $field)
