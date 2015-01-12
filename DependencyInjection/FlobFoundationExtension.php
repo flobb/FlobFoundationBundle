@@ -35,7 +35,7 @@ class FlobFoundationExtension extends Extension implements PrependExtensionInter
         $configs = $container->getExtensionConfig($this->getAlias());
         $config = $this->processConfiguration(new Configuration(), $configs);
 
-        // This will change the Twig configuration if needed (default template path for exemple)
+        // This will change the Twig configuration if needed (default template path for example)
         if ($config['theme']['form']) {
             if (isset($bundles['TwigBundle'])) {
                 $container->prependExtensionConfig('twig', array('form' => array('resources' => array($config['template']['form']))));
@@ -44,7 +44,7 @@ class FlobFoundationExtension extends Extension implements PrependExtensionInter
             }
         }
 
-        // This will change the KnpMenu configuration if needed (default template path for exemple)
+        // This will change the KnpMenu configuration if needed (default template path for example)
         if ($config['theme']['knp_menu']) {
             if ((isset($bundles['TwigBundle'])) && (isset($bundles['KnpMenuBundle']))) {
                 $container->prependExtensionConfig('knp_menu', array('twig' => array('template' => $config['template']['knp_menu'])));
@@ -53,7 +53,7 @@ class FlobFoundationExtension extends Extension implements PrependExtensionInter
             }
         }
 
-        // This will change the KnpPagination configuration if needed (default template path for exemple)
+        // This will change the KnpPagination configuration if needed (default template path for example)
         if ($config['theme']['knp_paginator']) {
             if ((isset($bundles['TwigBundle'])) && (isset($bundles['KnpPaginatorBundle']))) {
                 $container->prependExtensionConfig('knp_paginator', array('template' => array('pagination' => $config['template']['knp_paginator'])));
