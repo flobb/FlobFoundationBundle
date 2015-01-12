@@ -34,7 +34,7 @@ v2
 - rework the KnpMenu template and make it compatible with KnpMenu 2.0
 - fixes to support Foundation 5.5.0
 
-## TODO for stable
+## TODO to go stable
 
 - [ ] Pagination with PagerFanta + Configuration + Doc
 - [ ] Breadcrumb with KnpMenu
@@ -44,7 +44,7 @@ v2
 - [ ] Setup & writes tests
 - [ ] Tarvis
 
-## TODO
+## In the future
 
 - [ ] Thumbnails + Clearing Lightbox
 - [ ] Icon Bar
@@ -64,7 +64,7 @@ First, edit your `composer.json` and add :
     ...
     "require": {
         ...
-        "florianbelhomme/flob-foundation-bundle" : "~2.0"
+        "florianbelhomme/flob-foundation-bundle": "dev-master"
         ...
     }
     ...
