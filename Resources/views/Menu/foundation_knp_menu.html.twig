@@ -1,7 +1,7 @@
 {% extends 'knp_menu.html.twig' %}
 
 {% block root %}
-    {% set isTopMenu = true %}{# ('topmenu' === item.extra('menu_type')) %} #}
+    {% set isTopMenu = 'topmenu' == item.extra('menu_type') %}
     {% if isTopMenu %}
         <nav class="top-bar" data-topbar>
             <ul class="title-area">

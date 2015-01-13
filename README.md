@@ -38,7 +38,7 @@ v2
 
 - [ ] Pagination with PagerFanta + Configuration + Doc
 - [ ] Breadcrumb with KnpMenu
-- [ ] Sidebar with KnpMenu
+- [X] Sidebar with KnpMenu
 - [ ] Refactor the doc and update it
 - [ ] Provide the demo
 - [ ] Setup & writes tests
