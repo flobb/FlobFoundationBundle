@@ -1,0 +1,19 @@
+#
+# Specific services to work with KNP Menu
+#
+
+parameters:
+
+    flob.menu_extension.class: Flob\Bundle\FoundationBundle\Twig\MenuExtension
+
+services:
+
+    fbfb.twig_extension:
+        class: %flob.menu_extension.class%
+        arguments:
+            - @twig
+            - @knp_menu.helper
+            - @knp_menu.matcher
+            - %flob.menu_extension.template%
+        tags:
+            - { name: twig.extension }
