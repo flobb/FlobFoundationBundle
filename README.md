@@ -37,7 +37,7 @@ v2
 ## TODO to go stable
 
 - [ ] Pagination with PagerFanta + Configuration + Doc
-- [ ] Breadcrumb with KnpMenu
+- [X] Breadcrumb with KnpMenu
 - [X] Sidebar with KnpMenu
 - [ ] Refactor the doc and update it
 - [ ] Provide the demo
