@@ -24,10 +24,13 @@ class FlobFoundationExtension extends Extension implements PrependExtensionInter
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
-        // Load a Twig extension if KNP Menu is enabled
         if (isset($bundles['KnpMenuBundle'])) {
             $loader->load('knp_menu.yml');
             $container->setParameter('flob.menu_extension.template', $config['template']['breadcrumb']);
+        }
+
+        if (isset($bundles['WhiteOctoberPagerfantaBundle'])) {
+            $loader->load('pagerfanta.yml');
         }
     }
 
@@ -62,6 +65,14 @@ class FlobFoundationExtension extends Extension implements PrependExtensionInter
                 $container->prependExtensionConfig('knp_paginator', array('template' => array('pagination' => $config['template']['knp_paginator'])));
             } else {
                 throw new InvalidConfigurationException('You need to enable Twig Bundle and KNP Paginator Bundle to theme pagination or set the configuration of flob_foundation.theme.knp_paginator to false');
+            }
+        }
+
+        if ($config['theme']['pagerfanta']) {
+            if ((isset($bundles['TwigBundle'])) && (isset($bundles['WhiteOctoberPagerfantaBundle']))) {
+                $container->prependExtensionConfig('white_october_pagerfanta', array('default_view' => $config['template']['pagerfanta']));
+            } else {
+                throw new InvalidConfigurationException('You need to enable Twig Bundle and WhiteOctober Pagerfanta Bundle to theme pagination or set the configuration of flob_foundation.theme.pagerfanta to false');
             }
         }
     }

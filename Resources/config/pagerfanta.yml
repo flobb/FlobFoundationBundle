@@ -1,0 +1,21 @@
+#
+# Specific services to work with WhiteOctober Pagerfanta
+#
+
+parameters:
+
+    flob.pagerfanta.template.foundation.class: Flob\Bundle\FoundationBundle\Pagerfanta\View\Template\FoundationTemplate
+    flob.pagerfanta.view.foundation.class: Pagerfanta\View\DefaultView
+
+services:
+
+    flob.pagerfanta.template.foundation:
+        class: %flob.pagerfanta.template.foundation.class%
+
+    flob.pagerfanta.view.foundation:
+        class: %flob.pagerfanta.view.foundation.class%
+        public: false
+        arguments:
+            - @flob.pagerfanta.template.foundation
+        tags:
+            - { name: pagerfanta.view, alias: foundation }
