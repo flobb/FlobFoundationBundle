@@ -8,7 +8,7 @@ parameters:
 
 services:
 
-    fbfb.twig_extension:
+    flob.menu_extension:
         class: %flob.menu_extension.class%
         arguments:
             - @twig

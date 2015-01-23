@@ -20,6 +20,7 @@ class Configuration implements ConfigurationInterface
                         ->booleanNode('form')->defaultValue(false)->end()
                         ->booleanNode('knp_menu')->defaultValue(false)->end()
                         ->booleanNode('knp_paginator')->defaultValue(false)->end()
+                        ->booleanNode('pagerfanta')->defaultValue(false)->end()
                     ->end()
                 ->end()
                 ->arrayNode('template')
@@ -29,6 +30,7 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('breadcrumb')->defaultValue('FlobFoundationBundle:Menu:foundation_breadcrumb.html.twig')->end()
                         ->scalarNode('knp_menu')->defaultValue('FlobFoundationBundle:Menu:foundation_knp_menu.html.twig')->end()
                         ->scalarNode('knp_paginator')->defaultValue('FlobFoundationBundle:Pagination:foundation_sliding.html.twig')->end()
+                        ->scalarNode('pagerfanta')->defaultValue('foundation')->end()
                     ->end()
                 ->end()
             ->end();
