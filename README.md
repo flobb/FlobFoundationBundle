@@ -36,7 +36,7 @@ v2
 
 ## TODO to go stable
 
-- [ ] Pagination with PagerFanta + Configuration + Doc
+- [X] Pagination with PagerFanta + Configuration + Doc
 - [X] Breadcrumb with KnpMenu
 - [X] Sidebar with KnpMenu
 - [ ] Refactor the doc and update it
@@ -123,7 +123,7 @@ To automatically theme forms or other elements by default, go into the `app/conf
 
 ```YAML
 flob_foundation:
-    theme: { form: true, knp_menu: true, knp_paginator: true }
+    theme: { form: true, knp_menu: true, knp_paginator: true, pagerfanta: true }
 ```
 
 If you want to do specific HTML markup that extends templates of this bundle:
@@ -133,8 +133,13 @@ If you want to do specific HTML markup that extends templates of this bundle:
 
 ```YAML
 flob_foundation:
-    theme: { form: true, knp_menu: true, knp_paginator: true }
-    template: { form: 'YourBundle:YourFolder:formtemplate.html.twig', breadcrumb: 'YourBundle:YourFolder:breadcrumbtemplate.html.twig', knp_menu: 'YourBundle:YourFolder:menutemplate.html.twig', knp_paginator: 'YourBundle:YourFolder:paginatortemplate.html.twig' }
+    theme: { form: true, knp_menu: true, knp_paginator: true, pagerfanta: true }
+    template: {
+        form: 'YourBundle:YourFolder:formtemplate.html.twig',
+        breadcrumb: 'YourBundle:YourFolder:breadcrumbtemplate.html.twig',
+        knp_menu: 'YourBundle:YourFolder:menutemplate.html.twig',
+        pagerfanta: 'YourPagerFantaTemplate'
+    }
 ```
 
 ## Usage
@@ -150,8 +155,11 @@ However instead of setting it in the configuration, you can theme specific eleme
 {# Menu #}
 {{ knp_menu_render('yourmenu', {'template' : 'FlobFoundationBundle:Menu:foundation_knp_menu.html.twig'}) }}
 
-{# Pagination #}
+{# Pagination with KNP paginator #}
 {{ knp_pagination_render(yourpagination, 'FlobFoundationBundle:Pagination:foundation_sliding.html.twig') }}
+
+{# Pagination with PagerFanta (through WhiteOctober bundle) #}
+{{ pagerfanta(paginationFanta, 'foundation') }}
 ```
 
 ### Breadcrumb
