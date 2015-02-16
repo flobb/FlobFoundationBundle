@@ -21,8 +21,18 @@
 		"MIT"
 	],
 	"require" : {
-        "php" : ">=5.3.3",
-        "symfony/symfony" : ">=2.3"
+		"php": ">=5.3.3",
+		"symfony/framework-bundle": "~2.3",
+		"symfony/twig-bundle": "~2.3",
+		"symfony/yaml": "~2.3",
+		"symfony/form": "~2.3"
+	},
+	"require-dev" : {
+		"white-october/pagerfanta-bundle": "~1.0",
+		"knplabs/knp-paginator-bundle" : "~2.4",
+		"knplabs/knp-menu-bundle" : "~2.0",
+		"phpspec/prophecy": "~1.3.1",
+		"phpunit/phpunit": "~4.4.5"
 	},
 	"autoload" : {
         "psr-4": {
@@ -32,6 +42,7 @@
 	"suggest" : {
 		"knplabs/knp-paginator-bundle" : "FoundationBundle can styles the pagination provided by KnpPaginatorBundle.",
 		"knplabs/knp-menu-bundle" : "FoundationBundle can styles the menus provided by KnpMenuBundle.",
-		"flob/foundation-demo-bundle" : "Provides you a demo and exemples of the functionnalities of the foundation bundle."
+	    "white-october/pagerfanta-bundle" : "FoundationBundle can styles the pagination provided by PagerFanta.",
+		"flob/foundation-demo-bundle" : "Provides you a demo and examples of the functionnalities of the foundation bundle."
 	}
 }
