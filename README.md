@@ -42,8 +42,8 @@ v2
 - [X] Sidebar with KnpMenu
 - [ ] Refactor the doc and update it
 - [ ] Provide the demo
-- [ ] Setup & writes tests
-- [ ] Tarvis
+- [X] Setup & writes tests
+- [X] Tarvis
 
 ## In the future
 
@@ -55,6 +55,7 @@ v2
 - [ ] Accordion
 - [ ] Tabs
 - [ ] Abide Validation
+- [ ] Better tests
 
 ## Installation and configuration
 
