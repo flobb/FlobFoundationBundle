@@ -3,6 +3,7 @@
 By [Florian Belhomme](http://florianbelhomme.com)
 
 [![Total Downloads](https://poser.pugx.org/florianbelhomme/flob-foundation-bundle/downloads.svg)](https://packagist.org/packages/florianbelhomme/flob-foundation-bundle)
+[![Build Status](https://travis-ci.org/florianbelhomme/FlobFoundationBundle.svg?branch=tests)](https://travis-ci.org/florianbelhomme/FlobFoundationBundle)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/4ffe439b-5a0c-4caa-914e-005d21591c3d/mini.png)](https://insight.sensiolabs.com/projects/4ffe439b-5a0c-4caa-914e-005d21591c3d)
 
 ## About
@@ -134,12 +135,12 @@ If you want to do specific HTML markup that extends templates of this bundle:
 ```YAML
 flob_foundation:
     theme: { form: true, knp_menu: true, knp_paginator: true, pagerfanta: true }
-    template: {
-        form: 'YourBundle:YourFolder:formtemplate.html.twig',
-        breadcrumb: 'YourBundle:YourFolder:breadcrumbtemplate.html.twig',
-        knp_menu: 'YourBundle:YourFolder:menutemplate.html.twig',
+    template:
+        form: 'YourBundle:YourFolder:formtemplate.html.twig'
+        breadcrumb: 'YourBundle:YourFolder:breadcrumbtemplate.html.twig'
+        knp_menu: 'YourBundle:YourFolder:menutemplate.html.twig'
+        knp_paginator: 'YourBundle:YourFolder:paginatortemplate.html.twig'
         pagerfanta: 'YourPagerFantaTemplate'
-    }
 ```
 
 ## Usage

@@ -1,0 +1,26 @@
+language: php
+
+php:
+    - 5.3
+    - 5.4
+    - 5.5
+    - 5.6
+    - hhvm
+
+sudo: false
+
+env:
+    matrix:
+        - COMPOSER_PARAMETERS="--prefer-stable"
+        - COMPOSER_PARAMETERS="--prefer-stable --prefer-lowest"
+
+matrix:
+    allow_failures:
+        - php: hhvm
+
+before_script:
+    - composer self-update
+    - composer $COMPOSER_PARAMETERS update
+
+script:
+    - ./vendor/bin/phpunit
