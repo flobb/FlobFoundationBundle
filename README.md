@@ -26,27 +26,10 @@ To include all the libraries you can use a CDN like [CloudFlare CDN](http://cdnj
 - the [KnpMenuBundle](https://github.com/KnpLabs/KnpMenuBundle) for menus, this bundle can theme them for you.
 - the [KpnPaginatorBundle](https://github.com/KnpLabs/KnpPaginatorBundle) for pagination, this bundle can theme them for you.
 
-## Changelog
-
-v2
-- namespace renaming
-- new form types : button_group and button_bar
-- rework the twig form template
-- rework the KnpMenu template and make it compatible with KnpMenu 2.0
-- fixes to support Foundation 5.5.0
-
-## TODO to go stable
-
-- [X] Pagination with PagerFanta + Configuration + Doc
-- [X] Breadcrumb with KnpMenu
-- [X] Sidebar with KnpMenu
-- [ ] Refactor the doc and update it
-- [ ] Provide the demo
-- [X] Setup & writes tests
-- [X] Tarvis
-
 ## In the future
 
+- [ ] Better tests
+- [ ] Refactor the doc and update it
 - [ ] Thumbnails + Clearing Lightbox
 - [ ] Icon Bar
 - [ ] Support for off-canvas
@@ -55,7 +38,6 @@ v2
 - [ ] Accordion
 - [ ] Tabs
 - [ ] Abide Validation
-- [ ] Better tests
 
 ## Installation and configuration
 
@@ -66,7 +48,7 @@ First, edit your `composer.json` and add :
     ...
     "require": {
         ...
-        "florianbelhomme/flob-foundation-bundle": "dev-master"
+        "florianbelhomme/flob-foundation-bundle": "~2.0.0"
         ...
     }
     ...
