@@ -14,6 +14,8 @@ This bundle integrates the functionalities of the responsive framework Foundatio
 
 To include all the libraries you can use a CDN like [CloudFlare CDN](http://cdnjs.com/).
 
+Demo available [here](http://florianbelhomme.com/flobfoundationdemobundle/).
+
 ## Requirements
 
 - [Symfony 2.3+](http://symfony.com).
