@@ -3,8 +3,10 @@
 By [Florian Belhomme](http://florianbelhomme.com)
 
 [![Total Downloads](https://poser.pugx.org/florianbelhomme/flob-foundation-bundle/downloads.svg)](https://packagist.org/packages/florianbelhomme/flob-foundation-bundle)
+[![Latest Stable Version](https://poser.pugx.org/florianbelhomme/flob-foundation-bundle/v/stable.svg)](https://packagist.org/packages/florianbelhomme/flob-foundation-bundle)
 [![Build Status](https://travis-ci.org/florianbelhomme/FlobFoundationBundle.svg?branch=tests)](https://travis-ci.org/florianbelhomme/FlobFoundationBundle)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/4ffe439b-5a0c-4caa-914e-005d21591c3d/mini.png)](https://insight.sensiolabs.com/projects/4ffe439b-5a0c-4caa-914e-005d21591c3d)
+[![License](https://poser.pugx.org/florianbelhomme/flob-foundation-bundle/license.svg)](https://packagist.org/packages/florianbelhomme/flob-foundation-bundle)
 
 ## About
 
@@ -130,12 +132,29 @@ flob_foundation:
 
 ## Usage
 
+### Theme
+
+However instead of setting it in the configuration, you can theme specific elements using one of these methods:
+
+```Twig
+{# Form #}
+{% form_theme yourform 'FlobFoundationBundle:Form:foundation_form_div_layout.html.twig' %}
+
+{# Menu #}
+{{ knp_menu_render('yourmenu', {'template' : 'FlobFoundationBundle:Menu:foundation_knp_menu.html.twig'}) }}
+
+{# Pagination with KNP paginator #}
+{{ knp_pagination_render(yourpagination, 'FlobFoundationBundle:Pagination:foundation_sliding.html.twig') }}
+
+{# Pagination with PagerFanta (through WhiteOctober bundle) #}
+{{ pagerfanta(paginationFanta, 'foundation') }}
+```
+
 ### Top bar
 
 To create a top bar, just create your KNP Menu, add a route to the root element and set extra options:
 
 ```php
-
 $menu = $this->factory->createItem(
     'My website',
     array('route' => 'homepage')
@@ -156,44 +175,9 @@ $menu->addChild(
 )->setLabelAttribute('right-icon', 'fa fa-times');
 ```
 
-### Theme
-
-However instead of setting it in the configuration, you can theme specific elements using one of these methods:
-
-```Twig
-{# Form #}
-{% form_theme yourform 'FlobFoundationBundle:Form:foundation_form_div_layout.html.twig' %}
-
-{# Menu #}
-{{ knp_menu_render('yourmenu', {'template' : 'FlobFoundationBundle:Menu:foundation_knp_menu.html.twig'}) }}
-
-{# Pagination with KNP paginator #}
-{{ knp_pagination_render(yourpagination, 'FlobFoundationBundle:Pagination:foundation_sliding.html.twig') }}
-
-{# Pagination with PagerFanta (through WhiteOctober bundle) #}
-{{ pagerfanta(paginationFanta, 'foundation') }}
-```
-
 ### Breadcrumb
 
-If you want a breadcrumb generated from a KNP Menu :
-
-* Make sure that your menu builder get the current URI by adding this :
-
-```Php
-public function createMyMenu(Request $request)
-{
-    $menu = $this->factory->createItem('Home', array('route' => 'homepage')));
-
-    // ... Add entries here ...
-
-    $menu->setCurrentUri($request->getBaseUrl().$request->getPathInfo());
-
-    return $menu;
-}
-```
-
-* Then add this code in your template :
+If you want a breadcrumb generated from a KNP Menu add this code in your template :
 
 ```Twig
 {{ flob_foundation_breadcrumb_render('yourknpmenu') }}
