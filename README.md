@@ -130,6 +130,32 @@ flob_foundation:
 
 ## Usage
 
+### Top bar
+
+To create a top bar, just create your KNP Menu, add a route to the root element and set extra options:
+
+```php
+
+$menu = $this->factory->createItem(
+    'My website',
+    array('route' => 'homepage')
+);
+$menu->setExtra("menu_type", "topmenu");
+```
+
+### Menu entries with icons
+
+```php
+$menu->addChild(
+    "Entry 1",
+    array('route' => 'route_entry1')
+)->setLabelAttribute('left-icon', 'fa fa-times');
+$menu->addChild(
+    "Entry 2",
+    array('route' => 'route_entry2')
+)->setLabelAttribute('right-icon', 'fa fa-times');
+```
+
 ### Theme
 
 However instead of setting it in the configuration, you can theme specific elements using one of these methods:

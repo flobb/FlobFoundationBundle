@@ -5,7 +5,13 @@
     {% if isTopMenu %}
         <nav class="top-bar" data-topbar>
             <ul class="title-area">
-                <li class="name"></li>
+                <li class="name">
+                    {%- if item.uri is not empty %}
+                    <h1>
+                        {{ block('linkElement') }}
+                    </h1>
+                    {%- endif %}
+                </li>
                 <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
             </ul>
             <section class="top-bar-section">
@@ -79,6 +85,16 @@
         {%- if item.extra('divider_append') -%}
             {{ block('divider') }}
         {%- endif -%}
+    {% endif %}
+{% endblock %}
+
+{% block label %}
+    {% if item.labelAttribute('left-icon') is not empty  %}
+        <i class="{{ item.labelAttribute('left-icon') }}"></i>
+    {% endif %}
+    {{ parent() }}
+    {% if item.labelAttribute('right-icon') is not empty  %}
+        <i class="{{ item.labelAttribute('right-icon') }}"></i>
     {% endif %}
 {% endblock %}
 
