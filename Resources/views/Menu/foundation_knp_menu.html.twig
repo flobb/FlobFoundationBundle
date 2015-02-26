@@ -1,8 +1,8 @@
 {% extends 'knp_menu.html.twig' %}
 
 {% block root %}
-    {% set isTopMenu = 'topmenu' == item.extra('menu_type') %}
-    {% if isTopMenu %}
+    {% set isTopBar = 'topbar' == item.extra('menu_type') %}
+    {% if isTopBar %}
         <nav class="top-bar" data-topbar>
             <ul class="title-area">
                 <li class="name">
@@ -17,7 +17,7 @@
             <section class="top-bar-section">
     {% endif %}
     {{ parent() }}
-    {% if isTopMenu %}
+    {% if isTopBar %}
             </section>
         </nav>
     {% endif %}
@@ -89,13 +89,15 @@
 {% endblock %}
 
 {% block label %}
-    {% if item.labelAttribute('left-icon') is not empty  %}
-        <i class="{{ item.labelAttribute('left-icon') }}"></i>
-    {% endif %}
+    {% if item.extra('icon') is not empty and item.extra('icon_position', 'before') != 'after' -%}
+        <i class="fa {{ item.extra('icon') }}"></i>{%- if item.extra('icon_position', 'before') != 'no-label' -%}&nbsp;{%- endif -%}
+    {%- endif -%}
+    {%- if item.extra('icon_position', 'before') != 'no-label' -%}
     {{ parent() }}
-    {% if item.labelAttribute('right-icon') is not empty  %}
-        <i class="{{ item.labelAttribute('right-icon') }}"></i>
-    {% endif %}
+    {%- endif -%}
+    {%- if item.extra('icon') is not empty and item.extra('icon_position', 'before') == 'after' -%}
+        <i class="fa {{ item.extra('icon') }}"></i>
+    {%- endif %}
 {% endblock %}
 
 {% block labelElement %}{% import 'knp_menu.html.twig' as knp_menu %}<label{{ knp_menu.attributes(item.labelAttributes) }}>{{ block('label') }}</label>{% endblock %}
