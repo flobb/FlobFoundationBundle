@@ -157,22 +157,29 @@ To create a top bar, just create your KNP Menu, add a route to the root element 
 ```php
 $menu = $this->factory->createItem(
     'My website',
-    array('route' => 'homepage')
+    array(
+        'route' => 'homepage',
+        'extras' => array('menu_type' => 'topbar')
+    )
 );
-$menu->setExtra("menu_type", "topmenu");
 ```
 
 ### Menu entries with icons
 
+You can add an icon before, after or instead of the label. By default the icon will be added before the label.
+The icon must be the name of one of Font-Awesome, example : "fa-bell-o".
+
 ```php
 $menu->addChild(
-    "Entry 1",
-    array('route' => 'route_entry1')
-)->setLabelAttribute('left-icon', 'fa fa-times');
-$menu->addChild(
-    "Entry 2",
-    array('route' => 'route_entry2')
-)->setLabelAttribute('right-icon', 'fa fa-times');
+    "Entry",
+    array(
+        'route' => 'route_entry',
+        'extras' => array(
+            'icon' => 'fa-bell-o',
+            'icon_position' => 'no-label' # can be 'before', 'after' or 'no-label'
+        )
+    )
+);
 ```
 
 ### Breadcrumb
