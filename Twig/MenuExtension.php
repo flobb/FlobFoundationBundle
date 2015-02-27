@@ -98,9 +98,17 @@ class MenuExtension extends \Twig_Extension
         $itemFilterIterator = new CurrentItemFilterIterator($treeIterator, $this->matcher);
         $itemFilterIterator->rewind();
 
-        // Extract the items for the breadcrumb
+        // Watch for a current item
+        $current = $itemFilterIterator->current();
+
         $manipulator = new MenuManipulator();
-        $breadcrumbs = $manipulator->getBreadcrumbsArray($itemFilterIterator->current());
+        if ($current instanceof ItemInterface) {
+            // Extract the items for the breadcrumb
+            $breadcrumbs = $manipulator->getBreadcrumbsArray($current);
+        } else {
+            // Current item could not be located, we only send the first item
+            $breadcrumbs = $manipulator->getBreadcrumbsArray($menu);
+        }
 
         // Load the template if needed
         if (!$options['template'] instanceof \Twig_Template) {
