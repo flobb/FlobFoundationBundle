@@ -1,7 +1,5 @@
 # [Flob Foundation Bundle](https://github.com/florianbelhomme/FlobFoundationBundle)
 
-By [Florian Belhomme](http://florianbelhomme.com)
-
 [![Total Downloads](https://poser.pugx.org/florianbelhomme/flob-foundation-bundle/downloads.svg)](https://packagist.org/packages/florianbelhomme/flob-foundation-bundle)
 [![Latest Stable Version](https://poser.pugx.org/florianbelhomme/flob-foundation-bundle/v/stable.svg)](https://packagist.org/packages/florianbelhomme/flob-foundation-bundle)
 [![Build Status](https://travis-ci.org/florianbelhomme/FlobFoundationBundle.svg?branch=tests)](https://travis-ci.org/florianbelhomme/FlobFoundationBundle)
@@ -14,8 +12,6 @@ This bundle integrates the features of the responsive framework Foundation, from
 
 **BE AWARE: THIS BUNDLE WILL NOT ADD THE FOUNDATION FRAMEWORK BUT RATHER features FOR SYMFONY TO WORK WITH IT**
 
-To include all the libraries you can use a CDN like [CloudFlare CDN](http://cdnjs.com/).
-
 Demo available [here](http://florianbelhomme.com/flobfoundationdemobundle/).
 
 ## Requirements
@@ -27,8 +23,10 @@ Demo available [here](http://florianbelhomme.com/flobfoundationdemobundle/).
 
 ## Recommended
 
-- the [KnpMenuBundle](https://github.com/KnpLabs/KnpMenuBundle) for menus, this bundle can theme them for you.
-- the [KpnPaginatorBundle](https://github.com/KnpLabs/KnpPaginatorBundle) for pagination, this bundle can theme them for you.
+This bundle will theme for you elements of :
+- the [KnpMenuBundle](https://github.com/KnpLabs/KnpMenuBundle) to manage menu or sidebar.
+- the [KpnPaginatorBundle](https://github.com/KnpLabs/KnpPaginatorBundle) for pagination.
+- the [WhiteOctoberPagerfantaBundle](https://github.com/whiteoctober/WhiteOctoberPagerfantaBundle) for pagination based on Pager Fanta.
 
 ## In the future
 
@@ -358,13 +356,27 @@ $builder->add(
     );
 ```
 
-## Feedback
+## Authors
 
-**Please provide feedback!**
-We want to make this bundle useful in as many projects as possible.
+- [Florian Belhomme](http://florianbelhomme.com) a.k.a Solune
+- [The Community Contributors](https://github.com/florianbelhomme/FlobFoundationBundle/graphs/contributors)
 
-Maintained by [Florian Belhomme](http://florianbelhomme.com).
+## Contribute
+
+**Contributions to the package are always welcome! Feedback is great.**
+
+Feel free to fork the project and make a PR. 
+You can also help the others, look in the [issues](https://github.com/florianbelhomme/FlobFoundationBundle/issues).
+
+## Support
+
+If you are having problems, fill an [issue](https://github.com/florianbelhomme/FlobFoundationBundle/issues).
+
+## Donate / Beer time
+
+If the bundle save you some time and/or make you please, you can pay me a beer ;)
+Via [Paypal](https://www.paypal.com/fr/webapps/mpp/send-money-online) to florian.belhomme@gmail.com
 
 ## License
 
-- This bundle is licensed under the [MIT License](http://opensource.org/licenses/MIT)
+This bundle is licensed under the [MIT License](http://opensource.org/licenses/MIT)
