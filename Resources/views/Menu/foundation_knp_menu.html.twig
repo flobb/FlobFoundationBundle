@@ -53,7 +53,7 @@
 
         {# Mark item as "leaf" (no children) or as "branch" (has children that are displayed) #}
         {% if item.hasChildren and options.depth is not sameas(0) %}
-            {% set options = options|merge({'branch_class': ('has-dropdown ' ~ options.branch_class|default(''))|trim }) %}
+            {%- set classes = classes|merge(['has-dropdown']) %}
             {% if options.branch_class is not empty and item.displayChildren %}
                 {%- set classes = classes|merge([options.branch_class]) %}
             {% endif %}
