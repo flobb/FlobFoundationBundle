@@ -375,6 +375,7 @@ If you are having problems, fill an [issue](https://github.com/florianbelhomme/F
 ## Donate / Beer time
 
 If the bundle save you some time and/or make you please, you can pay me a beer ;)
+
 Via [Paypal](https://www.paypal.com/fr/webapps/mpp/send-money-online) to florian.belhomme@gmail.com
 
 ## License
