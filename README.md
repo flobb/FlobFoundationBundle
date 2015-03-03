@@ -2,7 +2,7 @@
 
 [![Total Downloads](https://poser.pugx.org/florianbelhomme/flob-foundation-bundle/downloads.svg)](https://packagist.org/packages/florianbelhomme/flob-foundation-bundle)
 [![Latest Stable Version](https://poser.pugx.org/florianbelhomme/flob-foundation-bundle/v/stable.svg)](https://packagist.org/packages/florianbelhomme/flob-foundation-bundle)
-[![Build Status](https://travis-ci.org/florianbelhomme/FlobFoundationBundle.svg?branch=tests)](https://travis-ci.org/florianbelhomme/FlobFoundationBundle)
+[![Build Status](https://travis-ci.org/florianbelhomme/FlobFoundationBundle.svg?branch=master)](https://travis-ci.org/florianbelhomme/FlobFoundationBundle)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/4ffe439b-5a0c-4caa-914e-005d21591c3d/mini.png)](https://insight.sensiolabs.com/projects/4ffe439b-5a0c-4caa-914e-005d21591c3d)
 [![License](https://poser.pugx.org/florianbelhomme/flob-foundation-bundle/license.svg)](https://packagist.org/packages/florianbelhomme/flob-foundation-bundle)
 
