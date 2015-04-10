@@ -4,7 +4,7 @@
 
 {% block money_widget -%}
     <div class="small-11 columns">{{ block('form_widget_simple') }}</div>
-    <div class="small-1 columns"><span class="postfix">{{ money_pattern|replace({' {{ widget }}': ''})|raw }}</span></div>
+    <div class="small-1 columns"><span class="postfix">{{ money_pattern|replace({'{{ widget }}': ''})|raw }}</span></div>
 {%- endblock money_widget %}
 
 {% block url_widget -%}
