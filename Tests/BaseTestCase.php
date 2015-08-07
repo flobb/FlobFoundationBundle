@@ -22,7 +22,7 @@ class BaseTestCase extends \PHPUnit_Framework_TestCase
             try {
                 $this->prophet->checkPredictions();
             } catch (\Exception $e) {
-                /** Intentionally left empty */
+                /* Intentionally left empty */
             }
             foreach ($this->prophet->getProphecies() as $objectProphecy) {
                 foreach ($objectProphecy->getMethodProphecies() as $methodProphecies) {
@@ -49,7 +49,9 @@ class BaseTestCase extends \PHPUnit_Framework_TestCase
 
     /**
      * @param string|null $classOrInterface
+     *
      * @return \Prophecy\Prophecy\ObjectProphecy
+     *
      * @throws \LogicException
      */
     protected function prophesize($classOrInterface = null)

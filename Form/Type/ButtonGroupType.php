@@ -8,10 +8,10 @@ use Symfony\Component\Form\ButtonBuilder;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class ButtonGroupType
+ * Class ButtonGroupType.
  *
  * Adds support for button_groups, printing buttons in a single line.
  *
@@ -21,7 +21,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class ButtonGroupType extends AbstractType
 {
     /**
-     * Pull all button into the form
+     * Pull all button into the form.
      *
      * {@inheritdoc}
      */
@@ -45,49 +45,52 @@ class ButtonGroupType extends AbstractType
             return;
         }
 
-        array_map(array($this, 'validateButton'), $form->all());
+        array_map([$this, 'validateButton'], $form->all());
     }
 
     /**
-     * Adds a button
+     * Adds a button.
      *
      * @param  FormBuilderInterface      $builder
      * @param $name
      * @param $config
+     *
      * @throws \InvalidArgumentException
+     *
      * @return ButtonBuilder
      */
     protected function addButton($builder, $name, $config)
     {
-        $options = isset($config['options']) ? $config['options'] : array();
+        $options = isset($config['options']) ? $config['options'] : [];
 
         return $builder->add($name, $config['type'], $options);
     }
 
     /**
-     * Validates if child is a Button
+     * Validates if child is a Button.
      *
      * @param  FormInterface             $field
+     *
      * @throws \InvalidArgumentException
      */
     protected function validateButton(FormInterface $field)
     {
         if (!$field instanceof Button) {
-            throw new \InvalidArgumentException("Children of ButtonGroupType must be instances of the Button class");
+            throw new \InvalidArgumentException('Children of ButtonGroupType must be instances of the Button class');
         }
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
-            array(
-                'buttons' => array(),
-                'options' => array(),
-                'mapped'  => false,
-            )
+            [
+                'buttons' => [],
+                'options' => [],
+                'mapped' => false,
+            ]
         );
     }
 

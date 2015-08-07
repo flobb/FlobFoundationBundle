@@ -29,9 +29,9 @@ class ButtonGroupTypeTest extends BaseTestCase
 
     public function testSetDefaultOptions()
     {
-        $optionsResolver = $this->prophesize('Symfony\Component\OptionsResolver\OptionsResolverInterface');
-        $optionsResolver->setDefaults(array('buttons' => array(), 'options' => array(), 'mapped' => false))->shouldBeCalled();
+        $optionsResolver = $this->prophesize('Symfony\Component\OptionsResolver\OptionsResolver');
+        $optionsResolver->setDefaults(['buttons' => [], 'options' => [], 'mapped' => false])->shouldBeCalled();
 
-        $this->type->setDefaultOptions($optionsResolver->reveal());
+        $this->type->configureOptions($optionsResolver->reveal());
     }
 }

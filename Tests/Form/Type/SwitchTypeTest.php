@@ -34,9 +34,9 @@ class SwitchTypeTest extends BaseTestCase
 
     public function testSetDefaultOptions()
     {
-        $optionsResolver = $this->prophesize('Symfony\Component\OptionsResolver\OptionsResolverInterface');
-        $optionsResolver->setDefaults(array('expanded' => true))->shouldBeCalled();
+        $optionsResolver = $this->prophesize('Symfony\Component\OptionsResolver\OptionsResolver');
+        $optionsResolver->setDefaults(['expanded' => true])->shouldBeCalled();
 
-        $this->type->setDefaultOptions($optionsResolver->reveal());
+        $this->type->configureOptions($optionsResolver->reveal());
     }
 }

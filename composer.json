@@ -1,51 +1,51 @@
 {
-    "name" : "florianbelhomme/flob-foundation-bundle",
-    "description" : "Integrates the features of the responsive framework Foundation, from Zurb, into Symfony2 by providing templates, Twig extensions, services and commands.",
-    "type" : "symfony-bundle",
-    "authors" : [
-        {
-            "name" : "Florian Belhomme",
-            "email" : "contact@florianbelhomme.com",
-            "homepage" : "http://florianbelhomme.com",
-            "role" : "Developer"
-        }
-    ],
-    "keywords" : [
-        "foundation",
-        "zurb",
-        "responsive",
-        "symfony",
-        "bundle"
-    ],
-    "license" : [
-        "MIT"
-    ],
-    "require" : {
-        "php": ">=5.3.3",
-        "symfony/framework-bundle": "~2.3",
-        "symfony/twig-bundle": "~2.3",
-        "symfony/yaml": "~2.3",
-        "symfony/form": "~2.3"
-    },
-    "require-dev" : {
-        "white-october/pagerfanta-bundle": "~1.0",
-        "knplabs/knp-paginator-bundle" : "~2.4",
-        "knplabs/knp-menu-bundle" : "~2.0",
-        "phpspec/prophecy": "~1.3.1",
-        "phpunit/phpunit": "~4.4.5"
-    },
-    "autoload" : {
-        "psr-4": {
-            "Flob\\Bundle\\FoundationBundle\\": ""
-        }
-    },
-    "replace": {
-        "florianbelhomme/foundation-bundle": "*"
-    },
-    "suggest" : {
-        "knplabs/knp-paginator-bundle" : "FoundationBundle can styles the pagination provided by KnpPaginatorBundle.",
-        "knplabs/knp-menu-bundle" : "FoundationBundle can styles the menus provided by KnpMenuBundle.",
-        "white-october/pagerfanta-bundle" : "FoundationBundle can styles the pagination provided by PagerFanta.",
-        "florianbelhomme/flob-foundation-demo-bundle" : "Provides you a demo and examples of the features of the foundation bundle."
-    }
+  "name" : "florianbelhomme/flob-foundation-bundle",
+  "description" : "Integrates the features of the responsive framework Foundation, from Zurb, into Symfony2 by providing templates, Twig extensions, services and commands.",
+  "type" : "symfony-bundle",
+  "authors" : [
+	{
+	  "name" : "Florian Belhomme",
+	  "email" : "contact@florianbelhomme.com",
+	  "homepage" : "http://florianbelhomme.com",
+	  "role" : "Developer"
+	}
+  ],
+  "keywords" : [
+	"foundation",
+	"zurb",
+	"responsive",
+	"symfony",
+	"bundle"
+  ],
+  "license" : [
+	"MIT"
+  ],
+  "require" : {
+	"php": ">=5.3.9",
+	"symfony/framework-bundle": "~2.7.0",
+	"symfony/twig-bundle": "~2.7.0",
+	"symfony/yaml": "~2.7.0",
+	"symfony/form": "~2.7.0"
+  },
+  "require-dev" : {
+	"white-october/pagerfanta-bundle": "~1.0",
+	"knplabs/knp-paginator-bundle" : "~2.4",
+	"knplabs/knp-menu-bundle" : "~2.0.0",
+	"phpspec/prophecy": "~1.3.1",
+	"phpunit/phpunit": "~4.4.5"
+  },
+  "autoload" : {
+	"psr-4": {
+	  "Flob\\Bundle\\FoundationBundle\\": ""
+	}
+  },
+  "replace": {
+	"florianbelhomme/foundation-bundle": "*"
+  },
+  "suggest" : {
+	"knplabs/knp-paginator-bundle" : "FoundationBundle can styles the pagination provided by KnpPaginatorBundle.",
+	"knplabs/knp-menu-bundle" : "FoundationBundle can styles the menus provided by KnpMenuBundle.",
+	"white-october/pagerfanta-bundle" : "FoundationBundle can styles the pagination provided by PagerFanta.",
+	"florianbelhomme/flob-foundation-demo-bundle" : "Provides you a demo and examples of the features of the foundation bundle."
+  }
 }

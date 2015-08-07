@@ -16,7 +16,7 @@ Demo available [here](http://florianbelhomme.com/flobfoundationdemobundle/).
 
 ## Requirements
 
-- [Symfony 2.3+](http://symfony.com).
+- [Symfony 2.7+](http://symfony.com).
 - [jQuery 2+](http://jquery.com/) a JavaScript library.
 - [Foundation 5+](http://foundation.zurb.com/) an advanced responsive framework.
 - [Font Awesome 4+](http://fontawesome.io/) which comes with 369+ icons.
@@ -50,7 +50,7 @@ First, edit your `composer.json` and add :
     ...
     "require": {
         ...
-        "florianbelhomme/flob-foundation-bundle": "~2.0.0"
+        "florianbelhomme/flob-foundation-bundle": "~2.1.0"
         ...
     }
     ...
@@ -66,11 +66,11 @@ class AppKernel extends Kernel
 {
     public function registerBundles()
     {
-        $bundles = array(
+        $bundles = [
             ...
             new Flob\Bundle\FoundationBundle\FlobFoundationBundle(),
             ...
-        );
+        ];
     }
 }
 ```
@@ -83,17 +83,17 @@ The easy way to do it (but there are other ways to do so):
 <html>
     <head>
         ...
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/css/normalize.min.css" type="text/css" />
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/css/foundation.min.css" type="text/css" />
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/normalize.min.css" type="text/css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.min.css" type="text/css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" type="text/css" />
         <link rel="stylesheet" href="{{ asset('bundles/flobfoundation/css/foundationtosymfony.css') }}" type="text/css" />
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
         ...
     </head>
     <body>
         ...
-        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/js/foundation.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/foundation.min.js"></script>
         <script type="text/javascript" src="{{ asset('bundles/flobfoundation/js/foundationtosymfony.js') }}"></script>
     </body>
 </html>
@@ -155,10 +155,10 @@ To create a top bar, just create your KNP Menu, add a route to the root element 
 ```php
 $menu = $this->factory->createItem(
     'My website',
-    array(
+    [
         'route' => 'homepage',
-        'extras' => array('menu_type' => 'topbar')
-    )
+        'extras' => ['menu_type' => 'topbar']
+    ]
 );
 ```
 
@@ -170,13 +170,13 @@ The icon must be the name of one of Font-Awesome, example : "fa-bell-o".
 ```php
 $menu->addChild(
     "Entry",
-    array(
+    [
         'route' => 'route_entry',
-        'extras' => array(
+        'extras' => [
             'icon' => 'fa-bell-o',
             'icon_position' => 'no-label' # can be 'before', 'after' or 'no-label'
-        )
-    )
+        ]
+    ]
 );
 ```
 
@@ -215,7 +215,7 @@ If true, displays the slider vertically instead of horizontally.
 
 This is an example of the field :
 ```Php
-$builder->add('My slider', 'slider', array('label' => 'Slider', 'start' => 10, 'end' => 20, 'step' => 2));
+$builder->add('My slider', 'slider', ['label' => 'Slider', 'start' => 10, 'end' => 20, 'step' => 2]);
 ```
 
 ### Switch (form field type)
@@ -226,7 +226,7 @@ The switch extend the [choice field type](http://symfony.com/doc/current/referen
 
 This is an example of the field :
 ```Php
-$builder->add('switch_radio', 'switch', array('label' => 'Switch (as radio)', 'choices' => array(1 => 'Choice 1', 2 => 'Choice 2', 3 => 'Obi wan kenobi'), 'multiple' => false));
+$builder->add('switch_radio', 'switch', ['label' => 'Switch (as radio)', 'choices' => [1 => 'Choice 1', 2 => 'Choice 2', 3 => 'Obi wan kenobi'], 'multiple' => false]);
 ```
 
 ### Button Group (form field type)
@@ -240,29 +240,29 @@ This is an example of the field :
 $builder->add(
     'buttons',
     'button_group',
-    array(
+    [
         'label' => 'Buttons group',
-        'buttons' => array(
-            'back' => array(
+        'buttons' => [
+            'back' => [
                 'type'    => 'button',
-                'options' => array(
+                'options' => [
                     'label' => 'Cancel',
-                    'attr' => array(
+                    'attr' => [
                         'class' => 'secondary',
-                    ),
-                ),
-            ),
-            'save' => array(
+                    ],
+                ],
+            ],
+            'save' => [
                 'type'    => 'submit',
-                'options' => array(
+                'options' => [
                     'label' => 'Submit',
-                ),
-            ),
-        ),
-        'attr' => array(
+                ],
+            ],
+        ],
+        'attr' => [
             'class' => 'right',
-        ),
-    )
+        ],
+    ]
 );
 ```
 
@@ -283,76 +283,76 @@ This is an (long :D) example of the field :
 $builder->add(
     'button_bar',
     'button_bar',
-    array(
-        'button_groups' => array(
-            'button_group_first' => array(
+    [
+        'button_groups' => [
+            'button_group_first' => [
                 'label' => 'Buttons group',
-                'buttons' => array(
-                    'one' => array(
+                'buttons' => [
+                    'one' => [
                         'type'    => 'submit',
-                        'options' => array(
+                        'options' => [
                             'label' => 'one',
-                        ),
-                    ),
-                    'two' => array(
+                        ],
+                    ],
+                    'two' => [
                         'type'    => 'button',
-                        'options' => array(
+                        'options' => [
                             'label' => 'two',
-                            'attr' => array(
+                            'attr' => [
                                 'class' => 'success',
-                            ),
-                        ),
-                    ),
-                    'three' => array(
+                            ],
+                        ],
+                    ],
+                    'three' => [
                         'type'    => 'button',
-                        'options' => array(
+                        'options' => [
                             'label' => 'three',
-                            'attr' => array(
+                            'attr' => [
                                 'class' => 'alert',
-                            ),
-                        ),
-                    ),
-                ),
-                'attr' => array(
+                            ],
+                        ],
+                    ],
+                ],
+                'attr' => [
                     'class' => 'round',
-                ),
-            ),
-            'button_group_second' => array(
+                ],
+            ],
+            'button_group_second' => [
                 'label' => 'Buttons group',
-                'buttons' => array(
-                    'four' => array(
+                'buttons' => [
+                    'four' => [
                         'type'    => 'button',
-                        'options' => array(
+                        'options' => [
                             'label' => 'four',
-                            'attr' => array(
+                            'attr' => [
                                 'class' => 'disabled',
-                            ),
-                        ),
-                    ),
-                    'five' => array(
+                            ],
+                        ],
+                    ],
+                    'five' => [
                         'type'    => 'button',
-                        'options' => array(
+                        'options' => [
                             'label' => 'five',
-                            'attr' => array(
+                            'attr' => [
                                 'class' => 'secondary',
-                            ),
-                        ),
-                    ),
-                    'six' => array(
+                            ],
+                        ],
+                    ],
+                    'six' => [
                         'type'    => 'button',
-                        'options' => array(
+                        'options' => [
                             'label' => 'six',
-                            'attr' => array(
+                            'attr' => [
                                 'class' => 'secondary',
-                            ),
-                        ),
-                    ),
-                ),
-                'attr' => array(
+                            ],
+                        ],
+                    ],
+                ],
+                'attr' => [
                     'class' => 'radius',
-                ),
-            ),
-        ),
+                ],
+            ],
+        ],
     );
 ```
 
@@ -371,12 +371,6 @@ You can also help the others, look in the [issues](https://github.com/florianbel
 ## Support
 
 If you are having problems, fill an [issue](https://github.com/florianbelhomme/FlobFoundationBundle/issues).
-
-## Donate / Beer time
-
-If the bundle save you some time and/or make you please, you can pay me a beer ;)
-
-Via [Paypal](https://www.paypal.com/fr/webapps/mpp/send-money-online) to florian.belhomme@gmail.com
 
 ## License
 

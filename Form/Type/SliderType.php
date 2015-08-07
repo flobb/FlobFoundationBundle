@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\Exception\LogicException;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class SliderType extends AbstractType
 {
@@ -18,7 +18,7 @@ class SliderType extends AbstractType
     {
         parent::buildForm($builder, $options);
 
-        foreach (array('start', 'end', 'step') as $o) {
+        foreach (['start', 'end', 'step'] as $o) {
             if (!is_numeric($options[$o])) {
                 throw new LogicException('The option "'.$o.'" must be numeric.');
             }
@@ -34,7 +34,7 @@ class SliderType extends AbstractType
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        foreach (array('start', 'end', 'step') as $o) {
+        foreach (['start', 'end', 'step'] as $o) {
             $view->vars[$o] = $options[$o];
         }
 
@@ -46,20 +46,20 @@ class SliderType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setRequired(array(
+        $resolver->setRequired([
             'start',
             'end',
             'step',
             'vertical',
-        ));
-        $resolver->setDefaults(array(
-            'start'    => 0,
-            'end'      => 100,
-            'step'     => 1,
+        ]);
+        $resolver->setDefaults([
+            'start' => 0,
+            'end' => 100,
+            'step' => 1,
             'vertical' => false,
-        ));
+        ]);
     }
 
     public function getParent()

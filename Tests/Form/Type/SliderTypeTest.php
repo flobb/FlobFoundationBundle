@@ -34,10 +34,10 @@ class SliderTypeTest extends BaseTestCase
 
     public function testSetDefaultOptions()
     {
-        $optionsResolver = $this->prophesize('Symfony\Component\OptionsResolver\OptionsResolverInterface');
-        $optionsResolver->setRequired(array('start', 'end', 'step', 'vertical'))->shouldBeCalled();
-        $optionsResolver->setDefaults(array('start' => 0, 'end' => 100, 'step' => 1, 'vertical' => false))->shouldBeCalled();
+        $optionsResolver = $this->prophesize('Symfony\Component\OptionsResolver\OptionsResolver');
+        $optionsResolver->setRequired(['start', 'end', 'step', 'vertical'])->shouldBeCalled();
+        $optionsResolver->setDefaults(['start' => 0, 'end' => 100, 'step' => 1, 'vertical' => false])->shouldBeCalled();
 
-        $this->type->setDefaultOptions($optionsResolver->reveal());
+        $this->type->configureOptions($optionsResolver->reveal());
     }
 }

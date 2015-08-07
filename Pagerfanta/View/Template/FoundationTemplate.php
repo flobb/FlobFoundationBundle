@@ -6,18 +6,18 @@ use Pagerfanta\View\Template\Template;
 
 class FoundationTemplate extends Template
 {
-    static protected $defaultOptions = array(
-        'prev_message'        => '<i class="fa fa-angle-left"></i>',
-        'next_message'        => '<i class="fa fa-angle-right"></i>',
-        'dots_message'        => '&hellip;',
-        'active_suffix'       => '',
+    protected static $defaultOptions = [
+        'prev_message' => '<i class="fa fa-angle-left"></i>',
+        'next_message' => '<i class="fa fa-angle-right"></i>',
+        'dots_message' => '&hellip;',
+        'active_suffix' => '',
         'css_container_class' => 'pagination',
-        'css_prev_class'      => 'first arrow',
-        'css_next_class'      => 'last arrow',
-        'css_disabled_class'  => 'unavailable',
-        'css_dots_class'      => 'unavailable',
-        'css_active_class'    => 'current',
-    );
+        'css_prev_class' => 'first arrow',
+        'css_next_class' => 'last arrow',
+        'css_disabled_class' => 'unavailable',
+        'css_dots_class' => 'unavailable',
+        'css_active_class' => 'current',
+    ];
 
     public function container()
     {

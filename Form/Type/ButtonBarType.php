@@ -4,10 +4,10 @@ namespace Flob\Bundle\FoundationBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class ButtonBarType
+ * Class ButtonBarType.
  *
  * Adds support for button_bars, groups of button_groups.
  *
@@ -16,7 +16,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class ButtonBarType extends AbstractType
 {
     /**
-     * Pull all group of button into the form
+     * Pull all group of button into the form.
      *
      * {@inheritdoc}
      */
@@ -30,14 +30,14 @@ class ButtonBarType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
-            array(
-                'button_groups' => array(),
-                'options'       => array(),
-                'mapped'        => false,
-            )
+            [
+                'button_groups' => [],
+                'options' => [],
+                'mapped' => false,
+            ]
         );
     }
 

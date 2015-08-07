@@ -54,30 +54,31 @@ class MenuExtension extends \Twig_Extension
     }
 
     /**
-     * Function list of the extension
+     * Function list of the extension.
      *
      * @return array
      */
     public function getFunctions()
     {
-        return array(
-            'flob_breadcrumb_render' => new \Twig_Function_Method($this, 'renderAsBreadcrumb', array('is_safe' => array('html'))),
-        );
+        return [
+            'flob_breadcrumb_render' => new \Twig_Function_Method($this, 'renderAsBreadcrumb', ['is_safe' => ['html']]),
+        ];
     }
 
     /**
-     * Render an array or KNP menu as foundation breadcrumb
+     * Render an array or KNP menu as foundation breadcrumb.
      *
      * @param ItemInterface|string $menu
      * @param array $options
+     *
      * @return mixed
      */
-    public function renderAsBreadcrumb($menu, array $options = array())
+    public function renderAsBreadcrumb($menu, array $options = [])
     {
-        $options = array_merge(array('template' => $this->defaultTemplate), $options);
+        $options = array_merge(['template' => $this->defaultTemplate], $options);
 
         if ((!is_array($menu)) && (!$menu instanceof ItemInterface)) {
-            $path = array();
+            $path = [];
             if (is_array($menu)) {
                 if (empty($menu)) {
                     throw new \InvalidArgumentException('The array cannot be empty');
@@ -92,7 +93,7 @@ class MenuExtension extends \Twig_Extension
         // Look into the menu to fetch the current item
         $treeIterator = new \RecursiveIteratorIterator(
             new RecursiveItemIterator(
-                new \ArrayIterator(array($menu))
+                new \ArrayIterator([$menu])
             ), \RecursiveIteratorIterator::SELF_FIRST
         );
         $itemFilterIterator = new CurrentItemFilterIterator($treeIterator, $this->matcher);
@@ -115,6 +116,6 @@ class MenuExtension extends \Twig_Extension
             $options['template'] = $this->twig->loadTemplate($options['template']);
         }
 
-        return $options['template']->renderBlock('root', array('breadcrumbs' => $breadcrumbs, 'options' => $options));
+        return $options['template']->renderBlock('root', ['breadcrumbs' => $breadcrumbs, 'options' => $options]);
     }
 }

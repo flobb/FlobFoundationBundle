@@ -29,9 +29,9 @@ class ButtonBarTypeTest extends BaseTestCase
 
     public function testSetDefaultOptions()
     {
-        $optionsResolver = $this->prophesize('Symfony\Component\OptionsResolver\OptionsResolverInterface');
-        $optionsResolver->setDefaults(array('button_groups' => array(), 'options' => array(), 'mapped' => false))->shouldBeCalled();
+        $optionsResolver = $this->prophesize('Symfony\Component\OptionsResolver\OptionsResolver');
+        $optionsResolver->setDefaults(['button_groups' => [], 'options' => [], 'mapped' => false])->shouldBeCalled();
 
-        $this->type->setDefaultOptions($optionsResolver->reveal());
+        $this->type->configureOptions($optionsResolver->reveal());
     }
 }

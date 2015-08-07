@@ -12,7 +12,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 class FlobFoundationExtension extends Extension implements PrependExtensionInterface
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function load(array $configs, ContainerBuilder $container)
     {
@@ -35,7 +35,7 @@ class FlobFoundationExtension extends Extension implements PrependExtensionInter
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function prepend(ContainerBuilder $container)
     {
@@ -46,7 +46,7 @@ class FlobFoundationExtension extends Extension implements PrependExtensionInter
 
         if ($config['theme']['form']) {
             if (isset($bundles['TwigBundle'])) {
-                $container->prependExtensionConfig('twig', array('form' => array('resources' => array($config['template']['form']))));
+                $container->prependExtensionConfig('twig', ['form' => ['resources' => [$config['template']['form']]]]);
             } else {
                 throw new InvalidConfigurationException('You need to enable Twig Bundle to theme form or set the configuration of flob_foundation.theme.form to false');
             }
@@ -54,7 +54,7 @@ class FlobFoundationExtension extends Extension implements PrependExtensionInter
 
         if ($config['theme']['knp_menu']) {
             if ((isset($bundles['TwigBundle'])) && (isset($bundles['KnpMenuBundle']))) {
-                $container->prependExtensionConfig('knp_menu', array('twig' => array('template' => $config['template']['knp_menu'])));
+                $container->prependExtensionConfig('knp_menu', ['twig' => ['template' => $config['template']['knp_menu']]]);
             } else {
                 throw new InvalidConfigurationException('You need to enable Twig Bundle and KNP Menu Bundle to theme menu or set the configuration of flob_foundation.theme.knp_menu to false');
             }
@@ -62,7 +62,7 @@ class FlobFoundationExtension extends Extension implements PrependExtensionInter
 
         if ($config['theme']['knp_paginator']) {
             if ((isset($bundles['TwigBundle'])) && (isset($bundles['KnpPaginatorBundle']))) {
-                $container->prependExtensionConfig('knp_paginator', array('template' => array('pagination' => $config['template']['knp_paginator'])));
+                $container->prependExtensionConfig('knp_paginator', ['template' => ['pagination' => $config['template']['knp_paginator']]]);
             } else {
                 throw new InvalidConfigurationException('You need to enable Twig Bundle and KNP Paginator Bundle to theme pagination or set the configuration of flob_foundation.theme.knp_paginator to false');
             }
@@ -70,7 +70,7 @@ class FlobFoundationExtension extends Extension implements PrependExtensionInter
 
         if ($config['theme']['pagerfanta']) {
             if ((isset($bundles['TwigBundle'])) && (isset($bundles['WhiteOctoberPagerfantaBundle']))) {
-                $container->prependExtensionConfig('white_october_pagerfanta', array('default_view' => $config['template']['pagerfanta']));
+                $container->prependExtensionConfig('white_october_pagerfanta', ['default_view' => $config['template']['pagerfanta']]);
             } else {
                 throw new InvalidConfigurationException('You need to enable Twig Bundle and WhiteOctober Pagerfanta Bundle to theme pagination or set the configuration of flob_foundation.theme.pagerfanta to false');
             }
