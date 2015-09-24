@@ -3,8 +3,18 @@
 {# Widgets #}
 
 {% block money_widget -%}
+    {%- set prefix = '{{' == money_pattern[0:2] -%}
+    {%- if prefix -%}
+        <div class="small-1 columns">
+            <span class="prefix">{{ money_pattern|replace({'{{ widget }}': ''})|raw }}</span>
+        </div>
+    {%- endif -%}
     <div class="small-11 columns">{{ block('form_widget_simple') }}</div>
-    <div class="small-1 columns"><span class="postfix">{{ money_pattern|replace({'{{ widget }}': ''})|raw }}</span></div>
+    {%- if not prefix -%}
+        <div class="small-1 columns">
+            <span class="postfix">{{ money_pattern|replace({'{{ widget }}': ''})|raw }}</span>
+        </div>
+    {%- endif -%}
 {%- endblock money_widget %}
 
 {% block url_widget -%}
@@ -32,9 +42,9 @@
         {% set attr = attr|merge({'class': ('row ' ~ attr.class|default(''))|trim }) %}
         <div {{ block('widget_container_attributes') }}>
             {{- date_pattern|replace({
-            '{{ year }}':  '<div class="small-4 medium-2 columns">' ~ form_widget(form.year) ~ '</div>',
-            '{{ month }}': '<div class="small-4 medium-2 columns">' ~ form_widget(form.month) ~ '</div>',
-            '{{ day }}':   '<div class="small-4 medium-2 columns">' ~ form_widget(form.day) ~ '</div>',
+                '{{ year }}':  '<div class="small-4 medium-2 columns">' ~ form_widget(form.year) ~ '</div>',
+                '{{ month }}': '<div class="small-4 medium-2 columns">' ~ form_widget(form.month) ~ '</div>',
+                '{{ day }}':   '<div class="small-4 medium-2 columns">' ~ form_widget(form.day) ~ '</div>',
             })|raw -}}
             <div class="columns end"></div>
         </div>
