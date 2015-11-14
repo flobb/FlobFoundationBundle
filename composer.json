@@ -22,10 +22,10 @@
   ],
   "require" : {
 	"php": ">=5.3.9",
-	"symfony/framework-bundle": "~2.7.0",
-	"symfony/twig-bundle": "~2.7.0",
-	"symfony/yaml": "~2.7.0",
-	"symfony/form": "~2.7.0"
+	"symfony/framework-bundle": ">=2.7",
+	"symfony/twig-bundle": ">=2.7",
+	"symfony/yaml": ">=2.7",
+	"symfony/form": ">=2.7"
   },
   "require-dev" : {
 	"white-october/pagerfanta-bundle": "~1.0",
