@@ -3,6 +3,7 @@
 namespace Flob\Bundle\FoundationBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
@@ -64,11 +65,6 @@ class SliderType extends AbstractType
 
     public function getParent()
     {
-        return 'number';
-    }
-
-    public function getName()
-    {
-        return 'slider';
+        return NumberType::class;
     }
 }
