@@ -16,6 +16,6 @@ services:
         class: %flob.pagerfanta.view.foundation.class%
         public: false
         arguments:
-            - @flob.pagerfanta.template.foundation
+            - '@flob.pagerfanta.template.foundation'
         tags:
             - { name: pagerfanta.view, alias: foundation }

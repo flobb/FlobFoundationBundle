@@ -18,7 +18,7 @@
 {% endblock %}
 
 {% block list %}
-    {% if item.hasChildren and options.depth is not sameas(0) and item.displayChildren %}
+    {% if item.hasChildren and options.depth is not same as(0) and item.displayChildren %}
         {% if item.level > 0 %}
             {% set listAttributes = listAttributes|merge({'class': (listAttributes.class|default('') ~ ' dropdown')|trim}) %}
         {% endif %}
@@ -46,7 +46,7 @@
         {%- endif %}
 
         {# Mark item as "leaf" (no children) or as "branch" (has children that are displayed) #}
-        {% if item.hasChildren and options.depth is not sameas(0) %}
+        {% if item.hasChildren and options.depth is not same as(0) %}
             {%- set classes = classes|merge(['has-dropdown']) %}
             {% if options.branch_class is not empty and item.displayChildren %}
                 {%- set classes = classes|merge([options.branch_class]) %}

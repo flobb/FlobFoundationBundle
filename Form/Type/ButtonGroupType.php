@@ -5,23 +5,22 @@ namespace Flob\Bundle\FoundationBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Button;
 use Symfony\Component\Form\ButtonBuilder;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-/**
- * Class ButtonGroupType.
- *
- * Adds support for button_groups, printing buttons in a single line.
- *
- * @author Rafael Dohms <code@doh.ms>
- * @author Robert-Jan Bijl <robert-jan@prezent.nl>
- */
 class ButtonGroupType extends AbstractType
 {
+    private $allowedTypes = [
+        ButtonType::class,
+        SubmitType::class,
+    ];
+
     /**
-     * Pull all button into the form.
+     * Pull all buttons into the form.
      *
      * {@inheritdoc}
      */
@@ -51,7 +50,7 @@ class ButtonGroupType extends AbstractType
     /**
      * Adds a button.
      *
-     * @param  FormBuilderInterface      $builder
+     * @param FormBuilderInterface $builder
      * @param $name
      * @param $config
      *
@@ -63,13 +62,21 @@ class ButtonGroupType extends AbstractType
     {
         $options = isset($config['options']) ? $config['options'] : [];
 
+        if (!in_array($config['type'], $this->allowedTypes)) {
+            throw new \LogicException(sprintf(
+                'Allowed button types : "%s", given "%s".',
+                implode('", "', $this->allowedTypes),
+                $config['type']
+            ));
+        }
+
         return $builder->add($name, $config['type'], $options);
     }
 
     /**
      * Validates if child is a Button.
      *
-     * @param  FormInterface             $field
+     * @param FormInterface $field
      *
      * @throws \InvalidArgumentException
      */
@@ -92,13 +99,5 @@ class ButtonGroupType extends AbstractType
                 'mapped' => false,
             ]
         );
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return 'button_group';
     }
 }

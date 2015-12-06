@@ -22,20 +22,18 @@ class SwitchTypeTest extends BaseTestCase
         $this->type = null;
     }
 
-    public function testGetName()
-    {
-        $this->assertEquals('switch', $this->type->getName());
-    }
-
     public function testGetParent()
     {
-        $this->assertEquals('choice', $this->type->getParent());
+        $this->assertEquals('Symfony\Component\Form\Extension\Core\Type\ChoiceType', $this->type->getParent());
     }
 
     public function testSetDefaultOptions()
     {
         $optionsResolver = $this->prophesize('Symfony\Component\OptionsResolver\OptionsResolver');
-        $optionsResolver->setDefaults(['expanded' => true])->shouldBeCalled();
+        $optionsResolver
+            ->setDefaults(['expanded' => true])
+            ->shouldBeCalled()
+        ;
 
         $this->type->configureOptions($optionsResolver->reveal());
     }

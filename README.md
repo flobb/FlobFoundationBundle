@@ -43,23 +43,11 @@ This bundle will theme for you elements of :
 
 ## Installation and configuration
 
-First, edit your `composer.json` and add :
-
-```JSON
-{
-    ...
-    "require": {
-        ...
-        "florianbelhomme/flob-foundation-bundle": "~2.1.0"
-        ...
-    }
-    ...
-}
+```BASH
+composer require florianbelhomme/flob-foundation-bundle
 ```
 
-Now run a `composer update` on your project. It will get all the necessary files for you.
-
-Secondly, edit your `app/AppKernel.php` and add:
+Then, edit your `app/AppKernel.php` and add:
 
 ```PHP
 class AppKernel extends Kernel

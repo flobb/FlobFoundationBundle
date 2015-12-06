@@ -6,13 +6,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-/**
- * Class ButtonBarType.
- *
- * Adds support for button_bars, groups of button_groups.
- *
- * @author Robert-Jan Bijl <robert-jan@prezent.nl>
- */
 class ButtonBarType extends AbstractType
 {
     /**
@@ -23,7 +16,7 @@ class ButtonBarType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         foreach ($options['button_groups'] as $name => $config) {
-            $builder->add($name, 'button_group', $config);
+            $builder->add($name, ButtonGroupType::class, $config);
         }
     }
 
@@ -39,13 +32,5 @@ class ButtonBarType extends AbstractType
                 'mapped' => false,
             ]
         );
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return 'button_bar';
     }
 }

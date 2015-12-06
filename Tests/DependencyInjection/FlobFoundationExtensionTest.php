@@ -23,18 +23,8 @@ class FlobFoundationExtensionTest extends BaseTestCase
             'FrameworkBundle' => Argument::any(),
             'TwigBundle' => Argument::any(),
         ];
-        $services = [
-            ['flob_foundation.form.slider.class', 'Flob\Bundle\FoundationBundle\Form\Type\SliderType'],
-            ['flob_foundation.form.switch.class', 'Flob\Bundle\FoundationBundle\Form\Type\SwitchType'],
-            ['flob_foundation.form.button_group.class', 'Flob\Bundle\FoundationBundle\Form\Type\ButtonGroupType'],
-            ['flob_foundation.form.button_bar.class', 'Flob\Bundle\FoundationBundle\Form\Type\ButtonBarType'],
-        ];
-        $definitions = [
-            'flob_foundation.form.slider',
-            'flob_foundation.form.switch',
-            'flob_foundation.form.button_group',
-            'flob_foundation.form.button_bar',
-        ];
+        $services = [];
+        $definitions = [];
 
         $data[] = [$configuration, $bundles, $services, $definitions];
 
