@@ -6,13 +6,13 @@
     {%- set prefix = '{{' == money_pattern[0:2] -%}
     {%- if prefix -%}
         <div class="small-1 columns">
-            <span class="prefix">{{ money_pattern|replace({'{{ widget }}': ''})|raw }}</span>
+            <span class="prefix">{{ money_pattern|replace({'{{ widget }}':''}) }}</span>
         </div>
     {%- endif -%}
     <div class="small-11 columns">{{ block('form_widget_simple') }}</div>
     {%- if not prefix -%}
         <div class="small-1 columns">
-            <span class="postfix">{{ money_pattern|replace({'{{ widget }}': ''})|raw }}</span>
+            <span class="postfix">{{ money_pattern|replace({'{{ widget }}':''}) }}</span>
         </div>
     {%- endif -%}
 {%- endblock money_widget %}
@@ -191,6 +191,7 @@
             <small class="error">
                 {%- for error in errors -%}
                     {{ error.message }}
+                    {% if not loop.last %}, {% endif %}
                 {%- endfor -%}
             </small>
         {%- endif %}
