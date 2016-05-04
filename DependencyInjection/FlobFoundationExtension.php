@@ -64,8 +64,8 @@ class FlobFoundationExtension extends Extension implements PrependExtensionInter
                 $container->prependExtensionConfig(
                     'knp_menu',
                     array(
-                        'template'    => array(
-                            $config['template']['knp_menu']
+                        'twig' => array(
+                            'template'=> $config['template']['knp_menu']
                         )
                     )
                 );
@@ -79,8 +79,8 @@ class FlobFoundationExtension extends Extension implements PrependExtensionInter
                 $container->prependExtensionConfig(
                     'knp_paginator',
                     array(
-                        'pagination'    => array(
-                            $config['template']['knp_paginator']
+                        'template' => array(
+                            'pagination' => $config['template']['knp_paginator']
                         )
                     )
                 );
@@ -94,9 +94,7 @@ class FlobFoundationExtension extends Extension implements PrependExtensionInter
                 $container->prependExtensionConfig(
                     'white_october_pagerfanta',
                     array(
-                        'default_view'    => array(
-                            $config['template']['pagerfanta']
-                        )
+                        'default_view' => $config['template']['pagerfanta']
                     )
                 );
             } else {
