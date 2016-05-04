@@ -10,7 +10,7 @@
 
 This bundle integrates the features of the responsive framework Foundation, from ZURB (thanks guys), into Symfony by providing templates, Twig extensions, services and commands. You can quickly setup a responsive theme for an interface for your project. It will have the "look'n'feel", the responsiveness and the simplicity of Foundation.
 
-**BE AWARE: THIS BUNDLE WILL NOT ADD THE FOUNDATION FRAMEWORK BUT RATHER features FOR SYMFONY TO WORK WITH IT**
+**BE AWARE: THIS BUNDLE WILL NOT ADD THE FOUNDATION FRAMEWORK BUT RATHER FEATURES FOR SYMFONY TO WORK WITH IT**
 
 Demo available [here](http://florianbelhomme.com/flobfoundationdemobundle/).
 
@@ -19,7 +19,7 @@ Demo available [here](http://florianbelhomme.com/flobfoundationdemobundle/).
 - [Symfony 2.7+](http://symfony.com).
 - [jQuery 2+](http://jquery.com/) a JavaScript library.
 - [Foundation 5+](http://foundation.zurb.com/) an advanced responsive framework.
-- [Font Awesome 4+](http://fontawesome.io/) which comes with 369+ icons.
+- [Font Awesome 4+](http://fontawesome.io/) which comes with 585+ icons.
 
 ## Recommended
 
@@ -43,23 +43,11 @@ This bundle will theme for you elements of :
 
 ## Installation and configuration
 
-First, edit your `composer.json` and add :
-
-```JSON
-{
-    ...
-    "require": {
-        ...
-        "florianbelhomme/flob-foundation-bundle": "~2.1.0"
-        ...
-    }
-    ...
-}
+```BASH
+composer require florianbelhomme/flob-foundation-bundle
 ```
 
-Now run a `composer update` on your project. It will get all the necessary files for you.
-
-Secondly, edit your `app/AppKernel.php` and add:
+Then, edit your `app/AppKernel.php` and add:
 
 ```PHP
 class AppKernel extends Kernel

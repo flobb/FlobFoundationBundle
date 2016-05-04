@@ -22,15 +22,13 @@ class ButtonGroupTypeTest extends BaseTestCase
         $this->type = null;
     }
 
-    public function testGetName()
-    {
-        $this->assertEquals('button_group', $this->type->getName());
-    }
-
     public function testSetDefaultOptions()
     {
         $optionsResolver = $this->prophesize('Symfony\Component\OptionsResolver\OptionsResolver');
-        $optionsResolver->setDefaults(['buttons' => [], 'options' => [], 'mapped' => false])->shouldBeCalled();
+        $optionsResolver
+            ->setDefaults(['buttons' => [], 'options' => [], 'mapped' => false])
+            ->shouldBeCalled()
+        ;
 
         $this->type->configureOptions($optionsResolver->reveal());
     }

@@ -33,8 +33,8 @@ class MenuExtension extends \Twig_Extension
 
     /**
      * @param \Twig_Environment $twig
-     * @param Helper $menuHelper
-     * @param Matcher $matcher
+     * @param Helper            $menuHelper
+     * @param Matcher           $matcher
      * @param $defaultTemplate
      */
     public function __construct(\Twig_Environment $twig, Helper $menuHelper, Matcher $matcher, $defaultTemplate)
@@ -61,7 +61,11 @@ class MenuExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            'flob_breadcrumb_render' => new \Twig_Function_Method($this, 'renderAsBreadcrumb', ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction(
+                'flob_breadcrumb_render',
+                [$this, 'renderAsBreadcrumb'],
+                ['is_safe' => ['html']]
+            ),
         ];
     }
 
@@ -69,7 +73,7 @@ class MenuExtension extends \Twig_Extension
      * Render an array or KNP menu as foundation breadcrumb.
      *
      * @param ItemInterface|string $menu
-     * @param array $options
+     * @param array                $options
      *
      * @return mixed
      */
@@ -116,6 +120,7 @@ class MenuExtension extends \Twig_Extension
             $options['template'] = $this->twig->loadTemplate($options['template']);
         }
 
+        // renderBlock is @internal, other solution for this ?
         return $options['template']->renderBlock('root', ['breadcrumbs' => $breadcrumbs, 'options' => $options]);
     }
 }

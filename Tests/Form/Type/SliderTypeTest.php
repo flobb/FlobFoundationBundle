@@ -22,21 +22,22 @@ class SliderTypeTest extends BaseTestCase
         $this->type = null;
     }
 
-    public function testGetName()
-    {
-        $this->assertEquals('slider', $this->type->getName());
-    }
-
     public function testGetParent()
     {
-        $this->assertEquals('number', $this->type->getParent());
+        $this->assertEquals('Symfony\Component\Form\Extension\Core\Type\NumberType', $this->type->getParent());
     }
 
     public function testSetDefaultOptions()
     {
         $optionsResolver = $this->prophesize('Symfony\Component\OptionsResolver\OptionsResolver');
-        $optionsResolver->setRequired(['start', 'end', 'step', 'vertical'])->shouldBeCalled();
-        $optionsResolver->setDefaults(['start' => 0, 'end' => 100, 'step' => 1, 'vertical' => false])->shouldBeCalled();
+        $optionsResolver
+            ->setRequired(['start', 'end', 'step', 'vertical'])
+            ->shouldBeCalled()
+        ;
+        $optionsResolver
+            ->setDefaults(['start' => 0, 'end' => 100, 'step' => 1, 'vertical' => false])
+            ->shouldBeCalled()
+        ;
 
         $this->type->configureOptions($optionsResolver->reveal());
     }
