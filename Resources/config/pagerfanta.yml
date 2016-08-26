@@ -10,10 +10,10 @@ parameters:
 services:
 
     flob.pagerfanta.template.foundation:
-        class: %flob.pagerfanta.template.foundation.class%
+        class: '%flob.pagerfanta.template.foundation.class%'
 
     flob.pagerfanta.view.foundation:
-        class: %flob.pagerfanta.view.foundation.class%
+        class: '%flob.pagerfanta.view.foundation.class%'
         public: false
         arguments:
             - '@flob.pagerfanta.template.foundation'
