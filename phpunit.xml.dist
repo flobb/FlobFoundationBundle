@@ -15,7 +15,7 @@
 
     <testsuites>
         <testsuite name="FlobFoundationBundle Test Suite">
-            <directory>./Tests</directory>
+            <directory>./src/Tests</directory>
         </testsuite>
     </testsuites>
 
@@ -23,9 +23,9 @@
         <whitelist>
             <directory>./</directory>
             <exclude>
-                <directory>./Resources</directory>
-                <directory>./Tests</directory>
-                <directory>./vendor</directory>
+                <directory>./src/Resources</directory>
+                <directory>./src/Tests</directory>
+                <directory>./src/vendor</directory>
             </exclude>
         </whitelist>
     </filter>

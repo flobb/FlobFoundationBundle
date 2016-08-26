@@ -3,27 +3,26 @@
 {% block root %}
     {% set isTopBar = 'topbar' == item.extra('menu_type') %}
     {% if isTopBar %}
-        <nav class="top-bar" data-topbar>
-            <ul class="title-area">
-                <li class="name"></li>
-                <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-            </ul>
-            <section class="top-bar-section">
+        <div class="top-bar">
+            <div class="top-bar-left">
     {% endif %}
     {{ parent() }}
     {% if isTopBar %}
-            </section>
-        </nav>
+            </div>
+        </div>
     {% endif %}
 {% endblock %}
 
 {% block list %}
     {% if item.hasChildren and options.depth is not same as(0) and item.displayChildren %}
-        {% if item.level > 0 %}
-            {% set listAttributes = listAttributes|merge({'class': (listAttributes.class|default('') ~ ' dropdown')|trim}) %}
-        {% endif %}
-        {% if item.extra('menu_type') == 'sidebar' %}
-            {% set listAttributes = listAttributes|merge({'class': (listAttributes.class|default('') ~ ' side-nav')|trim}) %}
+        {% set listAttributes = listAttributes|merge({'class': ('menu ' ~ listAttributes.class|default(''))|trim}) %}
+        {% if item.extra('menu_type') == 'topbar' %}
+            {% set listAttributes = listAttributes|merge({
+                'class': ('dropdown ' ~ listAttributes.class|default(''))|trim,
+                'data-dropdown-menu': null
+            }) %}
+        {% elseif item.extra('menu_type') == 'sidebar' %}
+            {% set listAttributes = listAttributes|merge({'class': ('nested vertical ' ~ listAttributes.class|default(''))|trim}) %}
         {% endif %}
     {% endif %}
     {{ parent() }}

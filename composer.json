@@ -38,7 +38,7 @@
   },
   "autoload" : {
 	"psr-4": {
-	  "Flob\\Bundle\\FoundationBundle\\": ""
+	  "Flob\\Bundle\\FoundationBundle\\": "src\\"
 	}
   },
   "replace": {
