@@ -112,13 +112,13 @@ class FlobFoundationExtensionTest extends BaseTestCase
         $data[] = [
             ['TwigBundle' => Argument::any()],
             ['theme' => ['form' => true]],
-            ['twig', ['form' => ['resources' => ['FlobFoundationBundle:Form:foundation_form_div_layout.html.twig']]]],
+            ['twig', ['form_themes' => ['FlobFoundationBundle:Form:foundation_form_div_layout.html.twig']]],
         ];
 
         $data[] = [
             ['TwigBundle' => Argument::any()],
             ['theme' => ['form' => true], 'template' => ['form' => 'test']],
-            ['twig', ['form' => ['resources' => ['test']]]],
+            ['twig', ['form_themes' => ['test']]],
         ];
 
         $data[] = [

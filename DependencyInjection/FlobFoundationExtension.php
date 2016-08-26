@@ -46,7 +46,7 @@ class FlobFoundationExtension extends Extension implements PrependExtensionInter
 
         if ($config['theme']['form']) {
             if (isset($bundles['TwigBundle'])) {
-                $container->prependExtensionConfig('twig', ['form' => ['resources' => [$config['template']['form']]]]);
+                $container->prependExtensionConfig('twig', ['form_themes' => [$config['template']['form']]]);
             } else {
                 throw new InvalidConfigurationException('You need to enable Twig Bundle to theme form or set the configuration of flob_foundation.theme.form to false');
             }

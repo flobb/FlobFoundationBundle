@@ -9,11 +9,11 @@ parameters:
 services:
 
     flob.menu_extension:
-        class: %flob.menu_extension.class%
+        class: '%flob.menu_extension.class%'
         arguments:
             - '@twig'
             - '@knp_menu.helper'
             - '@knp_menu.matcher'
-            - %flob.menu_extension.template%
+            - '%flob.menu_extension.template%'
         tags:
             - { name: twig.extension }
