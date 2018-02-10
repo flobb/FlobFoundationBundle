@@ -8,7 +8,7 @@
 
 ## About
 
-** DISCONTINUED **
+**DISCONTINUED**
 
 This bundle integrates the features of the responsive framework Foundation, from ZURB (thanks guys), into Symfony by providing templates, Twig extensions, services and commands. You can quickly setup a responsive theme for an interface for your project. It will have the "look'n'feel", the responsiveness and the simplicity of Foundation.
 
