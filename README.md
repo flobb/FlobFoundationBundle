@@ -8,6 +8,8 @@
 
 ## About
 
+** DISCONTINUED **
+
 This bundle integrates the features of the responsive framework Foundation, from ZURB (thanks guys), into Symfony by providing templates, Twig extensions, services and commands. You can quickly setup a responsive theme for an interface for your project. It will have the "look'n'feel", the responsiveness and the simplicity of Foundation.
 
 **BE AWARE: THIS BUNDLE WILL NOT ADD THE FOUNDATION FRAMEWORK BUT RATHER FEATURES FOR SYMFONY TO WORK WITH IT**
@@ -27,19 +29,6 @@ This bundle will theme for you elements of :
 - the [KnpMenuBundle](https://github.com/KnpLabs/KnpMenuBundle) to manage menu or sidebar.
 - the [KpnPaginatorBundle](https://github.com/KnpLabs/KnpPaginatorBundle) for pagination.
 - the [WhiteOctoberPagerfantaBundle](https://github.com/whiteoctober/WhiteOctoberPagerfantaBundle) for pagination based on Pager Fanta.
-
-## In the future
-
-- [ ] Better tests
-- [ ] Refactor the doc and update it
-- [ ] Thumbnails + Clearing Lightbox
-- [ ] Icon Bar
-- [ ] Support for off-canvas
-- [ ] Modal
-- [ ] Icon with labels
-- [ ] Accordion
-- [ ] Tabs
-- [ ] Abide Validation
 
 ## Installation and configuration
 
